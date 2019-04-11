@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class Board here.
+ *will probably be combined with visual, weel see
  *
  * @author (your name)
  * @version (a version number or a date)

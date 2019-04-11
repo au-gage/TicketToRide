@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class points here.
+ * Points to keep track of for each player
  *
  * @author (your name)
  * @version (a version number or a date)

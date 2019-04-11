@@ -1,6 +1,10 @@
 
 /**
- * Write a description of class game here.
+ * determines who is playing and win conditions
+ * how many players
+ * what color
+ * what name
+ * implements player,board, and run the playing of the game
  *
  * @author (your name)
  * @version (a version number or a date)

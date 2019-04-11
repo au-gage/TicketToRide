@@ -1,7 +1,9 @@
 
 /**
- * Write a description of class DestCard here.
- *
+ * instances of images of card
+ * to and from
+ * method to determine if path has been completed
+ * 
  * @author (your name)
  * @version (a version number or a date)
  */

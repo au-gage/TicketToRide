@@ -1,6 +1,10 @@
 
 /**
- * Write a description of class Paths here.
+ * instances of each pathway
+ * start and end
+ * what color
+ * length of path
+ * if captured
  *
  * @author (your name)
  * @version (a version number or a date)

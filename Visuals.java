@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class Visuals here.
+ * methods to implement graphics
  *
  * @author (your name)
  * @version (a version number or a date)

@@ -1,6 +1,10 @@
 
 /**
- * Write a description of class player here.
+ * color
+ * name
+ * points
+ * make moves
+ * have 
  *
  * @author (your name)
  * @version (a version number or a date)
