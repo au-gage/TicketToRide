@@ -5,33 +5,28 @@
  * what color
  * length of path
  * if captured
+ * Who Captured
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Austin Gage
+ * @version 4/12/2019
  */
 public class Paths
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Paths
-     */
-    public Paths()
+    private String start,end;
+    private Player whoCaptured;
+    private Colors color;
+    private int length;
+    private boolean isCaptured;
+    
+    public Paths(String start, String end,Colors color, int length)
     {
-        // initialise instance variables
-        x = 0;
+        this.start = start;
+        this.end = end;
+        this.color = color;
+        this.length = length;
+        isCaptured = false;
+        whoCaptured = null;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    
+    
 }
