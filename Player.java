@@ -6,32 +6,41 @@
  * make moves
  * have 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Rose Wilaon
+ * @version 4/14/19
  */
 public class Player
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    private Colors color;
+    private String name;
+    private Points point;
+    
     /**
      * Constructor for objects of class player
      */
-    public Player()
+    public Player(Colors color, String name)
     {
-        // initialise instance variables
-        x = 0;
+       this.color = color;
+       this.name = name;
+       point=new Points();
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    private void drawTransTicket(){
+        //determine if player wants face up ticket or from pile
+        //if face up then determine if taxi
+            //if taxi or second draw,replace card and end player turn
+            //else replace and ask if want card from pile or face up
+        //if draw from pile ask if want a secpnd card from pile or face up card
+        
+    }
+    private void drawDestTickets(){
+        //add two dest cards to hand
+        //player chooses to remove one or none
+    }
+    private void claimRoute(){
+        //as which path
+        //player chooses their cards based on path's needs
+        //remove cards from player's hand
+        //add cars to route
     }
 }
