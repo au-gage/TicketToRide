@@ -1,33 +1,107 @@
-
+import java.util.ArrayList;
+import java.io.File;
+import java.util.Scanner;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.nio.file.*;
 /**
  * methods to implement graphics
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Austin Gage
+ * @version 4/16/2019
  */
-public class Visuals
+public class Visuals extends JPanel implements  MouseListener
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private Image board;
+    private Toolkit toolkit = Toolkit.getDefaultToolkit();
 
-    /**
-     * Constructor for objects of class Visuals
-     */
     public Visuals()
     {
-        // initialise instance variables
-        x = 0;
+        setPreferredSize(new Dimension(720,900)); //Dimension subject to change
+        addMouseListener(this);
+        Path path = Paths.get("fwdboardandtransport");
+        try(DirectoryStream<Path> stream = Files.newDirectoryStream(path))
+        {
+            for(Path file: stream)
+            {
+                if(file.toString().equals("fwdboardandtransport\\Board.jpg"))
+                {
+                    board = toolkit.getImage(file.toString());
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.exit(0);
+        }
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Empty methods that had to be overriden to use MouseListener
+     * 
      */
-    public int sampleMethod(int y)
+    public void mouseExited(MouseEvent e) { }
+
+    public void mouseEntered(MouseEvent e) { }
+
+    public void mouseReleased(MouseEvent e) { }
+
+    public void mousePressed(MouseEvent e) { }
+
+    /**
+     * This method checks to see where the mouse was clicked, and calls
+     * the appropriate method, like if twist is pressed or if enter is pressed
+     * @param the MouseEvent that started the method
+     */
+    public void mouseClicked(MouseEvent e)
     {
-        // put your code here
-        return x + y;
+        int x = e.getX();
+        int y = e.getY();
+
+    }
+    /**
+     * Method that paints the JPanel
+     * 
+     * @param a Graphics object g
+     * 
+     */
+    @Override
+    public void paintComponent( Graphics g ) { 
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(2));
+        g.setColor(Color.RED);
+        g.drawRect(0,0,100,100);
+        g.drawImage(board, 0, 0, this);
+    }
+
+    /**
+     * Create the GUI and show it.  For thread safety,
+     * this method should be invoked from the
+     * event-dispatching thread.
+     */
+    private static void createAndShowGUI() {
+        //Make sure we have nice window decorations.
+        JFrame.setDefaultLookAndFeelDecorated(true);
+
+        //Create and set up the window.
+        JFrame frame = new JFrame("Ticket To Ride: NY");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Visuals label = new Visuals();
+        frame.add(label);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+
+    }
+
+    public static void main(String[] args)
+    {
+        createAndShowGUI();
     }
 }

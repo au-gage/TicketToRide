@@ -28,5 +28,14 @@ public class Paths
         whoCaptured = null;
     }
     
+    public boolean getIsCaptured()
+    {
+        return isCaptured;
+    }
     
+    public void Captured(boolean isCaptured,Player whoCaptured)
+    {
+        this.isCaptured = isCaptured;
+        this.whoCaptured = whoCaptured;
+    }
 }
