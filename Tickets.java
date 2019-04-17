@@ -1,5 +1,9 @@
+<<<<<<< HEAD
  
 import java.util.ArrayList;
+=======
+ import java.util.ArrayList;
+>>>>>>> 73f5f24ff2d3f7c5060a2a6fddbb18371d88d1f7
 import java.util.Random;
 /**
  * instances of cards

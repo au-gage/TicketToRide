@@ -43,8 +43,20 @@ public class DestCard
         {
             System.exit(0);
         }
-        shuffle();
+        this.shuffle();
+    
     }
+
+    /**
+     * Empty methods that had to be overriden to use MouseListener
+     * 
+     */
+    public void mouseExited(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) { }
+    public void mouseReleased(MouseEvent e) { }
+    public void mousePressed(MouseEvent e) { }
+    
+    
 
     /**
      * Shuffles the deck of destination cards in a pseudorandom order.
@@ -62,5 +74,18 @@ public class DestCard
         }
     }
 
+    /**
+     * Will do once we have the players delt cards
+     */
+    public void returnCard(){
+        
+    }
     
+    
+    /**
+     * Returns the value of a destination card 
+     */
+    public int destCardValues(){
+        return 0;
+    }
 }
