@@ -28,10 +28,15 @@ public class Paths
         whoCaptured = null;
     }
     
+    /**
+     * Called when a path is attempted to be captured when it is already captured
+     * 
+     */
     public boolean getIsCaptured()
     {
         return isCaptured;
     }
+    
     
     public void Captured(boolean isCaptured,Player whoCaptured)
     {

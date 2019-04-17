@@ -44,11 +44,8 @@ public class Visuals extends JPanel implements  MouseListener
      * 
      */
     public void mouseExited(MouseEvent e) { }
-
     public void mouseEntered(MouseEvent e) { }
-
     public void mouseReleased(MouseEvent e) { }
-
     public void mousePressed(MouseEvent e) { }
 
     /**
