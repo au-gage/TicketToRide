@@ -1,10 +1,8 @@
-<<<<<<< HEAD
+
 package TicketToRide;
 
-
-=======
 import java.util.ArrayList;
->>>>>>> 6e6c7207cf554945b958141fba38608919a91a81
+
 /**
  * color
  * name
