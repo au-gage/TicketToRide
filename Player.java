@@ -29,18 +29,16 @@ public class Player
     /**
      * 
      */
-    protected void drawTransTicket(boolean pile){
-        //determine if player wants face up ticket or from pile
+    protected void drawTransTicket( Tickets deck, int choice,int draw){
+        //determine if taxi
+        deck.pickup(choice);
+        //if taxi or second draw,replace card and end player turn
         
-        if (pile == false){
-            //if face up then determine if taxi
-            
-        }
-        
-        
-            //if taxi or second draw,replace card and end player turn
-            //else replace and ask if want card from pile or face up
+        //else replace and ask if want card from pile or face up
         //if draw from pile ask if want a secpnd card from pile or face up card
+        
+    }
+    protected void drawPileTicket(Tickets deck){
         
     }
     protected void drawDestTickets(){
