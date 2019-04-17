@@ -13,7 +13,7 @@ public class Player
 {
     private Colors color;
     private String name;
-    private Points point;
+    private Points score;
     
     /**
      * Constructor for objects of class player
@@ -22,7 +22,7 @@ public class Player
     {
        this.color = color;
        this.name = name;
-       point=new Points();
+       score=new Points();
     }
     
     private void drawTransTicket(){
@@ -43,4 +43,5 @@ public class Player
         //remove cards from player's hand
         //add cars to route
     }
+    
 }
