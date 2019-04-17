@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 package TicketToRide;
 
 
+=======
+import java.util.ArrayList;
+>>>>>>> 6e6c7207cf554945b958141fba38608919a91a81
 /**
  * color
  * name
@@ -13,10 +17,12 @@ package TicketToRide;
  */
 public class Player
 {
-    private Colors color;
-    private String name;
-    private Points score;
-    
+    protected Colors color;
+    protected String name;
+    protected Points score;
+    //Black,red,green,blue,orange,pink,rainbow
+    protected int[] tickets = new int[7];
+    protected ArrayList<DestCard> DestHand;
     /**
      * Constructor for objects of class player
      */
@@ -26,23 +32,32 @@ public class Player
        this.name = name;
        score=new Points();
     }
-    
-    private void drawTransTicket(){
+    /**
+     * 
+     */
+    protected void drawTransTicket(boolean pile){
         //determine if player wants face up ticket or from pile
-        //if face up then determine if taxi
+        
+        if (pile == false){
+            //if face up then determine if taxi
+            
+        }
+        
+        
             //if taxi or second draw,replace card and end player turn
             //else replace and ask if want card from pile or face up
         //if draw from pile ask if want a secpnd card from pile or face up card
         
     }
-    private void drawDestTickets(){
+    protected void drawDestTickets(){
         //add two dest cards to hand
         //player chooses to remove one or none
     }
-    private void claimRoute(){
+    protected void claimRoute(){
         //as which path
         //player chooses their cards based on path's needs
         //remove cards from player's hand
+        //update score
         //add cars to route
     }
     

@@ -14,7 +14,6 @@ public class Tickets
 	private ArrayList<Colors> trainDeck;
 	private Colors[] faceups = new Colors[5];
 	private ArrayList<Colors> heldCards; //potentially an option? or maybe get data from Player objects.
-	private Random r = new Random(3);
 	
 	/**
 	 * Constructor to initialize the deck of trains and shuffle them.
@@ -66,9 +65,15 @@ public class Tickets
      * @return Colors the type of card pulled.
      */
     public Colors pickup(int choice) {
-    	Colors output = faceups[choice];
-    	faceups[choice] = this.draw();
-    	return output;
+    	try {
+    		Colors output = faceups[choice];
+    		faceups[choice] = this.draw();
+    		return output;
+    	} catch (IndexOutOfBoundsException e) {
+    		System.err.println(e);
+    		System.exit(1);
+    	}
+		return Colors.NONE;
     }
     
     /**
@@ -79,6 +84,7 @@ public class Tickets
      */
     public void shuffle() {
     	for (int i = 0; i < trainDeck.size(); i++) {
+    		Random r = new Random();
     		int randomIndex = r.nextInt(trainDeck.size());
     		Colors temp = trainDeck.get(i);
     		trainDeck.set(i, trainDeck.get(randomIndex));
@@ -97,6 +103,7 @@ public class Tickets
     	trainDeck.clear();
     	
     	//get number of each color missing from deck (aka in a player's hand)
+    	
     	int blue;
     	int black;
     	int red;
@@ -104,6 +111,7 @@ public class Tickets
     	int orange;
     	int pink;
     	int wild;
+    	
     	
     	//populate the deck with remaining cards
     	for (int i = 0; i < 6-blue; i++) trainDeck.add(Colors.BLUE);
