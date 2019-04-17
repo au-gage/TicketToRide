@@ -1,3 +1,5 @@
+package TicketToRide;
+
 
 /**
  * Enumeration class Colors - write a description of the enum class here

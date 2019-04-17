@@ -1,3 +1,5 @@
+package TicketToRide;
+
 import java.util.ArrayList;
 /**
  * determines who is playing and win conditions
