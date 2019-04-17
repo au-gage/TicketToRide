@@ -1,5 +1,11 @@
  
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 8893817d6bc4c59aa90ae1e67280e11a1171169d
 
+>>>>>>> ed4c324a31ff4362e139c9f5f30a94ce0b1e400b
 import java.util.ArrayList;
 import javax.swing.*;
 /**
@@ -15,10 +21,17 @@ import javax.swing.*;
  */
 public class Game
 {
+    boolean gameStarted;
     private ArrayList<Paths> paths = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
-
-    private void makePlayers()
+    
+    public Game()
+    {
+        gameStarted = true;
+        MakePlayers();
+    }
+    
+    protected void MakePlayers()
     {
         String num = JOptionPane.showInputDialog(null, "Enter the Amount of Players",
                 "Input 2-4", JOptionPane.QUESTION_MESSAGE);
@@ -43,16 +56,18 @@ public class Game
                 if(!colorUsed)
                 {
                     Colors color = Colors.valueOf(currentColor.toUpperCase());
+                    getColor = true;
                 }
             }
         }
+        MakePaths();
     }
 
     /**
      * Adds all Path objects into an ArrayList
      * 
      */
-    private void makePaths()
+    protected void MakePaths()
     {
         paths.add(new Paths("Lincoln Center","Central Park",Colors.ORANGE,2));
         paths.add(new Paths("Lincoln Center","Midtown West",Colors.RED,2));

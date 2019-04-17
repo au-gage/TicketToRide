@@ -1,6 +1,9 @@
 
+<<<<<<< HEAD
  
 
+=======
+>>>>>>> 8893817d6bc4c59aa90ae1e67280e11a1171169d
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -13,6 +16,7 @@ import java.nio.file.*;
 import java.util.Random;
 
 /**
+ * Object of a single
  * instances of images of card
  * to and from
  * 
@@ -44,8 +48,20 @@ public class DestCard
         {
             System.exit(0);
         }
-        shuffle();
+        this.shuffle();
+    
     }
+
+    /**
+     * Empty methods that had to be overriden to use MouseListener
+     * 
+     */
+    public void mouseExited(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) { }
+    public void mouseReleased(MouseEvent e) { }
+    public void mousePressed(MouseEvent e) { }
+    
+    
 
     /**
      * Shuffles the deck of destination cards in a pseudorandom order.
@@ -63,5 +79,23 @@ public class DestCard
         }
     }
 
+    /**
+     * Will do once we have the players delt cards
+     */
+    public void returnCard(){
+        
+    }
     
+    
+    /**
+     * Returns the value of a destination card 
+     */
+    public int destCardValues(){
+<<<<<<< HEAD
+        return 0;
+=======
+        int value; 
+        
+>>>>>>> ed4c324a31ff4362e139c9f5f30a94ce0b1e400b
+    }
 }
