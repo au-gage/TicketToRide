@@ -1,6 +1,4 @@
-package TicketToRide;
-
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.util.Random;
 /**
  * instances of cards
