@@ -57,4 +57,8 @@ public class Player
         //add cars to route
     }
     
+    protected Colors getColor()
+    {
+        return color;
+    }
 }

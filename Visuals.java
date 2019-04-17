@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-package TicketToRide;
-
-
-=======
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -12,7 +7,6 @@ import javax.swing.*;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
->>>>>>> 6e6c7207cf554945b958141fba38608919a91a81
 /**
  * methods to implement graphics
  *
@@ -21,6 +15,7 @@ import java.nio.file.*;
  */
 public class Visuals extends JPanel implements  MouseListener
 {
+    private Game ticketToRide = new Game();
     private Image board;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     public Visuals()
@@ -42,6 +37,7 @@ public class Visuals extends JPanel implements  MouseListener
         {
             System.exit(0);
         }
+        
     }
 
     /**
@@ -102,6 +98,7 @@ public class Visuals extends JPanel implements  MouseListener
 
     public static void main(String[] args)
     {
+        
         createAndShowGUI();
     }
 }
