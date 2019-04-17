@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+package TicketToRide;
+
+
+=======
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -7,6 +12,7 @@ import javax.swing.*;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
+>>>>>>> 6e6c7207cf554945b958141fba38608919a91a81
 /**
  * methods to implement graphics
  *
