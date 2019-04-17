@@ -1,33 +1,63 @@
+package TicketToRide;
+
 
 /**
- * Points to keep track of for each player
+ * Write a description of class Score here.
  *
- * @author (your name)
+ * @author (Cheryl McClean)
  * @version (a version number or a date)
  */
 public class Points
 {
     // instance variables - replace the example below with your own
-    private int x;
+    protected int score;
 
     /**
-     * Constructor for objects of class points
+     * Constructor for objects of class Score
      */
     public Points()
     {
         // initialise instance variables
-        x = 0;
+        score = 0;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    protected int updateScoreRoute(Paths pathName){
+        if(pathName.getIsCaptured() == true){
+            score = score + pathName.length;
+        }
+        return score; 
+    }
+    protected int updateScoreDes(){ //do not implement until end of game
+        int x = 1;
+        if(x == 1){
+            
+            score = score + x;
+        }
+        return score; 
+    }
+    protected int updateScoreAttr(){ // do not implement until end of game
+        int x = 1;
+        if(x == 1){
+            
+            score = score + x;
+        }
+        return score; 
+    }
+    
+    protected int updateScoreFailure(){ // do not implement until end of game
+        int x = 1;
+        if(x == 1){
+           
+           score = score + x; 
+        }
+        return score;
+    }
+    protected int updateScoreDesTotal(){
+        int x = 1;
+        score = score + x;
+        return score;
+    }
+    protected void setScore(int sc){
+        score = sc;
     }
 }
