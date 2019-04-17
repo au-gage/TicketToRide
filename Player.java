@@ -2,7 +2,7 @@
  
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 /**
  * color
  * name
@@ -18,9 +18,9 @@ public class Player
     protected Colors color;
     protected String name;
     protected Points score;
-    //Black,red,green,blue,orange,pink,rainbow
-    protected int[] tickets = new int[7];
     protected ArrayList<DestCard> DestHand;
+    //hashmap, keys are colors
+    HashMap<Colors,Integer> hand = new HashMap<>();
     /**
      * Constructor for objects of class player
      */
@@ -35,7 +35,7 @@ public class Player
      */
     protected void drawTransTicket( Tickets deck, int choice,int draw){
         //determine if taxi
-        deck.pickup(choice);
+        hand.put(deck.pickup(choice),;
         //if taxi or second draw,replace card and end player turn
         
         //else replace and ask if want card from pile or face up
