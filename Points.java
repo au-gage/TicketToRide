@@ -27,6 +27,7 @@ public class Points
         }
         return score; 
     }
+    
     protected int updateScoreDes(){ //do not implement until end of game
         int x = 1;
         if(x == 1){
@@ -35,6 +36,7 @@ public class Points
         }
         return score; 
     }
+    
     protected int updateScoreAttr(){ // do not implement until end of game
         int x = 1;
         if(x == 1){
@@ -48,7 +50,7 @@ public class Points
         int x = 1;
         if(x == 1){
            
-           score = score + x; 
+           score = score - x; 
         }
         return score;
     }
@@ -57,7 +59,5 @@ public class Points
         score = score + x;
         return score;
     }
-    protected void setScore(int sc){
-        score = sc;
-    }
+    
 }
