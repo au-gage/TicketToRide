@@ -1,3 +1,6 @@
+
+package TicketToRide;
+
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -8,6 +11,7 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
 import java.util.Random;
+
 /**
  * instances of images of card
  * to and from

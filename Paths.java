@@ -1,3 +1,5 @@
+package TicketToRide;
+
 
 /**
  * instances of each pathway
@@ -15,7 +17,7 @@ public class Paths
     private String start,end;
     private Player whoCaptured;
     private Colors color;
-    private int length;
+    protected int length;
     private boolean isCaptured;
     
     public Paths(String start, String end,Colors color, int length)
