@@ -17,7 +17,6 @@ public class Visuals extends JPanel implements  MouseListener
 {
     private Image board;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
-
     public Visuals()
     {
         setPreferredSize(new Dimension(720,900)); //Dimension subject to change
@@ -70,8 +69,6 @@ public class Visuals extends JPanel implements  MouseListener
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
-        g.setColor(Color.RED);
-        g.drawRect(0,0,100,100);
         g.drawImage(board, 0, 0, this);
     }
 

@@ -3,29 +3,22 @@ import java.util.Random;
 /**
  * instances of cards
  * color
- * 
- * 
  *
  * @author (your name)
  * @version (a version number or a date)
  */
 public class Tickets
 {
-    //I like the methods, but an ArrayList isnt necessary in this class
-    //Especially as an instance variable. I think this should work as 
-    //a class that defines each individual card as it's own object.
-    //The deck will most likely be made in the Game.java Class. 
-    private ArrayList<Colors> trainDeck;
-    private Colors[] faceups = new Colors[5];
-    private ArrayList<Colors> heldCards; //potentially an option? or maybe get data from Player objects.
-    private Random r = new Random(3);
-
-    /**
-     * Constructor to initialize the deck of trains and shuffle them.
-     * 
-     * @author names
-     * @version date
-     */
+	private ArrayList<Colors> trainDeck;
+	private Colors[] faceups = new Colors[5];
+	private ArrayList<Colors> heldCards; //potentially an option? or maybe get data from Player objects.
+	
+	/**
+	 * Constructor to initialize the deck of trains and shuffle them.
+	 * 
+	 * @author names
+	 * @version date
+	 */
     public Tickets() {
         this.trainDeck = new ArrayList<Colors>();
         for (int i = 0; i < 6; i++) trainDeck.add(Colors.BLUE);
@@ -45,9 +38,9 @@ public class Tickets
      * @version date
      */
     public void setup() {
-        //DNF until decide how to deal cards to players with group.
+    	//DNF until decide how to deal cards to players with group.
     }
-
+    
     /**
      * Draws a card from the deck of trains.
      * 
@@ -56,12 +49,12 @@ public class Tickets
      * @return Colors the type of card pulled
      */
     public Colors draw() {
-        Colors output = trainDeck.get(0);
-        trainDeck.remove(0);
-        if (trainDeck.size() == 0) this.reset();
-        return output;
+    	Colors output = trainDeck.get(0);
+    	trainDeck.remove(0);
+    	if (trainDeck.size() == 0) this.reset();
+    	return output;
     }
-
+    
     /**
      * Draws card from the set of faceup cards.
      * 
@@ -70,11 +63,17 @@ public class Tickets
      * @return Colors the type of card pulled.
      */
     public Colors pickup(int choice) {
-        Colors output = faceups[choice];
-        faceups[choice] = this.draw();
-        return output;
+    	try {
+    		Colors output = faceups[choice];
+    		faceups[choice] = this.draw();
+    		return output;
+    	} catch (IndexOutOfBoundsException e) {
+    		System.err.println(e);
+    		System.exit(1);
+    	}
+		return Colors.NONE;
     }
-
+    
     /**
      * Shuffles the deck of trains in a pseudorandom order.
      * 
@@ -82,14 +81,15 @@ public class Tickets
      * @version date
      */
     public void shuffle() {
-        for (int i = 0; i < trainDeck.size(); i++) {
-            int randomIndex = r.nextInt(trainDeck.size());
-            Colors temp = trainDeck.get(i);
-            trainDeck.set(i, trainDeck.get(randomIndex));
-            trainDeck.set(randomIndex, temp);
-        }
+    	for (int i = 0; i < trainDeck.size(); i++) {
+    		Random r = new Random();
+    		int randomIndex = r.nextInt(trainDeck.size());
+    		Colors temp = trainDeck.get(i);
+    		trainDeck.set(i, trainDeck.get(randomIndex));
+    		trainDeck.set(randomIndex, temp);
+    	}
     }
-
+    
     /**
      * Resets the deck when it is empty by gathering all discarded cards and reshuffling.
      * 
@@ -97,20 +97,22 @@ public class Tickets
      * @version date
      */
     public void reset() {
-        //DNF until decide how to access cards in player's hands.
-        trainDeck.clear();
-
-        //get number of each color missing from deck (aka in a player's hand)
-        int blue;
-        int black;
-        int red;
-        int green;
-        int orange;
-        int pink;
-        int wild;
-
-        //populate the deck with remaining cards
-        for (int i = 0; i < 6-blue; i++) trainDeck.add(Colors.BLUE);
+    	//DNF until decide how to access cards in player's hands.
+    	trainDeck.clear();
+    	
+    	//get number of each color missing from deck (aka in a player's hand)
+    	
+    	int blue;
+    	int black;
+    	int red;
+    	int green;
+    	int orange;
+    	int pink;
+    	int wild;
+    	
+    	
+    	//populate the deck with remaining cards
+    	for (int i = 0; i < 6-blue; i++) trainDeck.add(Colors.BLUE);
         for (int i = 0; i < 6-black; i++) trainDeck.add(Colors.BLACK);
         for (int i = 0; i < 6-red; i++) trainDeck.add(Colors.RED);
         for (int i = 0; i < 6-orange; i++) trainDeck.add(Colors.ORANGE);
