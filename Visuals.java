@@ -17,8 +17,6 @@ public class Visuals extends JPanel implements  MouseListener
 {
     private Image board;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
-    public ArrayList<Image> destCards = new ArrayList<>();
-    public ArrayList<Image> tickets = new ArrayList<>();
     public Visuals()
     {
         setPreferredSize(new Dimension(720,900)); //Dimension subject to change
@@ -31,14 +29,6 @@ public class Visuals extends JPanel implements  MouseListener
                 if(file.toString().equals("fwdboardandtransport\\Board.jpg"))
                 {
                     board = toolkit.getImage(file.toString());
-                }
-                else if (file.toString().contains("to"))
-                {
-                    destCards.add(toolkit.getImage(file.toString()));
-                }
-                else if(file.toString().contains("card"))
-                {
-                    tickets.add(toolkit.getImage(file.toString()));
                 }
             }
         }
