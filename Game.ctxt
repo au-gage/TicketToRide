@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Game
+comment0.text=\r\n\ determines\ who\ is\ playing\ and\ win\ conditions\r\n\ Will\ also\ incorporate\ all\ the\ paths\ and\ prob\ captures\r\n\ how\ many\ players\r\n\ what\ color\r\n\ what\ name\r\n\ implements\ player,\ board,\ paths,\ and\ run\ the\ playing\ of\ the\ game\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ makePaths()
+comment1.text=\r\n\ Adds\ all\ Path\ objects\ into\ an\ ArrayList\r\n\ \r\n
+numComments=2

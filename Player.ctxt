@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Player
+comment0.text=\r\n\ color\r\n\ name\r\n\ points\r\n\ make\ moves\r\n\ have\ \r\n\r\n\ @author\ Rose\ Wilaon\r\n\ @version\ 4/14/19\r\n
+comment1.params=color\ name
+comment1.target=Player(Colors,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ player\r\n
+comment2.params=
+comment2.target=void\ drawTransTicket()
+comment3.params=
+comment3.target=void\ drawDestTickets()
+comment4.params=
+comment4.target=void\ claimRoute()
+numComments=5
