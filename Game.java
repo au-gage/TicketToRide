@@ -1,11 +1,4 @@
- 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 8893817d6bc4c59aa90ae1e67280e11a1171169d
 
->>>>>>> ed4c324a31ff4362e139c9f5f30a94ce0b1e400b
 import java.util.ArrayList;
 import javax.swing.*;
 /**

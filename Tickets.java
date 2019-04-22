@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
- 
+
 import java.util.ArrayList;
-=======
+
  import java.util.ArrayList;
->>>>>>> 73f5f24ff2d3f7c5060a2a6fddbb18371d88d1f7
-=======
+
  import java.util.ArrayList;
->>>>>>> ed4c324a31ff4362e139c9f5f30a94ce0b1e400b
+
 import java.util.Random;
 /**
  * instances of cards
