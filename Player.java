@@ -10,7 +10,7 @@ import java.util.HashMap;
  * make moves
  * have 
  *
- * @author Rose Wilaon
+ * @author Rose Wilson
  * @version 4/14/19
  */
 public class Player
@@ -18,7 +18,7 @@ public class Player
     protected Colors color;
     protected String name;
     protected Points score;
-    protected ArrayList<DestCard> DestHand;
+    protected ArrayList<DestCard> DestHand = new ArrayList<>();
     //hashmap, keys are colors
     HashMap<Colors,Integer> hand = new HashMap<>();
     /**
@@ -30,18 +30,18 @@ public class Player
        this.name = name;
        score=new Points();
     }
-    /**
-     * 
-     */
-    protected void drawTransTicket( Tickets deck, int choice,int draw){
-        //determine if taxi
-        hand.put(deck.pickup(choice),;
-        //if taxi or second draw,replace card and end player turn
+    // /**
+     // * 
+     // */
+    // protected void drawTransTicket( Tickets deck, int choice,int draw){
+        // //determine if taxi
+        // hand.put(deck.pickup(choice));
+        // //if taxi or second draw,replace card and end player turn
         
-        //else replace and ask if want card from pile or face up
-        //if draw from pile ask if want a secpnd card from pile or face up card
+        // //else replace and ask if want card from pile or face up
+        // //if draw from pile ask if want a secpnd card from pile or face up card
         
-    }
+    // }
     protected void drawPileTicket(Tickets deck){
         
     }
