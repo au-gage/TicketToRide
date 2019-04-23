@@ -86,11 +86,6 @@ public class DestCard
      * Returns the value of a destination card 
      */
     public int destCardValues(){
-<<<<<<< HEAD
         return 0;
-=======
-        int value; 
-        
->>>>>>> ed4c324a31ff4362e139c9f5f30a94ce0b1e400b
     }
 }

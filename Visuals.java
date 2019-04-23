@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 73f5f24ff2d3f7c5060a2a6fddbb18371d88d1f7
-=======
-
->>>>>>> ed4c324a31ff4362e139c9f5f30a94ce0b1e400b
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -15,14 +8,7 @@ import javax.swing.*;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 73f5f24ff2d3f7c5060a2a6fddbb18371d88d1f7
-=======
-
->>>>>>> ed4c324a31ff4362e139c9f5f30a94ce0b1e400b
 /**
  * methods to implement graphics
  *
