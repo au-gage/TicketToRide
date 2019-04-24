@@ -1,8 +1,18 @@
 
+package TicketToRide;
+
+
+ 
+import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.ArrayList;
+
+
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import java.util.Random;
 import java.nio.file.Paths;
 import java.nio.file.Path;
@@ -33,7 +43,6 @@ public class Tickets
             {
                 for(Path file: stream)
                 {
-                    System.out.println(file.toString());
                     if (file.toString().equals("fwdboardandtransport\\blackcard.jpg"))
                     {
                         for(int i = 0;i < 6;i++)
@@ -88,6 +97,10 @@ public class Tickets
             catch(Exception e)
             {
                 System.exit(0);
+            }
+            for(int i = 0;i < trainDeck.size();i++)
+            {
+                 trainDeck.get(i).setImage(trainDeck.get(i).getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT));
             }
             this.shuffle();
             for(int i = 0;i < 5;i++)
