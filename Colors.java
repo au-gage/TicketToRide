@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-=======
 package TicketToRide;
 
  
 
->>>>>>> 2c5e64cb030d4d684ed0b484801d28e336138bf8
+
 
 /**
  * Enumeration class Colors - write a description of the enum class here
