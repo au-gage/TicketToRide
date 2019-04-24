@@ -21,6 +21,7 @@ public class Player
     protected ArrayList<DestCard> DestHand = new ArrayList<>();
     //hashmap, keys are colors
     HashMap<Colors,Integer> hand = new HashMap<>();
+    protected boolean isTurn;
     /**
      * Constructor for objects of class player
      */
@@ -30,18 +31,25 @@ public class Player
        this.name = name;
        score=new Points();
     }
-    // /**
-     // * 
-     // */
-    // protected void drawTransTicket( Tickets deck, int choice,int draw){
-        // //determine if taxi
-        // hand.put(deck.pickup(choice));
-        // //if taxi or second draw,replace card and end player turn
+     /**
+      * 
+      */
+     protected void drawTransTicket( Tickets deck, int choice,int draw){
+        if (draw == 0){
+            isTurn = false;
+        }
+         //determine if taxi
+        Colors temp =deck.pickup(choice).color();
+        hand.put(temp,hand.get(temp)+1);
+        //if taxi or second draw,end player turn
+        if (temp == Colors.RAINBOW){
+            isTurn = false;
+        }
+        //else replace and ask if want card from pile or face up
         
-        // //else replace and ask if want card from pile or face up
-        // //if draw from pile ask if want a secpnd card from pile or face up card
+        //if draw from pile ask if want a secpnd card from pile or face up card
         
-    // }
+    }
     protected void drawPileTicket(Tickets deck){
         
     }
