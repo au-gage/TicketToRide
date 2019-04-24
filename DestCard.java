@@ -46,15 +46,64 @@ public class DestCard
     /**
      * Returns the value of a destination card 
      */
-    public int destCardValues(){
+    public int destCardValues(DestCard card){
+        int value = 0; 
+        if(card.getImage().toString() == "CPtoC"){
+            value = 5;
+        }   
+        else if(card.getImage().toString() == "CPtoCT"){
+            value = 8;
+        }
+        else if(card.getImage().toString() == "CPtoGP"){
+            value = 4;
+        }
+        else if(card.getImage().toString() == "CPtoMW"){
+            value = 3;
+        }
+        else if(card.getImage().toString() == "CtoB"){
+            value = 8;
+        }
+        else if(card.getImage().toString() == "CtoWS"){
+            value = 8;
+        }
+        else if(card.getImage().toString() == "ESBtoB"){
+            value = 6;
+        }
+        else if(card.getImage().toString() == "ESBtoGV"){
+            value = 3;
+        }
+        else if(card.getImage().toString() == "EVtoS"){
+            value = 4;
+        }
+        else if(card.getImage().toString() == "GPtoCT"){
+            value = 4;
+        }
+        else if(card.getImage().toString() == "LCtoESB"){
+            value = 3;
+        }
+        else if(card.getImage().toString() == "LCtoGV"){
+            value = 6;
+        }
+        else if(card.getImage().toString() == "LEStoWS"){
+            value = 2;
+        }
+        else if(card.getImage().toString() == "TStoB"){
+            value = 8;
+        }
+        else if(card.getImage().toString() == "TStoEV"){
+            value = 4;
+        }
+        else if(card.getImage().toString() == "TStoS"){
+            value = 6;
+        }
+        else if(card.getImage().toString() == "UNtoMW"){
+            value = 3;
+        }
+        else if(card.getImage().toString() == "UNtoWS"){
+            value = 8;
+        }
 
-
-
-        int value; 
-        
-        
-
-        return 0;
+        return value;
 
     }
 
