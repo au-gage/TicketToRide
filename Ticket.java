@@ -34,4 +34,9 @@ public class Ticket
     {
         return color;
     }
+    
+    public void setImage(Image image)
+    {
+        this.image = image;
+    }
 }
