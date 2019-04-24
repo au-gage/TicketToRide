@@ -1,7 +1,3 @@
-package TicketToRide;
-
- 
-
 
 /**
  * instances of each pathway
@@ -14,7 +10,7 @@ package TicketToRide;
  * @author Austin Gage
  * @version 4/12/2019
  */
-public class Paths
+public class Edges
 {
     private String start,end;
     private Player whoCaptured;
@@ -22,7 +18,7 @@ public class Paths
     protected int length;
     private boolean isCaptured;
     
-    public Paths(String start, String end,Colors color, int length)
+    public Edges(String start, String end,Colors color, int length)
     {
         this.start = start;
         this.end = end;
