@@ -22,6 +22,7 @@ public class DestCards
 {
     protected ArrayList<DestCard> destCards;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
+    protected ArrayList<DestCard> fromHand = new ArrayList<DestCard>();
     /**
      * Constructor for objects of class DestCard
      */
@@ -44,7 +45,7 @@ public class DestCards
             System.exit(0);
         }
         this.shuffle();
-    
+
     }
 
     /**
@@ -52,12 +53,15 @@ public class DestCards
      * 
      */
     public void mouseExited(MouseEvent e) { }
+
     public void mouseEntered(MouseEvent e) { }
+
     public void mouseReleased(MouseEvent e) { }
+
     public void mousePressed(MouseEvent e) { }
-    
+
     public void mouseClicked(MouseEvent e){
-        
+        destCardValues();
     }
 
     /**
@@ -75,23 +79,30 @@ public class DestCards
             destCards.set(randomIndex, temp);
         }
     }
-    
+
     /**
      * 
      */
     public DestCard draw(){
-         DestCard pickedUp = destCards.get(0);
-         destCards.remove(0);
-         return pickedUp;
+        DestCard pickedUp = destCards.get(0);
+        destCards.remove(0);
+        return pickedUp;
     }
 
     /**
      * Will do once we have the players delt cards
      */
-    public void returnCard(){
-        
+    public void returnCard(int choice){
+        try{
+            DestCard output = fromHand.get(choice);
+            fromHand.remove(choice);
+            destCards.add(output);
+
+        } catch(IndexOutOfBoundsException e){
+            System.err.println(e);
+            System.exit(1);
+        }
     }
-    
     
     /**
      * Returns the value of a destination card 
