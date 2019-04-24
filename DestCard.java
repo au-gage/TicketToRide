@@ -1,4 +1,6 @@
+
 package TicketToRide;
+
 
 
 import java.util.ArrayList;
@@ -10,82 +12,27 @@ import javax.swing.*;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
-import java.util.Random;
-
 /**
- * Object of a single
- * instances of images of card
- * to and from
- * 
+ * Write a description of class DestCard here.
+ *
  * @author (your name)
  * @version (a version number or a date)
  */
 public class DestCard
 {
-    protected ArrayList<Image> destCards;
-    private Toolkit toolkit = Toolkit.getDefaultToolkit();
-    /**
-     * Constructor for objects of class DestCard
-     */
-    public DestCard()
+    private Image image;
+    
+    public DestCard(Image image)
     {
-        Path path = Paths.get("fwdboardandtransport");        
-        try(DirectoryStream<Path> stream = Files.newDirectoryStream(path))
-        {
-            for(Path file: stream)
-            {
-                if (file.toString().contains("to"))
-                {
-                    destCards.add(toolkit.getImage(file.toString()));
-                }
+        this.image = image;
 
-            }
-        }
-        catch(Exception e)
-        {
-            System.exit(0);
-        }
-        this.shuffle();
-    
     }
 
-    /**
-     * Empty methods that had to be overriden to use MouseListener
-     * 
-     */
-    public void mouseExited(MouseEvent e) { }
-    public void mouseEntered(MouseEvent e) { }
-    public void mouseReleased(MouseEvent e) { }
-    public void mousePressed(MouseEvent e) { }
-    
-    public void mouseClicked(MouseEvent e){
-        
+    public Image getImage()
+    {
+        return image;
     }
 
-    /**
-     * Shuffles the deck of destination cards in a pseudorandom order.
-     * 
-     * @author names
-     * @version date
-     */
-    public void shuffle() {
-        for (int i = 0; i < destCards.size(); i++) {
-            Random r = new Random();
-            int randomIndex = r.nextInt(destCards.size());
-            Image temp = destCards.get(i);
-            destCards.set(i, destCards.get(randomIndex));
-            destCards.set(randomIndex, temp);
-        }
-    }
-    
-    /**
-     * 
-     */
-    public Image draw(){
-         Image pickedUp = destCards.get(0);
-         destCards.remove(0);
-         return pickedUp;
-    }
 
     /**
      * Will do once we have the players delt cards
@@ -109,4 +56,5 @@ public class DestCard
         return 0;
 
     }
+
 }
