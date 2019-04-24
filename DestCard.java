@@ -56,7 +56,9 @@ public class DestCard
     public void mouseReleased(MouseEvent e) { }
     public void mousePressed(MouseEvent e) { }
     
-    
+    public void mouseClicked(MouseEvent e){
+        
+    }
 
     /**
      * Shuffles the deck of destination cards in a pseudorandom order.
@@ -72,6 +74,15 @@ public class DestCard
             destCards.set(i, destCards.get(randomIndex));
             destCards.set(randomIndex, temp);
         }
+    }
+    
+    /**
+     * 
+     */
+    public Image draw(){
+         Image pickedUp = destCards.get(0);
+         destCards.remove(0);
+         return pickedUp;
     }
 
     /**
