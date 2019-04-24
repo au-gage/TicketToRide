@@ -1,3 +1,5 @@
+package TicketToRide;
+
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -33,5 +35,10 @@ public class Ticket
     public Colors color()
     {
         return color;
+    }
+    
+    public void setImage(Image image)
+    {
+        this.image = image;
     }
 }

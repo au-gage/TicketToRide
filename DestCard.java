@@ -1,3 +1,8 @@
+
+package TicketToRide;
+
+
+
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -26,6 +31,30 @@ public class DestCard
     public Image getImage()
     {
         return image;
+    }
+
+
+    /**
+     * Will do once we have the players delt cards
+     */
+    public void returnCard(){
+        
+    }
+    
+    
+    /**
+     * Returns the value of a destination card 
+     */
+    public int destCardValues(){
+
+
+
+        int value; 
+        
+        
+
+        return 0;
+
     }
 
 }

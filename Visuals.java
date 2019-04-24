@@ -1,4 +1,6 @@
 
+package TicketToRide;
+
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -20,9 +22,10 @@ public class Visuals extends JPanel implements  MouseListener
     private Game ticketToRide = new Game();
     private Image board;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
+    private Image background;
     public Visuals()
     {
-        setPreferredSize(new Dimension(720,900)); //Dimension subject to change
+        setPreferredSize(new Dimension(900,900)); //Dimension subject to change
         addMouseListener(this);
         Path path = Paths.get("fwdboardandtransport");
         try(DirectoryStream<Path> stream = Files.newDirectoryStream(path))
@@ -33,13 +36,17 @@ public class Visuals extends JPanel implements  MouseListener
                 {
                     board = toolkit.getImage(file.toString());
                 }
+                if(file.toString().equals("fwdboardandtransport\\background.jpg"))
+                {
+                    background = toolkit.getImage(file.toString());
+                    background = background.getScaledInstance(1280, 900, Image.SCALE_DEFAULT);
+                }
             }
         }
         catch(Exception e)
         {
             System.exit(0);
         }
-
     }
 
     /**
@@ -77,10 +84,11 @@ public class Visuals extends JPanel implements  MouseListener
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
+        g.drawImage(background,0,0,this);
         g.drawImage(board, 0, 0, this);
         for(int i = 0;i < 5;i++)
         {
-            g.drawImage(ticketToRide.ticketDeck.faceups[i].getImage(),0,0,this);
+            g.drawImage(ticketToRide.ticketDeck.faceups[i].getImage(),700,100*i,this);
         }
     }
 
