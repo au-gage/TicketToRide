@@ -1,4 +1,4 @@
-package TicketToRide;
+ 
 
 
  
@@ -19,7 +19,7 @@ public class Player
 {
     protected Colors color;
     protected String name;
-    protected Score score;
+    //protected Score score;
     protected ArrayList<DestCard> DestHand = new ArrayList<>();
     //hashmap, keys are colors
     HashMap<Colors,Integer> hand = new HashMap<>();
@@ -30,7 +30,7 @@ public class Player
     {
        this.color = color;
        this.name = name;
-       score=new Score();
+       //score=new Score();
     }
     // /**
      // * 

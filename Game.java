@@ -1,7 +1,3 @@
-
-package TicketToRide;
-
-
 import java.util.ArrayList;
 import javax.swing.*;
 /**
@@ -21,6 +17,7 @@ public class Game
     private ArrayList<Paths> paths = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
     protected Tickets ticketDeck = new Tickets();
+    protected DestCards destDeck = new DestCards();
     public Game()
     {
         gameStarted = true;
@@ -145,11 +142,16 @@ public class Game
 
         paths.add(new Paths("Wall Street","Brooklyn",Colors.BLUE,3));
         paths.add(new Paths("Wall Street","Brooklyn",Colors.BLACK,3));
+        DealDestCards();
     }
-    
+
     private void DealDestCards()
     {
-        
+        for(int i = 0;i < players.size();i++)
+        {
+            players.get(i).DestHand.add(destDeck.draw());
+            players.get(i).DestHand.add(destDeck.draw());
+        }
     }
     
     private void game()
