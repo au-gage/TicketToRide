@@ -1,8 +1,4 @@
  
-
-
- 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
@@ -24,6 +20,7 @@ public class Player
     //hashmap, keys are colors
     HashMap<Colors,Integer> hand = new HashMap<>();
     protected boolean isTurn;
+    protected int pieces = 15;
     /**
      * Constructor for objects of class player
      */

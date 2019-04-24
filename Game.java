@@ -22,15 +22,16 @@ public class Game extends JPanel implements MouseListener
 {
     boolean gameStarted;
     private ArrayList<Edges> edges = new ArrayList<>();
-    //private Visuals graphics = new Visuals();
     private ArrayList<Player> players = new ArrayList<>();
     protected Tickets ticketDeck = new Tickets();
     protected DestCards destDeck = new DestCards();
+    protected int turn;
 
-    
     private Image board;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     private Image background;
+    private Image destCardBack;
+    private Image transCardBack;
     public Game()
     {
         setPreferredSize(new Dimension(900,900)); //Dimension subject to change
@@ -45,10 +46,20 @@ public class Game extends JPanel implements MouseListener
                     board = toolkit.getImage(file.toString());
                     board = board.getScaledInstance(534,750,Image.SCALE_DEFAULT);
                 }
-                if(file.toString().equals("fwdboardandtransport\\background.jpg"))
+                else if(file.toString().equals("fwdboardandtransport\\background.jpg"))
                 {
                     background = toolkit.getImage(file.toString());
                     background = background.getScaledInstance(1280, 900, Image.SCALE_DEFAULT);
+                }
+                else if(file.toString().equals("fwdboardandtransport\\DestTicket.jpg"))
+                {
+                    destCardBack = toolkit.getImage(file.toString());
+                    destCardBack = destCardBack.getScaledInstance(119, 200, Image.SCALE_DEFAULT);
+                }
+                else if(file.toString().equals("fwdboardandtransport\\NYcard.jpg"))
+                {
+                    transCardBack = toolkit.getImage(file.toString());
+                    transCardBack = transCardBack.getScaledInstance(119, 200, Image.SCALE_DEFAULT);
                 }
             }
         }
@@ -65,13 +76,10 @@ public class Game extends JPanel implements MouseListener
      * 
      */
     public void mouseExited(MouseEvent e) { }
-
     public void mouseEntered(MouseEvent e) { }
-
     public void mouseReleased(MouseEvent e) { }
-
     public void mousePressed(MouseEvent e) { }
-
+    
     /**
      * This method checks to see where the mouse was clicked, and calls
      * the appropriate method, like if twist is pressed or if enter is pressed
@@ -81,7 +89,10 @@ public class Game extends JPanel implements MouseListener
     {
         int x = e.getX();
         int y = e.getY();
-
+        //Code to check if the player wants to claim a route, take from Ticket or Transport deck, or take face up
+        //Depending on what they click will call methods found in player class
+        players.get(turn % players.size()).drawDestTickets();
+        turn++;
     }
 
     /**
@@ -99,8 +110,11 @@ public class Game extends JPanel implements MouseListener
         g.drawImage(board, 0, 0, this);
         for(int i = 0;i < 5;i++)
         {
-            g.drawImage(ticketDeck.faceups[i].getImage(),700,100*i,this);
+            g.drawImage(ticketDeck.faceups[i].getImage(),700,119*i,this);
         }
+        g.drawImage(destCardBack,681,595,this);
+        g.drawImage(transCardBack,800,595,this);
+        
     }
 
     /**
@@ -130,7 +144,6 @@ public class Game extends JPanel implements MouseListener
         createAndShowGUI();
     }
 
-    
     protected void MakePlayers()
     {
         int amt = 0;
@@ -166,7 +179,10 @@ public class Game extends JPanel implements MouseListener
                 || currentColor.equals("YELLOW"))
                 {
                     if(i == 1)
+                    {
                         players.add(new Player(Colors.valueOf(currentColor),name));
+                        getColor = true;
+                    }
                     else
                     {
                         for(int j = 0;j < players.size();j++)
@@ -176,12 +192,12 @@ public class Game extends JPanel implements MouseListener
                                 colorUsed = true;
                             }
                         }
-                    }
-                    if(!colorUsed)
-                    {
-                        Colors color = Colors.valueOf(currentColor.toUpperCase());
-                        players.add(new Player(color,name));
-                        getColor = true;
+                        if(!colorUsed)
+                        {
+                            Colors color = Colors.valueOf(currentColor.toUpperCase());
+                            players.add(new Player(color,name));
+                            getColor = true;
+                        }
                     }
                 }
             }
@@ -266,14 +282,5 @@ public class Game extends JPanel implements MouseListener
         boolean gameOver = false;
         boolean turnOver = false;
         int turn = 0;
-        while(!gameOver)
-        {
-            while(!turnOver)
-            {
-                players.get(turn % players.size());
-
-            }
-            turn++;
-        }
     }
 }
