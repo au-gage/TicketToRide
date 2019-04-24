@@ -1,9 +1,6 @@
-<<<<<<< HEAD
+
 package TicketToRide;
 
- 
-=======
->>>>>>> 8b7a3f10cf478992401564767826be04af28088e
 
 import java.util.ArrayList;
 import javax.swing.*;

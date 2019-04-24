@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package TicketToRide;
 
 
@@ -6,13 +6,13 @@ package TicketToRide;
 import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.ArrayList;
-=======
+
 
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
->>>>>>> 8b7a3f10cf478992401564767826be04af28088e
+
 import java.util.Random;
 import java.nio.file.Paths;
 import java.nio.file.Path;
