@@ -20,7 +20,7 @@ import java.util.Random;
  */
 public class DestCards
 {
-    protected ArrayList<DestCard> destCards;
+    protected ArrayList<DestCard> destCards = new ArrayList<>();
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     protected ArrayList<DestCard> fromHand = new ArrayList<DestCard>();
     /**
