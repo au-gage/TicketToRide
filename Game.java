@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 package TicketToRide;
 
  
+=======
+>>>>>>> 8b7a3f10cf478992401564767826be04af28088e
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -20,39 +23,65 @@ public class Game
     boolean gameStarted;
     private ArrayList<Paths> paths = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
-    
+    protected Tickets ticketDeck = new Tickets();
     public Game()
     {
         gameStarted = true;
         MakePlayers();
     }
-    
+
     protected void MakePlayers()
     {
-        String num = JOptionPane.showInputDialog(null, "Enter the Amount of Players",
-                "Input 2-4", JOptionPane.QUESTION_MESSAGE);
-        int amt = Integer.parseInt(num);
+        int amt = 0;
+        while(amt == 0)
+        {
+            String num = JOptionPane.showInputDialog(null, "Enter the Amount of Players",
+                    "Input 2-4", JOptionPane.QUESTION_MESSAGE);
+            try
+            {
+                amt = Integer.parseInt(num);
+            }
+            catch(Exception e)
+            {
+            }
+            if(amt > 4 || amt < 2)
+            {
+                amt = 0;
+            }
+        }
         for(int i = 1;i <= amt;i++)
         {
             String name = JOptionPane.showInputDialog(null, "Enter the name of Player " + i,
                     "Input a name", JOptionPane.QUESTION_MESSAGE);
             boolean getColor = false;
-            boolean colorUsed = false;
+
             while(!getColor)
             {
+                boolean colorUsed = false;
                 String currentColor = JOptionPane.showInputDialog(null, "Enter the color of Player " + i,
                         "Input blue,white,purple, or yellow", JOptionPane.QUESTION_MESSAGE);
-                for(int j = 0;j <  players.size();j++)
+                currentColor = currentColor.toUpperCase();
+                if(currentColor.equals("BLUE") || currentColor.equals("WHITE") || currentColor.equals("PURPLE")
+                || currentColor.equals("YELLOW"))
                 {
-                    if (Colors.valueOf(currentColor.toUpperCase()).equals(players.get(i).getColor()))
+                    if(i == 1)
+                        players.add(new Player(Colors.valueOf(currentColor),name));
+                    else
                     {
-                        colorUsed = true;
+                        for(int j = 0;j < players.size();j++)
+                        {
+                            if (Colors.valueOf(currentColor.toUpperCase()).equals(players.get(j).getColor()))
+                            {
+                                colorUsed = true;
+                            }
+                        }
                     }
-                }
-                if(!colorUsed)
-                {
-                    Colors color = Colors.valueOf(currentColor.toUpperCase());
-                    getColor = true;
+                    if(!colorUsed)
+                    {
+                        Colors color = Colors.valueOf(currentColor.toUpperCase());
+                        players.add(new Player(color,name));
+                        getColor = true;
+                    }
                 }
             }
         }
@@ -119,5 +148,20 @@ public class Game
 
         paths.add(new Paths("Wall Street","Brooklyn",Colors.BLUE,3));
         paths.add(new Paths("Wall Street","Brooklyn",Colors.BLACK,3));
+    }
+    
+    private void DealDestCards()
+    {
+        
+    }
+    
+    private void game()
+    {
+        boolean gameOver = false;
+        while(!gameOver)
+        {
+            
+            
+        }
     }
 }

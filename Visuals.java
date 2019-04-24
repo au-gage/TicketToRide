@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package TicketToRide;
+=======
+
+>>>>>>> 8b7a3f10cf478992401564767826be04af28088e
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -39,7 +43,7 @@ public class Visuals extends JPanel implements  MouseListener
         {
             System.exit(0);
         }
-        
+
     }
 
     /**
@@ -47,8 +51,11 @@ public class Visuals extends JPanel implements  MouseListener
      * 
      */
     public void mouseExited(MouseEvent e) { }
+
     public void mouseEntered(MouseEvent e) { }
+
     public void mouseReleased(MouseEvent e) { }
+
     public void mousePressed(MouseEvent e) { }
 
     /**
@@ -62,6 +69,7 @@ public class Visuals extends JPanel implements  MouseListener
         int y = e.getY();
 
     }
+
     /**
      * Method that paints the JPanel
      * 
@@ -74,6 +82,10 @@ public class Visuals extends JPanel implements  MouseListener
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
         g.drawImage(board, 0, 0, this);
+        for(int i = 0;i < 5;i++)
+        {
+            g.drawImage(ticketToRide.ticketDeck.faceups[i].getImage(),0,0,this);
+        }
     }
 
     /**
@@ -100,7 +112,7 @@ public class Visuals extends JPanel implements  MouseListener
 
     public static void main(String[] args)
     {
-        
+
         createAndShowGUI();
     }
 }
