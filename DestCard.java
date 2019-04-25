@@ -9,8 +9,6 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
 /**
- * Needs more instance variables, start location, end location, point value
- * etc -Austin
  *
  * @author (your name)
  * @version (a version number or a date)
