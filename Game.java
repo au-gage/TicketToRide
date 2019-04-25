@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
@@ -35,19 +36,6 @@ public class Game extends JPanel implements MouseListener
     
     public Game()
     {
-    JLabel label = new JLabel();
-    JSlider scoreJSlider = new JSlider ( SwingConstants.HORIZONTAL, 0, 200, 10 );
-    scoreJSlider.addChangeListener(
-            new ChangeListener()
-            {
-            //handle change in score
-                public void stateChanged( ChangeEvent e )
-                {
-                myPanel.setArea(score.value);
-                label.setText("Score: " + score.value);
-                }
-            } 
-            );
         setPreferredSize(new Dimension(900,900)); //Dimension subject to change
         addMouseListener(this);
         Path path = Paths.get("fwdboardandtransport");
