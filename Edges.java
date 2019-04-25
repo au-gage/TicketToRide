@@ -32,7 +32,7 @@ public class Edges
      * Called when a path is attempted to be captured when it is already captured
      * 
      */
-    public boolean getIsCaptured()
+    public boolean getIsCaptured(String start, String end)
     {
         return isCaptured;
     }
