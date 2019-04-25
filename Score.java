@@ -1,8 +1,4 @@
  
-
- 
-
-
 /**
  * Write a description of class Score here.
  *
@@ -34,7 +30,7 @@ public class Score
     }
     
     protected int updateScoreDes(DestCard card){ //do not implement until end of game
-        score = score + DestCard.destCardValues(card);
+        score = score; //+ DestCard.destCardValues(card);
         return score; 
     }
     
@@ -49,10 +45,10 @@ public class Score
     
     protected int updateScoreFailure(DestCard Card){ // do not implement until end of game
         int counter = 0;
-        if(pathName.getIsCaptured() == false){
-           counter = counter + pathName.length;
-           score = score - counter; 
-        }
+        // if(pathName.getIsCaptured() == false){
+           // counter = counter + pathName.length;
+           // score = score - counter; 
+        // }
         
         return score;
     }

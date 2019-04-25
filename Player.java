@@ -27,6 +27,8 @@ public class Player
        this.name = name;
        score=new Score();
     }
+    
+
     // /**
      // * 
      // */

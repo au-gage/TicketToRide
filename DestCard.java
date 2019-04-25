@@ -45,7 +45,8 @@ public class DestCard
     public static int destCardValues(Edges route, DestCard card){
         int value = 0; 
         
-        if((route.getIsCaptured("Central Park", "Chelsea") || route.getIsCaptured("Chelsea", "Central Park")) && card.getImage().toString() == "CPtoC"){
+        if((route.getIsCaptured("Central Park", "Chelsea") || 
+            route.getIsCaptured("Chelsea", "Central Park")) && card.getImage().toString() == "CPtoC"){
             value = 5;
             return value;
         } 
