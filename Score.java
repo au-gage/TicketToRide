@@ -1,4 +1,4 @@
-package TicketToRide;
+ 
 
  
 
@@ -23,19 +23,18 @@ public class Score
         score = 0;
     }
 
-    protected int updateScoreRoute(Paths pathName){
+    protected int getValue(){
+        return score;
+    }
+    protected int updateScoreRoute(Edges pathName){
         if(pathName.getIsCaptured() == true){
             score = score + pathName.length;
         }
         return score; 
     }
     
-    protected int updateScoreDes(){ //do not implement until end of game
-        int x = 1;
-        if(x == 1){
-            
-            score = score + x;
-        }
+    protected int updateScoreDes(DestCard card){ //do not implement until end of game
+        score = score + DestCard.destCardValues(card);
         return score; 
     }
     
@@ -48,12 +47,13 @@ public class Score
         return score; 
     }
     
-    protected int updateScoreFailure(Paths pathName){ // do not implement until end of game
+    protected int updateScoreFailure(DestCard Card){ // do not implement until end of game
         int counter = 0;
         if(pathName.getIsCaptured() == false){
            counter = counter + pathName.length;
            score = score - counter; 
         }
+        
         return score;
     }
     

@@ -1,8 +1,4 @@
 
- 
-
-
-
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -46,7 +42,7 @@ public class DestCard
     /**
      * Returns the value of a destination card 
      */
-    public int destCardValues(DestCard card){
+    public static int destCardValues(DestCard card){
         int value = 0; 
         if(card.getImage().toString() == "CPtoC"){
             value = 5;

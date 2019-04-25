@@ -1,5 +1,3 @@
-package TicketToRide;
-
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -34,8 +32,22 @@ public class Game extends JPanel implements MouseListener
     private Image background;
     private Image destCardBack;
     private Image transCardBack;
+    
     public Game()
     {
+    JLabel label = new JLabel();
+    JSlider scoreJSlider = new JSlider ( SwingConstants.HORIZONTAL, 0, 200, 10 );
+    scoreJSlider.addChangeListener(
+            new ChangeListener()
+            {
+            //handle change in score
+                public void stateChanged( ChangeEvent e )
+                {
+                myPanel.setArea(score.value);
+                label.setText("Score: " + score.value);
+                }
+            } 
+            );
         setPreferredSize(new Dimension(900,900)); //Dimension subject to change
         addMouseListener(this);
         Path path = Paths.get("fwdboardandtransport");
