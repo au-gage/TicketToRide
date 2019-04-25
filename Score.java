@@ -22,6 +22,7 @@ public class Score
     protected int getValue(){
         return score;
     }
+    
     protected int updateScoreRoute(Edges pathName){
         if(pathName.getIsCaptured() == true){
             score = score + pathName.length;
@@ -29,8 +30,8 @@ public class Score
         return score; 
     }
     
-    protected int updateScoreDes(DestCard card){ //do not implement until end of game
-        score = score; //+ DestCard.destCardValues(card);
+    protected int updateScoreDes(Edges route,DestCard card){ //do not implement until end of game
+        score = score + DestCard.destCardValues(route,card);
         return score; 
     }
     
@@ -44,10 +45,11 @@ public class Score
     }
     
     protected int updateScoreFailure(DestCard Card){ // do not implement until end of game
-        int counter = 0;
-        // if(pathName.getIsCaptured() == false){
-           // counter = counter + pathName.length;
-           // score = score - counter; 
+        int counter = 0;//have every destcard use a ocunter so i can subtracts amount used
+        int destCardAmount = 10; //? 
+        // if(card is not complete){
+              // score = score - card.getValue();
+              // counter ++
         // }
         
         return score;
