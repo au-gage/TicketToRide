@@ -33,6 +33,20 @@ public class Edges
         whoCaptured = null;
     }
     
+    public Edges(String start, String end,Colors color, int length,int x1, int y1,int x2, int y2,boolean isCaptured)
+    {
+        this.start = start;
+        this.end = end;
+        this.color = color;
+        this.length = length;
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+        isCaptured = true;
+        whoCaptured = null;
+    }
+    
     /**
      * Called when a path is attempted to be captured when it is already captured
      * 
