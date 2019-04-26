@@ -34,17 +34,21 @@ public class Player
      // * 
      // */
     protected void drawTransTicket( Tickets deck, int choice,int draw){
+        //if second draw end turn
         if (draw == 0){
             isTurn = false;
         }
-         //determine if taxi
+        //pick up card
         Colors temp =deck.pickup(choice).color();
         hand.put(temp,hand.get(temp)+1);
-        //if taxi or second draw,end player turn
+        //if taxi end player turn
         if (temp == Colors.RAINBOW){
             isTurn = false;
         }
-    
+        
+        
+    }
+    protected void drawDeckTransTicket(Tickets deck){
         
     }
     protected void drawDestTickets(){
