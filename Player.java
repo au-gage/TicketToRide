@@ -17,6 +17,7 @@ public class Player
     protected Score score;
     protected ArrayList<DestCard> destHand = new ArrayList<>();
     protected boolean isTurn;
+    int amtOfTaxis = 15;
     //hashmap, keys are colors
     HashMap<Colors,Integer> hand = new HashMap<>();
     /**
@@ -50,12 +51,16 @@ public class Player
         }
         //pick up card
         Colors temp =deck.pickup(choice).color();
-        hand.put(temp,hand.get(temp)+1);
+        //If player has already drawn a card and attempts to draw a rainbow card
+        if(!(draw == 1 && temp == Colors.RAINBOW))
+            hand.put(temp,hand.get(temp)+1);
         //if taxi end player turn
         if (temp == Colors.RAINBOW){
+            draw--;
             isTurn = false;
         }
-        draw --;
+        //If player has drawn a face up and attempts to draw a rainbow card
+        draw--;
         return draw;
         
     }
@@ -87,6 +92,7 @@ public class Player
         //remove cards from player's hand
         //update score
         //add cars to route
+        //amtOfTaxis gets subtracted by the length of the route
     }
     
     protected Colors getColor()

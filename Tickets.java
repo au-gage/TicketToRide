@@ -145,7 +145,15 @@ public class Tickets
     public Ticket pickup(int choice) {
         try {
             Ticket output = faceups[choice];
-            faceups[choice] = this.draw();
+            if(trainDeck.size() == 0)
+            {
+                //Attempt to Reshuffle with discarded pile
+                //Then do faceups[choice] = this.draw
+                //If discarded is also empty, do nothing bc people are hoarding cards
+                
+            }
+            else
+                faceups[choice] = this.draw();
             return output;
         } catch (IndexOutOfBoundsException e) {
             System.err.println(e);
