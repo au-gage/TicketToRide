@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
 import java.awt.*;
+import java.awt.geom.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
@@ -27,16 +28,16 @@ public class Game extends JPanel implements MouseListener
     protected Tickets ticketDeck = new Tickets();
     protected DestCards destDeck = new DestCards();
     protected int turn;
-
+    protected int amtOfMoves = 2;
     private Image board;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     private Image background;
     private Image destCardBack;
     private Image transCardBack;
-    
+
     public Game()
     {
-        setPreferredSize(new Dimension(900,900)); //Dimension subject to change
+        setPreferredSize(new Dimension(900,1024)); //Dimension subject to change
         addMouseListener(this);
         Path path = Paths.get("fwdboardandtransport");
         try(DirectoryStream<Path> stream = Files.newDirectoryStream(path))
@@ -51,7 +52,7 @@ public class Game extends JPanel implements MouseListener
                 else if(file.toString().equals("fwdboardandtransport\\background.jpg"))
                 {
                     background = toolkit.getImage(file.toString());
-                    background = background.getScaledInstance(1280, 900, Image.SCALE_DEFAULT);
+                    background = background.getScaledInstance(1280, 1024, Image.SCALE_DEFAULT);
                 }
                 else if(file.toString().equals("fwdboardandtransport\\DestTicket.jpg"))
                 {
@@ -78,10 +79,13 @@ public class Game extends JPanel implements MouseListener
      * 
      */
     public void mouseExited(MouseEvent e) { }
+
     public void mouseEntered(MouseEvent e) { }
+
     public void mouseReleased(MouseEvent e) { }
+
     public void mousePressed(MouseEvent e) { }
-    
+
     /**
      * This method checks to see where the mouse was clicked, and calls
      * the appropriate method, like if twist is pressed or if enter is pressed
@@ -91,14 +95,63 @@ public class Game extends JPanel implements MouseListener
     {
         int x = e.getX();
         int y = e.getY();
-        //Code to check if the player wants to claim a route, take from Ticket or Transport deck, or take face up
-        //Depending on what they click will call methods found in player class
-        //players.get(turn % players.size()).drawDestTickets();
-        if(x <= 102-18)
+        //Draw face up Card, starting with first, second, etc
+        if(x >= 700 && x <= 900 && y >=0 && y <= 119)
+        {
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves);
+            if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
+                amtOfMoves--;
+            amtOfMoves--;
+        }
+        else if(x >= 700 && x <= 900 && y >=120 && y <= 239)
+        {
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves);
+            if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
+                amtOfMoves--;
+            amtOfMoves--;
+        }
+        else if(x >= 700 && x <= 900 && y >=240 && y <= 359)
+        {
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves);
+            if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
+                amtOfMoves--;
+            amtOfMoves--;
+        } 
+        else if(x >= 700 && x <= 900 && y >=360 && y <= 479)
+        {
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves);
+            if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
+                amtOfMoves--;
+            amtOfMoves--;
+        }
+        else if(x >= 700 && x <= 900 && y >=480 && y <= 599)
+        {
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,5,amtOfMoves);
+            if(ticketDeck.faceups[5].color() == Colors.RAINBOW)
+                amtOfMoves--;
+            amtOfMoves--;
+        }
+        
+        //Draw from transport deck
+        else if(x >= 681 && x <= 797 && y >= 597 && y <= 792)
         {
             
         }
-        turn++;
+        //Draw from dest deck
+        else if(x >= 800 && x <= 900 && y >= 598 && y <= 795)
+        {
+            
+        }
+        
+        edges.get(turn).Captured(true,players.get(0));
+        //e.consume();
+        repaint();
+        if(amtOfMoves == 0)
+        {
+            turn++;
+            amtOfMoves = 2;
+        }
+        
     }
 
     /**
@@ -114,6 +167,13 @@ public class Game extends JPanel implements MouseListener
         g2.setStroke(new BasicStroke(2));
         g.drawImage(background,0,0,this);
         g.drawImage(board, 0, 0, this);
+        
+        for(int i = 0;i < players.get(turn % players.size()).destHand.size() - 1;i++)
+        {
+            Image transCard = players.get(players.size()).destHand.get(i).getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT);
+            g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),0,750,this);
+        }
+        
         for(int i = 0;i < 5;i++)
         {
             g.drawImage(ticketDeck.faceups[i].getImage(),700,119*i,this);
@@ -145,7 +205,20 @@ public class Game extends JPanel implements MouseListener
                 int y1 = edges.get(i).y1;
                 int x2 = edges.get(i).x2;
                 int y2 = edges.get(i).y2;
-                g.fillRect(x1,y1, (int) Math.abs(Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1))),10);
+                Rectangle rectangle = new Rectangle(x1,y1, (int) Math.abs(Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1))),10);
+                // rectangle.setFrameFromDiagonal((double) x1, (double) y1, (double) x2, (double) y2);
+                g.fillRect(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
+                // g2.rotate(Math.atan2((double)Math.abs(y2-y1),(double)Math.abs(x2-x1)) * (180/Math.PI));
+                // g2.drawRect(x1,y1, (int) Math.abs(Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1))),10);
+                //g2.fillRect(rectangle);
+                // AffineTransform transform = new AffineTransform();
+
+                // transform.rotate(Math.toRadians(45),rectangle.getX() + rectangle.width/2, rectangle.getY() + rectangle.height/2);
+
+                // Shape transformed = transform.createTransformedShape(rectangle);
+                // g2.fill(transformed);
+                //atan2(y2 - y1, x2 - x1) * 180 / PI;
+
             }
         }
     }
@@ -244,9 +317,9 @@ public class Game extends JPanel implements MouseListener
      */
     protected void MakePaths()
     {
-        edges.add(new Edges("Lincoln Center","Central Park",Colors.ORANGE,2,102,38,250,28));
+        edges.add(new Edges("Lincoln Center","Central Park",Colors.ORANGE,2,102,38,250,28,true));
         edges.add(new Edges("Lincoln Center","Midtown West",Colors.RED,2,102,38,82,178));
-        
+
         edges.add(new Edges("Lincoln Center","Times Square",Colors.GREEN,2,102,38,187,156));
         edges.add(new Edges("Lincoln Center","Times Square",Colors.BLUE,2,102,38,187,156));
 
@@ -306,8 +379,8 @@ public class Game extends JPanel implements MouseListener
     {
         for(int i = 0;i < players.size();i++)
         {
-            players.get(i).DestHand.add(destDeck.draw());
-            players.get(i).DestHand.add(destDeck.draw());
+            players.get(i).destHand.add(destDeck.draw());
+            players.get(i).destHand.add(destDeck.draw());
         }
     }
 
