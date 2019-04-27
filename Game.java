@@ -145,12 +145,11 @@ public class Game extends JPanel implements MouseListener
         //540,0,145,50 Claim Route button pressed
         else if(x >= 540 && x <= 685 && y >=0 && y <= 50)
         {
-            //players.get(turn % players.size()).claimRoute(edges);
+            players.get(turn % players.size()).claimRoute(edges);
             
         }
         
-        edges.get(turn).Captured(true,players.get(turn%players.size()));
-        turn++;
+        //edges.get(turn).Captured(true,players.get(turn%players.size()));
 
         //e.consume();
         repaint();
