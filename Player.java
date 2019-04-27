@@ -89,19 +89,23 @@ public class Player
 
     protected void claimRoute(ArrayList<Edges> edges){
         //ask which path
-<<<<<<< HEAD
-        String[] choices = new String[edges.size()];
-        
-=======
-        Edges[] choices = new Edges[edges.size()];
 
->>>>>>> 08dfbf6cf1e2d04ccd7060474401a73e3122af4b
+        String[] choices = new String[edges.size()];
+
         for (int i = 0; i <edges.size(); i++){
             choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor();
         }
-        String choice = (String) JOptionPane.showInputDialog(null, "Select a route", 
-                "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+        
         //player chooses their cards based on path's needs
+        String choiceString = (String) JOptionPane.showInputDialog(null, "Select a route", 
+                "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+        Edges choice = edges.get(0);
+        //transforms choice into edge
+        for (int i = 0; i<edges.size();i++){
+            if(choiceString.equals(edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor())){
+                choice = edges.get(i);
+            }
+        }
         Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
                 Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.PURPLE ,
                 Colors.WHITE, Colors.YELLOW};
