@@ -18,7 +18,7 @@ public class Edges
     private Colors color;
     protected int length;
     private boolean isCaptured;
-    
+
     public Edges(String start, String end,Colors color, int length,int x1, int y1,int x2, int y2)
     {
         this.start = start;
@@ -32,7 +32,7 @@ public class Edges
         isCaptured = false;
         whoCaptured = null;
     }
-    
+
     public Edges(String start, String end,Colors color, int length,int x1, int y1,int x2, int y2,boolean isCaptured)
     {
         this.start = start;
@@ -46,7 +46,7 @@ public class Edges
         isCaptured = true;
         whoCaptured = null;
     }
-    
+
     /**
      * Called when a path is attempted to be captured when it is already captured
      * 
@@ -55,22 +55,29 @@ public class Edges
     {
         return isCaptured;
     }
-    
+
     public boolean getIsCaptured(String start, String end)
     {
         return false;
     }
-    
+
     public Player getWhoCaptured()
     {
         return whoCaptured;
     }
-     public String getStart(){
-         return start;
-        }
+
+    public String getStart(){
+        return start;
+    }
+
     public String getEnd(){
-         return end;
-        }
+        return end;
+    }
+
+    public Colors getColor(){
+        return color;
+    }
+
     public void Captured(boolean isCaptured,Player whoCaptured)
     {
         this.isCaptured = isCaptured;
