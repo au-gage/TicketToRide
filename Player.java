@@ -87,6 +87,7 @@ public class Player
 
     }
 
+<<<<<<< HEAD
     // protected void claimRoute(ArrayList<Edges> edges){
         // //ask which path
 
@@ -141,6 +142,83 @@ public class Player
         // //add cars to route
         // //amtOfTaxis gets subtracted by the length of the route
     // }
+=======
+    protected void claimRoute(ArrayList<Edges> edges){
+        //ask which path
+
+        String[] choices = new String[edges.size()];
+
+        for (int i = 0; i <edges.size(); i++){
+            choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor();
+        }
+
+        //player chooses their cards based on path's needs
+        String choiceString = (String) JOptionPane.showInputDialog(null, "Select a route", 
+                "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+        Edges choice = edges.get(0);
+        //transforms choice into edge
+        for (int i = 0; i<edges.size();i++){
+            if(choiceString.equals(edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor())){
+                choice = edges.get(i);
+            }
+        }
+
+        //cannot take route that is already taken
+        if(!(choice.getIsCaptured())){
+            JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
+            return;
+        }
+
+        //choose payment options
+        Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
+                Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.PURPLE ,
+                Colors.WHITE, Colors.YELLOW};
+        int tempPay = 0;
+        int tempRainbow = 0;
+        for (int i = 0; i < choice.length; i ++){
+
+            Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
+                    "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
+            if (choice.getColor() == payment){
+                if(hand.get(payment) - tempPay > 1){
+                    tempPay ++;
+                } 
+                else {
+                    //display that payment is not possible
+                    JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
+                    //restart turn somehow
+                    return;
+                }
+            }
+            else if (payment == Colors.RAINBOW){
+                if(hand.get(payment) - tempRainbow > 1){
+                    tempRainbow ++;
+                } 
+                else {
+                    //display that payment is not possible
+                    JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
+                    //restart turn somehow
+                    return;
+                }
+            }
+            else{
+                //display that payment is not possible
+                JOptionPane.showMessageDialog(null, "You chose the wrong color for the path", "alert", JOptionPane.ERROR_MESSAGE);
+                //restart turn somehow
+                return;
+            }
+        }
+        //remove cards from player's hand
+        hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
+        hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
+        //update score
+        score.updateScoreRoute(choice);
+        //add cars to route
+
+        //amtOfTaxis gets subtracted by the length of the route
+        amtOfTaxis = amtOfTaxis - choice.length;
+    }
+>>>>>>> 393923cc32feb4499ac11e83bb7b7840b5f4c401
 
     protected Colors getColor()
     {

@@ -55,7 +55,10 @@ public class Edges
     {
         return isCaptured;
     }
-
+    public void setIsCaptured()
+    {
+        isCaptured = true;
+    }
     public boolean getIsCaptured(String start, String end)
     {
         return false;
@@ -66,15 +69,18 @@ public class Edges
         return whoCaptured;
     }
 
+<<<<<<< HEAD
     public String getStart(){
          return start;
     }
     
+=======
+>>>>>>> 393923cc32feb4499ac11e83bb7b7840b5f4c401
     public Colors getColor()
     {
         return color;
     }
-    
+
     public int getLength()
     {
         return length;
@@ -85,8 +91,11 @@ public class Edges
         return end;
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 393923cc32feb4499ac11e83bb7b7840b5f4c401
     public void Captured(boolean isCaptured,Player whoCaptured)
     {
         this.isCaptured = isCaptured;
