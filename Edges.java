@@ -55,7 +55,10 @@ public class Edges
     {
         return isCaptured;
     }
-
+    public void setIsCaptured()
+    {
+        isCaptured = true;
+    }
     public boolean getIsCaptured(String start, String end)
     {
         return false;

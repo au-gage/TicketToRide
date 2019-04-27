@@ -106,7 +106,13 @@ public class Player
                 choice = edges.get(i);
             }
         }
-        
+
+        //cannot take route that is already taken
+        if(!(choice.getIsCaptured())){
+            JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
+            return;
+        }
+
         //choose payment options
         Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
                 Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.PURPLE ,
@@ -150,8 +156,11 @@ public class Player
         hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
         hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
         //update score
+        score.updateScoreRoute(choice);
         //add cars to route
+
         //amtOfTaxis gets subtracted by the length of the route
+        amtOfTaxis = amtOfTaxis - choice.length;
     }
 
     protected Colors getColor()
