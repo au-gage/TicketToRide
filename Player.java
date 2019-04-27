@@ -89,10 +89,10 @@ public class Player
 
     protected void claimRoute(ArrayList<Edges> edges){
         //ask which path
-        Edges[] choices = new Edges[edges.size()];
+        String[] choices = new String[edges.size()];
         
         for (int i = 0; i <edges.size(); i++){
-            choices[i] = edges.get(i);
+            choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd();
         }
         Edges choice = (Edges)JOptionPane.showInputDialog(null, "Select a route", 
                 "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);

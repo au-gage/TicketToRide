@@ -142,14 +142,19 @@ public class Game extends JPanel implements MouseListener
         {
 
         }
-<<<<<<< HEAD
+        //540,0,145,50 Claim Route button pressed
+        else if(x >= 540 && x <= 685 && y >=0 && y <= 50)
+        {
+            players.get(turn % players.size()).claimRoute(edges);
+            
+        }
         
         // edges.get(turn).Captured(true,players.get(turn%players.size()));
         // turn++;
-=======
+
 
         edges.get(turn).Captured(true,players.get(0));
->>>>>>> c4ff27e0a963f2e19dace4d2f956f7df6072d297
+
         //e.consume();
         repaint();
         if(amtOfMoves == 0)
@@ -157,7 +162,7 @@ public class Game extends JPanel implements MouseListener
             turn++;
             amtOfMoves = 2;
         }
-
+        
     }
 
     /**
@@ -174,7 +179,7 @@ public class Game extends JPanel implements MouseListener
         g2.setColor(Color.WHITE);
         g.drawImage(background,0,0,this);
         g.drawImage(board, 0, 0, this);
-<<<<<<< HEAD
+
         g2.fillRect(540,0,145,50);
         g2.setColor(Color.BLACK);
         Font font = new Font("SERIF",Font.PLAIN,24);
@@ -188,14 +193,14 @@ public class Game extends JPanel implements MouseListener
                 g.drawImage(transCard,0,750,this);
              }
          }
-=======
 
-        for(int i = 0;i < players.get(turn % players.size()).destHand.size() - 1;i++)
+
+        for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
         {
-            Image transCard = players.get(players.size()).destHand.get(i).getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT);
+            Image transCard = players.get(turn % players.size()).destHand.get(i).getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT);
             g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),0,750,this);
         }
->>>>>>> c4ff27e0a963f2e19dace4d2f956f7df6072d297
+
 
         for(int i = 0;i < 5;i++)
         {
@@ -383,15 +388,15 @@ public class Game extends JPanel implements MouseListener
         edges.add(new Edges("Chinatown","Brooklyn",Colors.RED,3,320,583,480,697));
         edges.add(new Edges("Chinatown","Brooklyn",Colors.ORANGE,3,335,575,495,690));
 
-<<<<<<< HEAD
+
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,270,680,482,698));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,690,479,710));
-=======
+
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,272,682,479,695));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,682,479,695));
          
         
->>>>>>> c4ff27e0a963f2e19dace4d2f956f7df6072d297
+
         DealDestCards();
     }
 
