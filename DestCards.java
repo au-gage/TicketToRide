@@ -37,7 +37,7 @@ public class DestCards
             {
                 if (file.toString().contains("to"))
                 {
-                    destCards.add(new DestCard(toolkit.getImage(file.toString())));
+                    destCards.add(new DestCard(toolkit.getImage(file.toString()).getScaledInstance(200,119,Image.SCALE_DEFAULT)));
                 }
 
             }

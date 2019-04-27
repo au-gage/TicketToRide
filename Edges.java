@@ -65,7 +65,7 @@ public class Edges
     {
         return whoCaptured;
     }
-<<<<<<< HEAD
+
     public String getStart(){
          return start;
     }
@@ -79,20 +79,13 @@ public class Edges
     {
         return length;
     }
-=======
 
-    public String getStart(){
-        return start;
-    }
 
->>>>>>> 08dfbf6cf1e2d04ccd7060474401a73e3122af4b
     public String getEnd(){
         return end;
     }
 
-    public Colors getColor(){
-        return color;
-    }
+
 
     public void Captured(boolean isCaptured,Player whoCaptured)
     {

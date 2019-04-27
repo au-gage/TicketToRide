@@ -87,60 +87,60 @@ public class Player
 
     }
 
-    protected void claimRoute(ArrayList<Edges> edges){
-        //ask which path
-<<<<<<< HEAD
-        String[] choices = new String[edges.size()];
+    // protected void claimRoute(ArrayList<Edges> edges){
+        // //ask which path
+
+        // String[] choices = new String[edges.size()];
         
-=======
-        Edges[] choices = new Edges[edges.size()];
 
->>>>>>> 08dfbf6cf1e2d04ccd7060474401a73e3122af4b
-        for (int i = 0; i <edges.size(); i++){
-            choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor();
-        }
-        String choice = (String) JOptionPane.showInputDialog(null, "Select a route", 
-                "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
-        //player chooses their cards based on path's needs
-        Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
-                Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.PURPLE ,
-                Colors.WHITE, Colors.YELLOW};
-        int tempPay = 0;
-        int tempRainbow = 0;
-        for (int i = 0; i < choice.length; i ++){
+        // //Edges[] choices = new Edges[edges.size()];
 
-            Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
-                    "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
-            if (choice.getColor() == payment){
-                if(hand.get(payment) - choice.length > 0){
-                    tempPay ++;
-                } 
-                else {
-                    //display that payment is not possible
-                    //restart turn somehow
-                }
-            }
-            else if (payment == Colors.RAINBOW){
-                if(hand.get(payment) - tempRainbow > 1){
-                    tempRainbow ++;
-                } 
-                else {
-                    //display that payment is not possible
-                    //restart turn somehow
-                }
-            }
-            else{
-                //display that payment is not possible
-                //restart turn somehow
-            }
-        }
-        //remove cards from player's hand
-        hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
-        hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
-        //update score
-        //add cars to route
-        //amtOfTaxis gets subtracted by the length of the route
-    }
+
+        // for (int i = 0; i <edges.size(); i++){
+            // choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor();
+        // }
+        // String edge = (String) JOptionPane.showInputDialog(null, "Select a route", 
+                // "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+        // //player chooses their cards based on path's needs
+        // Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
+                // Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.PURPLE ,
+                // Colors.WHITE, Colors.YELLOW};
+        // int tempPay = 0;
+        // int tempRainbow = 0;
+        // for (int i = 0; i < choice.length; i ++){
+
+            // Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
+                    // "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
+            // if (choice.getColor() == payment){
+                // if(hand.get(payment) - choice.length > 0){
+                    // tempPay ++;
+                // } 
+                // else {
+                    // //display that payment is not possible
+                    // //restart turn somehow
+                // }
+            // }
+            // else if (payment == Colors.RAINBOW){
+                // if(hand.get(payment) - tempRainbow > 1){
+                    // tempRainbow ++;
+                // } 
+                // else {
+                    // //display that payment is not possible
+                    // //restart turn somehow
+                // }
+            // }
+            // else{
+                // //display that payment is not possible
+                // //restart turn somehow
+            // }
+        // }
+        // //remove cards from player's hand
+        // hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
+        // hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
+        // //update score
+        // //add cars to route
+        // //amtOfTaxis gets subtracted by the length of the route
+    // }
 
     protected Colors getColor()
     {
