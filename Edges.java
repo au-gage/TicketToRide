@@ -65,8 +65,12 @@ public class Edges
     {
         return whoCaptured;
     }
-    
-    
+     public String getStart(){
+         return start;
+        }
+    public String getEnd(){
+         return end;
+        }
     public void Captured(boolean isCaptured,Player whoCaptured)
     {
         this.isCaptured = isCaptured;

@@ -131,18 +131,18 @@ public class Game extends JPanel implements MouseListener
                 amtOfMoves--;
             amtOfMoves--;
         }
-        
+
         //Draw from transport deck
         else if(x >= 681 && x <= 797 && y >= 597 && y <= 792)
         {
-            
+
         }
         //Draw from dest deck
         else if(x >= 800 && x <= 900 && y >= 598 && y <= 795)
         {
-            
+
         }
-        
+
         edges.get(turn).Captured(true,players.get(0));
         //e.consume();
         repaint();
@@ -151,7 +151,7 @@ public class Game extends JPanel implements MouseListener
             turn++;
             amtOfMoves = 2;
         }
-        
+
     }
 
     /**
@@ -167,13 +167,13 @@ public class Game extends JPanel implements MouseListener
         g2.setStroke(new BasicStroke(2));
         g.drawImage(background,0,0,this);
         g.drawImage(board, 0, 0, this);
-        
+
         for(int i = 0;i < players.get(turn % players.size()).destHand.size() - 1;i++)
         {
             Image transCard = players.get(players.size()).destHand.get(i).getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT);
             g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),0,750,this);
         }
-        
+
         for(int i = 0;i < 5;i++)
         {
             g.drawImage(ticketDeck.faceups[i].getImage(),700,119*i,this);
@@ -317,6 +317,7 @@ public class Game extends JPanel implements MouseListener
      */
     protected void MakePaths()
     {
+        
         edges.add(new Edges("Lincoln Center","Central Park",Colors.ORANGE,2,102,38,250,28,true));
         edges.add(new Edges("Lincoln Center","Midtown West",Colors.RED,2,102,38,82,178));
 
@@ -372,6 +373,8 @@ public class Game extends JPanel implements MouseListener
 
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,272,682,479,695));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,682,479,695));
+         
+        
         DealDestCards();
     }
 

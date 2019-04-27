@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 /**
  * color
  * name
@@ -29,21 +30,20 @@ public class Player
      */
     public Player(Colors color, String name)
     {
-       this.color = color;
-       this.name = name;
-       score=new Score();
+        this.color = color;
+        this.name = name;
+        score=new Score();
     }
-    
 
     /**
-    * draws a face up transportation ticket
-    * tracks number of draws occurred
-    * ends turn when taxi is drawn or is second draw
-    * 
-    * @param deck of transportation cards in which to draw from
-    * @param choice, which face up card to choose
-    * @param draw, the number of draws the player has drawn this turn
-    */
+     * draws a face up transportation ticket
+     * tracks number of draws occurred
+     * ends turn when taxi is drawn or is second draw
+     * 
+     * @param deck of transportation cards in which to draw from
+     * @param choice, which face up card to choose
+     * @param draw, the number of draws the player has drawn this turn
+     */
     protected int drawTransTicket( Tickets deck, int choice,int draw){
         //if second draw end turn
         if (draw == 0){
@@ -62,8 +62,9 @@ public class Player
         //If player has drawn a face up and attempts to draw a rainbow card
         draw--;
         return draw;
-        
+
     }
+
     protected int drawDeckTransTicket(Tickets deck, int draw){
         //if second draw end turn
         if (draw == 0){
@@ -72,29 +73,37 @@ public class Player
         //pick up card
         Colors temp =deck.draw().color();
         hand.put(temp,hand.get(temp)+1);
-        //if taxi end player turn
-        if (temp == Colors.RAINBOW){
-            isTurn = false;
-        }
+
         draw --;
         return draw;
-        
+
     }
+
     protected void drawDestTickets(DestCards deck){
         //add two dest cards to hand
         destHand.add(deck.draw());
         destHand.add(deck.draw());
         //player chooses to remove one or none
+
     }
-    protected void claimRoute(){
+
+    protected void claimRoute(ArrayList<Edges> edges){
         //ask which path
+        Edges[] choices = new Edges[edges.size()];
+        
+        for (int i = 0; i <edges.size(); i++){
+            choices[i] = edges.get(i);
+        }
+        Edges choice = (Edges)JOptionPane.showInputDialog(null, "Select a route", 
+                "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
         //player chooses their cards based on path's needs
+        
         //remove cards from player's hand
         //update score
         //add cars to route
         //amtOfTaxis gets subtracted by the length of the route
     }
-    
+
     protected Colors getColor()
     {
         return color;
