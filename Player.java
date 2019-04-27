@@ -92,9 +92,9 @@ public class Player
         String[] choices = new String[edges.size()];
         
         for (int i = 0; i <edges.size(); i++){
-            choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd();
+            choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor();
         }
-        Edges choice = (Edges)JOptionPane.showInputDialog(null, "Select a route", 
+        String choice = (String) JOptionPane.showInputDialog(null, "Select a route", 
                 "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
         //player chooses their cards based on path's needs
         
