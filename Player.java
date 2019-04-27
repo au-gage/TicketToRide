@@ -95,7 +95,7 @@ public class Player
         for (int i = 0; i <edges.size(); i++){
             choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor();
         }
-        
+
         //player chooses their cards based on path's needs
         String choiceString = (String) JOptionPane.showInputDialog(null, "Select a route", 
                 "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
@@ -106,6 +106,8 @@ public class Player
                 choice = edges.get(i);
             }
         }
+        
+        //choose payment options
         Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
                 Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.PURPLE ,
                 Colors.WHITE, Colors.YELLOW};
@@ -116,12 +118,14 @@ public class Player
             Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
                     "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
             if (choice.getColor() == payment){
-                if(hand.get(payment) - choice.length > 0){
+                if(hand.get(payment) - tempPay > 1){
                     tempPay ++;
                 } 
                 else {
                     //display that payment is not possible
+                    JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
                     //restart turn somehow
+                    return;
                 }
             }
             else if (payment == Colors.RAINBOW){
@@ -130,12 +134,16 @@ public class Player
                 } 
                 else {
                     //display that payment is not possible
+                    JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
                     //restart turn somehow
+                    return;
                 }
             }
             else{
                 //display that payment is not possible
+                JOptionPane.showMessageDialog(null, "You chose the wrong color for the path", "alert", JOptionPane.ERROR_MESSAGE);
                 //restart turn somehow
+                return;
             }
         }
         //remove cards from player's hand
