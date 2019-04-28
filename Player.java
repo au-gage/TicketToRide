@@ -87,6 +87,8 @@ public class Player
 
     }
 
+
+
     protected void claimRoute(ArrayList<Edges> edges){
         //ask which path
 
@@ -108,7 +110,7 @@ public class Player
         }
 
         //cannot take route that is already taken
-        if(!(choice.getIsCaptured())){
+        if(choice.getIsCaptured()){
             JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
             return;
         }

@@ -69,6 +69,11 @@ public class Edges
         return whoCaptured;
     }
 
+    public String getStart(){
+         return start;
+    }
+    
+
     public Colors getColor()
     {
         return color;
@@ -79,9 +84,6 @@ public class Edges
         return length;
     }
 
-    public String getStart(){
-        return start;
-    }
 
     public String getEnd(){
         return end;

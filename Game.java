@@ -149,11 +149,7 @@ public class Game extends JPanel implements MouseListener
             
         }
         
-        // edges.get(turn).Captured(true,players.get(turn%players.size()));
-        // turn++;
-
-
-        edges.get(turn).Captured(true,players.get(0));
+        //edges.get(turn).Captured(true,players.get(turn%players.size()));
 
         //e.consume();
         repaint();
@@ -189,17 +185,10 @@ public class Game extends JPanel implements MouseListener
         {
             for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
             {
-                Image transCard = players.get(turn % players.size()).destHand.get(i).getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT);
-                g.drawImage(transCard,0,750,this);
+                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),0,750,this);
              }
          }
 
-
-        for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
-        {
-            Image transCard = players.get(turn % players.size()).destHand.get(i).getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT);
-            g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),0,750,this);
-        }
 
 
         for(int i = 0;i < 5;i++)
