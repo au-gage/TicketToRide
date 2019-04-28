@@ -50,7 +50,7 @@ public class Player
             isTurn = false;
         }
         //pick up card
-        Colors temp =deck.pickup(choice).color();
+        Colors temp = deck.pickup(choice).color();
         //If player has already drawn a card and attempts to draw a rainbow card
         if(!(draw == 1 && temp == Colors.RAINBOW))
             hand.put(temp,hand.get(temp)+1);
@@ -124,7 +124,7 @@ public class Player
         }
         else
         {
-            JOptionPane.showInputDialog(null,"Only one dest Card left, dealt to your deck");
+            JOptionPane.showMessageDialog(null,"Only one dest Card left, dealt to your deck");
             destHand.add(dests.get(0));
             
         }
