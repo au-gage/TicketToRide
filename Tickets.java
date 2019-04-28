@@ -26,7 +26,7 @@ import java.nio.file.*;
  */
 public class Tickets
 {
-    private ArrayList<Ticket> trainDeck = new ArrayList<>();
+    protected ArrayList<Ticket> trainDeck = new ArrayList<>();
     protected Ticket[] faceups = new Ticket[5];
     private ArrayList<Ticket> heldCards; //potentially an option? or maybe get data from Player objects.
     private Toolkit toolkit = Toolkit.getDefaultToolkit();

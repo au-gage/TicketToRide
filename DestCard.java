@@ -16,18 +16,29 @@ import java.nio.file.*;
 public class DestCard
 {
     private Image image;
-    
-    public DestCard(Image image)
+    private String start;
+    private String end;
+    public DestCard(Image image,String start, String end)
     {
         this.image = image;
-
+        this.start = start;
+        this.end = end;
     }
 
     public Image getImage()
     {
         return image;
     }
-
+    
+    public String getStart()
+    {
+        return start;
+    }
+    
+    public String getEnd()
+    {
+        return end;
+    }
 
     /**
      * Will do once we have the players delt cards

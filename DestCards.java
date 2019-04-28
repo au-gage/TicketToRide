@@ -25,6 +25,7 @@ public class DestCards
     protected ArrayList<DestCard> destCards = new ArrayList<>();
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     protected ArrayList<DestCard> fromHand = new ArrayList<DestCard>();
+    protected ArrayList<Image> images = new ArrayList<>();
     /**
      * Constructor for objects of class DestCard
      */
@@ -37,7 +38,7 @@ public class DestCards
             {
                 if (file.toString().contains("to"))
                 {
-                    destCards.add(new DestCard(toolkit.getImage(file.toString()).getScaledInstance(200,119,Image.SCALE_DEFAULT)));
+                    images.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
                 }
 
             }
@@ -46,6 +47,23 @@ public class DestCards
         {
             System.exit(0);
         }
+        destCards.add(new DestCard(images.get(0),"Central Park", "Chelsea"));
+        destCards.add(new DestCard(images.get(1),"Central Park", "Chinatown"));
+        destCards.add(new DestCard(images.get(2),"Central Park", "Gramercy Park"));
+        destCards.add(new DestCard(images.get(3),"Central Park", "Midtown West"));
+        destCards.add(new DestCard(images.get(4),"Chelsea", "Brooklyn"));
+        destCards.add(new DestCard(images.get(5),"Chelsea", "Wall Street"));
+        destCards.add(new DestCard(images.get(6),"Empire State Building", "Brooklyn"));
+        destCards.add(new DestCard(images.get(7),"Empire State Building", "Greenwich Village"));
+        destCards.add(new DestCard(images.get(8),"East Village", "Soho"));
+        destCards.add(new DestCard(images.get(9),"Gramercy Park", "Chinatown"));
+        destCards.add(new DestCard(images.get(10),"Lincoln Center", "Empire State Building"));
+        destCards.add(new DestCard(images.get(11),"Lower East Side", "Wall Street"));
+        destCards.add(new DestCard(images.get(12),"Times Square", "Brooklyn"));
+        destCards.add(new DestCard(images.get(13),"Times Square", "East Village"));
+        destCards.add(new DestCard(images.get(14),"Times Square", "Soho"));
+        destCards.add(new DestCard(images.get(15),"United Nations", "Midtown West"));
+        destCards.add(new DestCard(images.get(16),"United Nations", "Wall Street"));
         this.shuffle();
 
     }
@@ -89,6 +107,11 @@ public class DestCards
         DestCard pickedUp = destCards.get(0);
         destCards.remove(0);
         return pickedUp;
+    }
+    
+    public void add(DestCard destCard)
+    {
+        destCards.add(destCard);
     }
 
     /**
