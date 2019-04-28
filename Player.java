@@ -155,14 +155,15 @@ public class Player
         //remove cards from player's hand
         hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
         hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
+        //update the edge captured
+        
         //update score
         score.updateScoreRoute(choice);
         //add cars to route
-
+        
         //amtOfTaxis gets subtracted by the length of the route
         amtOfTaxis = amtOfTaxis - choice.length;
     }
-
     protected Colors getColor()
     {
         return color;
