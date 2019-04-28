@@ -132,12 +132,16 @@ public class Game extends JPanel implements MouseListener
             amtOfMoves--;
         }
 
-        //Draw from transport deck
+        //Draw from Dest deck
         else if(x >= 681 && x <= 797 && y >= 597 && y <= 792)
         {
-
+            if(destDeck.destCards.size() > 0)
+            {
+                players.get(turn % players.size()).drawDestTickets(destDeck);
+                amtOfMoves -= 2;
+            }
         }
-        //Draw from dest deck
+        //Draw from transport deck
         else if(x >= 800 && x <= 900 && y >= 598 && y <= 795)
         {
 
@@ -146,9 +150,9 @@ public class Game extends JPanel implements MouseListener
         else if(x >= 540 && x <= 685 && y >=0 && y <= 50)
         {
             players.get(turn % players.size()).claimRoute(edges);
-            
+
         }
-        
+
         //edges.get(turn).Captured(true,players.get(turn%players.size()));
 
         //e.consume();
@@ -158,7 +162,7 @@ public class Game extends JPanel implements MouseListener
             turn++;
             amtOfMoves = 2;
         }
-        
+
     }
 
     /**
@@ -185,18 +189,19 @@ public class Game extends JPanel implements MouseListener
         {
             for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
             {
-                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),0,750,this);
-             }
-         }
-
+                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,750,this);
+            }
+        }
 
 
         for(int i = 0;i < 5;i++)
         {
             g.drawImage(ticketDeck.faceups[i].getImage(),700,119*i,this);
         }
-        g.drawImage(destCardBack,681,595,this);
-        g.drawImage(transCardBack,800,595,this);
+        if(destDeck.destCards.size() > 0)
+            g.drawImage(destCardBack,681,595,this);
+        if(ticketDeck.trainDeck.size() > 0)
+            g.drawImage(transCardBack,800,595,this);
         for(int i = 0; i < edges.size();i++)
         {
             if(edges.get(i).getIsCaptured())
@@ -262,7 +267,7 @@ public class Game extends JPanel implements MouseListener
         {
             String num = JOptionPane.showInputDialog(null, "Enter the Amount of Players",
                     "Input 2-4", JOptionPane.QUESTION_MESSAGE);
-            
+
             try
             {
                 amt = Integer.parseInt(num);
@@ -323,7 +328,7 @@ public class Game extends JPanel implements MouseListener
      */
     protected void MakePaths()
     {
-        
+
         edges.add(new Edges("Lincoln Center","Central Park",Colors.ORANGE,2,102,38,250,28,true));
         edges.add(new Edges("Lincoln Center","Midtown West",Colors.RED,2,102,38,82,178));
 
@@ -377,14 +382,12 @@ public class Game extends JPanel implements MouseListener
         edges.add(new Edges("Chinatown","Brooklyn",Colors.RED,3,320,583,480,697));
         edges.add(new Edges("Chinatown","Brooklyn",Colors.ORANGE,3,335,575,495,690));
 
-
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,270,680,482,698));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,690,479,710));
 
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,272,682,479,695));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,682,479,695));
-         
-        
+
 
         DealDestCards();
     }

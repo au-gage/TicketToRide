@@ -81,12 +81,54 @@ public class Player
 
     protected void drawDestTickets(DestCards deck){
         //add two dest cards to hand
-        destHand.add(deck.draw());
-        destHand.add(deck.draw());
+        // destHand.add(deck.draw());
+        // destHand.add(deck.draw());
         //player chooses to remove one or none
-
+        ArrayList<DestCard> dests = new ArrayList<>();
+        if(deck.destCards.size() == 1)
+        {
+            dests.add(deck.draw());
+        }
+        else
+        {
+            dests.add(deck.draw());
+            dests.add(deck.draw());
+        }
+        String[] choices = new String[3];
+        if(dests.size() == 2)
+        {
+            for(int i = 0;i < 3;i++)
+            {
+                if(i == 2)
+                    choices[i] = "Both Cards";
+                else
+                    choices[i] = dests.get(i).getStart() + " " + dests.get(i).getEnd();
+            }
+            String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1, or both cards", 
+                    "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+            if(cardTaken.equals(dests.get(0).getStart() + " " + dests.get(0).getEnd()))
+            {
+                destHand.add(dests.get(0));
+                deck.add(dests.get(1));
+            }
+            else if(cardTaken.equals(dests.get(1).getStart() + " " + dests.get(0).getEnd()))
+            {
+                destHand.add(dests.get(1));
+                deck.add(dests.get(0));
+            }
+            else
+            {
+                destHand.add(dests.get(0));
+                destHand.add(dests.get(1));
+            }
+        }
+        else
+        {
+            JOptionPane.showInputDialog(null,"Only one dest Card left, dealt to your deck");
+            destHand.add(dests.get(0));
+            
+        }
     }
-
 
 
     protected void claimRoute(ArrayList<Edges> edges){
@@ -116,9 +158,9 @@ public class Player
         }
 
         //choose payment options
+        //Think this should run off of the deck of the player, do like "RED-2" or something
         Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
-                Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.PURPLE ,
-                Colors.WHITE, Colors.YELLOW};
+                Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK};
         int tempPay = 0;
         int tempRainbow = 0;
         for (int i = 0; i < choice.length; i ++){
