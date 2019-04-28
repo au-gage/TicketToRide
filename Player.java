@@ -32,6 +32,15 @@ public class Player
     {
         this.color = color;
         this.name = name;
+        
+        hand.put(Colors.BLUE, 0);
+        hand.put(Colors.GREEN, 0);
+        hand.put(Colors.BLACK, 0);
+        hand.put(Colors.PINK, 0);
+        hand.put(Colors.RED, 0);
+        hand.put(Colors.ORANGE, 0);
+        hand.put(Colors.RAINBOW, 0);
+        
         score=new Score();
     }
 
