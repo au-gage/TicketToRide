@@ -18,7 +18,7 @@ public class Tickets
     protected Ticket[] faceups = new Ticket[5];
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     /**
-     * Constructor to initialize the deck of trains and shuffle them.
+     * Initializes the deck of shuffled cards and the face-up pile.
      * 
      * @author Mark Eliseo and Austin Gage
      * @version April 2019
@@ -74,6 +74,23 @@ public class Tickets
         for(int i = 0;i < 5;i++) {
             faceups[i] = trainDeck.get(i);
             trainDeck.remove(i);
+        }
+        boolean rainbows = false;
+        while (!rainbows) {
+            int rainbowCount = 0;
+            for (int i = 0; i < faceups.length; i++) {
+                if (faceups[i].color() == Colors.RAINBOW) {
+                    rainbowCount++;
+                }
+            }
+            if (rainbowCount >= 3) {
+                for (int i = 0; i < faceups.length; i++) {
+                    faceups[i] = trainDeck.get(i);
+                    trainDeck.remove(i);
+                }
+            } else {
+                rainbows = true;
+            }
         }
     }
 
