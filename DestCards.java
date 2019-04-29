@@ -1,4 +1,3 @@
- 
 
 
 import java.util.ArrayList;
@@ -104,11 +103,16 @@ public class DestCards
      * 
      */
     public DestCard draw(){
-        DestCard pickedUp = destCards.get(0);
-        destCards.remove(0);
-        return pickedUp;
+        if (destCards.size() == 0) {
+            JOptionPane.showMessageDialog(null,"There are no more Destination Cards left");
+            return null;
+        } else {
+            DestCard pickedUp = destCards.get(0);
+            destCards.remove(0);
+            return pickedUp;
+        }
     }
-    
+
     public void add(DestCard destCard)
     {
         destCards.add(destCard);
@@ -128,7 +132,7 @@ public class DestCards
             System.exit(1);
         }
     }
-    
+
     /**
      * Returns the value of a destination card 
      */
