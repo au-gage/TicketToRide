@@ -13,7 +13,7 @@ public class Player
     protected String name;
     protected Score score;
     protected ArrayList<DestCard> destHand = new ArrayList<>();
-    //protected ArrayList<Edges> capturedEdges = new ArrayList<>();
+    protected ArrayList<Edges> capturedEdges = new ArrayList<>();
     //protected Image 
     protected boolean isTurn;
     int amtOfTaxis = 15;
@@ -286,8 +286,6 @@ public class Player
                 return 0;
             }
         }
-        //remove cards from player's hand
-        //update the edge captured
 
         //update score
         score.updateScoreRoute(choice);
