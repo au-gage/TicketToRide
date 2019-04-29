@@ -144,12 +144,10 @@ public class Game extends JPanel implements MouseListener
         //Draw from transport deck
         else if(x >= 800 && x <= 900 && y >= 598 && y <= 795)
         {
-<<<<<<< HEAD
+
             players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves);
             amtOfMoves--;
-=======
-            
->>>>>>> c0a9a3804a8d5cb57ba6e64936a30323779728ab
+
         }
         //540,0,145,50 Claim Route button pressed
         else if(x >= 540 && x <= 685 && y >=0 && y <= 50)
