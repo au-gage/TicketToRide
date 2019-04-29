@@ -170,7 +170,7 @@ public class Player
         }
 
         //cannot take route that is already taken
-        
+
         if(choice.getIsCaptured() && choice.getWhoCaptured() == null)
         {
             JOptionPane.showMessageDialog(null, "Attempt to capture a double route that has already been captured with two players",
@@ -205,7 +205,11 @@ public class Player
                         //restart turn somehow
                         return 0;
                     }
-                    payIndex++;
+                    if (choice.length == 1) {
+                        break;
+                    } else {
+                        payIndex++;
+                    }
                 } else if (noneColor[i] == Colors.RAINBOW) {
                     if (hand.get(Colors.RAINBOW) - tempRainbow >= 1) {
                         tempRainbow++;
