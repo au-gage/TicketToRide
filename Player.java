@@ -182,7 +182,7 @@ public class Player
             Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
                     "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
             if (choice.getColor() == payment){
-                if(hand.get(payment) - tempPay > 1){
+                if(hand.get(payment) - tempPay >= 1){
                     tempPay ++;
                 } 
                 else {
@@ -193,7 +193,7 @@ public class Player
                 }
             }
             else if (payment == Colors.RAINBOW){
-                if(hand.get(payment) - tempRainbow > 1){
+                if(hand.get(payment) - tempRainbow >= 1){
                     tempRainbow ++;
                 } 
                 else {
