@@ -36,6 +36,8 @@ public class Game extends JPanel implements MouseListener
     private Image transCardBack;
     private ArrayList<Image> tickets = new ArrayList<>();
     boolean turnOver = false;
+    boolean lastTurnBegins = false;
+    int maxTurn = -99;
 
     public Game()
     {
@@ -125,129 +127,136 @@ public class Game extends JPanel implements MouseListener
     {
         int x = e.getX();
         int y = e.getY();
-        //Draw face up Card, starting with first, second, etc
-        if(x >= 700 && x <= 900 && y >=0 && y <= 119 && amtOfMoves > 0)
+        if(turn != maxTurn + 1 || lastTurnBegins != true)
         {
-            if(ticketDeck.faceups[0].color() == Colors.RAINBOW)
+            //Draw face up Card, starting with first, second, etc
+            if(x >= 700 && x <= 900 && y >=0 && y <= 119 && amtOfMoves > 0)
             {
-                if(amtOfMoves == 2)
+                if(ticketDeck.faceups[0].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
+
+                }
+                else
                 {
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
-                    amtOfMoves -= 2;
+                    amtOfMoves--;    
                 }
+            }
+            else if(x >= 700 && x <= 900 && y >=120 && y <= 239 && amtOfMoves > 0)
+            {
+                if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
 
-            }
-            else
-            {
-                players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
-                amtOfMoves--;    
-            }
-        }
-        else if(x >= 700 && x <= 900 && y >=120 && y <= 239 && amtOfMoves > 0)
-        {
-            if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
-            {
-                if(amtOfMoves == 2)
+                }
+                else
                 {
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
-                    amtOfMoves -= 2;
+                    amtOfMoves--;    
                 }
+            }
+            else if(x >= 700 && x <= 900 && y >=240 && y <= 359 && amtOfMoves > 0)
+            {
+                if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
 
-            }
-            else
-            {
-                players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
-                amtOfMoves--;    
-            }
-        }
-        else if(x >= 700 && x <= 900 && y >=240 && y <= 359 && amtOfMoves > 0)
-        {
-            if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
-            {
-                if(amtOfMoves == 2)
+                }
+                else
                 {
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
-                    amtOfMoves -= 2;
+                    amtOfMoves--;    
                 }
+            } 
+            else if(x >= 700 && x <= 900 && y >=360 && y <= 479 && amtOfMoves > 0)
+            {
+                if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
 
-            }
-            else
-            {
-                players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
-                amtOfMoves--;    
-            }
-        } 
-        else if(x >= 700 && x <= 900 && y >=360 && y <= 479 && amtOfMoves > 0)
-        {
-            if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
-            {
-                if(amtOfMoves == 2)
+                }
+                else
                 {
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
-                    amtOfMoves -= 2;
+                    amtOfMoves--;    
                 }
-
             }
-            else
+            else if(x >= 700 && x <= 900 && y >=480 && y <= 599 && amtOfMoves > 0)
             {
-                players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
-                amtOfMoves--;    
-            }
-        }
-        else if(x >= 700 && x <= 900 && y >=480 && y <= 599 && amtOfMoves > 0)
-        {
-            if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
-            {
-                if(amtOfMoves == 2)
+                if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
+                }
+                else
                 {
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                    amtOfMoves--;    
+                }
+            }
+
+            //Draw from Dest deck
+            else if(x >= 681 && x <= 797 && y >= 597 && y <= 792 && amtOfMoves > 0)
+            {
+                if(destDeck.destCards.size() > 0)
+                {
+                    players.get(turn % players.size()).drawDestTickets(destDeck);
                     amtOfMoves -= 2;
                 }
             }
-            else
+            //Draw from transport deck
+            else if(x >= 800 && x <= 900 && y >= 598 && y <= 795 && amtOfMoves > 0)
             {
-                players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
-                amtOfMoves--;    
+                players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves,players);
+                amtOfMoves--;
             }
-        }
-
-        //Draw from Dest deck
-        else if(x >= 681 && x <= 797 && y >= 597 && y <= 792 && amtOfMoves > 0)
-        {
-            if(destDeck.destCards.size() > 0)
+            //540,0,145,50 Claim Route button pressed
+            else if(x >= 540 && x <= 685 && y >=0 && y <= 50 && amtOfMoves == 2)
             {
-                players.get(turn % players.size()).drawDestTickets(destDeck);
+                players.get(turn % players.size()).claimRoute(edges,players);
                 amtOfMoves -= 2;
             }
-        }
-        //Draw from transport deck
-        else if(x >= 800 && x <= 900 && y >= 598 && y <= 795 && amtOfMoves > 0)
-        {
-            players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves,players);
-            amtOfMoves--;
-        }
-        //540,0,145,50 Claim Route button pressed
-        else if(x >= 540 && x <= 685 && y >=0 && y <= 50 && amtOfMoves == 2)
-        {
-            players.get(turn % players.size()).claimRoute(edges,players);
-            amtOfMoves -= 2;
-        }
-        //End turn pressed, only shows up when player is out of moves
-        else if(x >= 540 && x <= 685 && y >= 400 && y <= 450 && amtOfMoves == 0)
-        {
-            turnOver = false; 
-            turn++;
-            amtOfMoves = 2;
-        }
+            //End turn pressed, only shows up when player is out of moves
+            else if(x >= 540 && x <= 685 && y >= 400 && y <= 450 && amtOfMoves == 0)
+            {
+                turnOver = false; 
+                turn++;
+                amtOfMoves = 2;
+            }
 
-        //edges.get(turn).Captured(true,players.get(turn%players.size()));
+            if(players.get(turn % players.size()).amtOfTaxis <= 2)
+            {
+                lastTurnBegins = true;
+                maxTurn = turn + players.size();
+            }
 
-        //e.consume();
-        repaint();
-        if(amtOfMoves <= 0)
-        {            
-            turnOver = true;
+            //e.consume();
             repaint();
+            if(amtOfMoves <= 0)
+            {            
+                turnOver = true;
+                repaint();
+            }
         }
 
     }
@@ -281,6 +290,14 @@ public class Game extends JPanel implements MouseListener
             g2.fillRect(540,400,145,50);
             g2.setColor(Color.BLACK);
             g2.drawString("End Turn", 550,425);
+        }
+
+        if(lastTurnBegins)
+        {
+            g2.setColor(Color.WHITE);
+            g2.fillRect(540,600,145,50);
+            g2.setColor(Color.BLACK);
+            g2.drawString("Warning: Last Turn", 550,625);
         }
 
         if(players.size() > 1)
