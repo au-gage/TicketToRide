@@ -124,7 +124,7 @@ public class Player
                 destHand.add(dests.get(0));
                 deck.add(dests.get(1));
             }
-            else if(cardTaken.equals(dests.get(1).getStart() + " " + dests.get(0).getEnd()))
+            else if(cardTaken.equals(dests.get(1).getStart() + " " + dests.get(1).getEnd()))
             {
                 destHand.add(dests.get(1));
                 deck.add(dests.get(0));
