@@ -13,7 +13,7 @@ public class Player
     protected String name;
     protected Score score;
     protected ArrayList<DestCard> destHand = new ArrayList<>();
-    protected ArrayList<Edges> capturedEdges = new ArrayList<>();
+    //protected ArrayList<Edges> capturedEdges = new ArrayList<>();
     //protected Image 
     protected boolean isTurn;
     int amtOfTaxis = 15;
@@ -197,7 +197,7 @@ public class Player
                 "alert",JOptionPane.ERROR_MESSAGE);
             return 0;
         }
-        else if(choice.getIsCaptured()){
+        else if(choice.getIsCaptured()) {
             JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
             return 0;
         }
@@ -287,9 +287,6 @@ public class Player
             }
         }
         //remove cards from player's hand
-
-        hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
-        hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
         //update the edge captured
 
         //update score
@@ -315,7 +312,7 @@ public class Player
         //add cars to route
         choice.Captured(true,this);
         edges.set(j,choice);
-        this.capturedEdges.add(choice);
+        //this.capturedEdges.add(choice);
         String word = edges.get(j).getStart() + edges.get(j).getEnd();
         if(j != 0)
         {
