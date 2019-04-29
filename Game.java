@@ -231,7 +231,7 @@ public class Game extends JPanel implements MouseListener
                 amtOfMoves--;
             }
             //540,0,145,50 Claim Route button pressed
-            else if(x >= 540 && x <= 685 && y >=0 && y <= 50 && amtOfMoves == 2)
+            else if(x >= 540 && x <= 685 && y >=0 && y <= 55 && amtOfMoves == 2)
             {
                 amtOfMoves -= players.get(turn % players.size()).claimRoute(edges,players);
             }
@@ -275,20 +275,20 @@ public class Game extends JPanel implements MouseListener
         g.drawImage(background,0,0,this);
         g.drawImage(board, 0, 0, this);
 
-        g2.fillRect(540,0,145,50);
-        g2.fillRect(540,200,145,50);
+        g2.fillRoundRect(540,5,145,50, 10, 10);
+        g2.fillRoundRect(540,200,145,50, 10, 10);
 
         g2.setColor(Color.BLACK);
         Font font = new Font("SERIF",Font.PLAIN,20);
         g2.setFont(font);
-        g2.drawString("Claim Route", 545,25);
-        g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,545,215);
+        g2.drawString("Claim Route", 560,35);
+        g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
         if(turnOver)
         {
             g2.setColor(Color.WHITE);
-            g2.fillRect(540,400,145,50);
+            g2.fillRoundRect(540,400,145,50, 10, 10);
             g2.setColor(Color.BLACK);
-            g2.drawString("End Turn", 550,425);
+            g2.drawString("End Turn", 575,430);
         }
 
         if(lastTurnBegins)
@@ -303,20 +303,23 @@ public class Game extends JPanel implements MouseListener
         {
             for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
             {
-                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,750,this);
+                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,720,this);
                 //g.drawImage(players.get(turn % players.size()).hand.get(Colors.RED).getImage(),100 * i, 900,this);
             }
+            g2.setColor(Color.WHITE);
             for(int i = 0;i < tickets.size();i++)
             {
                 g.drawImage(tickets.get(i),100*i,900,this);
+                g.fillOval((100*i) + 10, 900,25,25);
             }
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLACK)),15,915);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLUE)),115,915);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RAINBOW)),215,915);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.GREEN)),315,915);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.ORANGE)),415,915);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.PINK)),515,915);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RED)),615,915);
+            g2.setColor(Color.BLACK);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLACK)),17,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLUE)),117,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RAINBOW)),217,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.GREEN)),317,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.ORANGE)),417,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.PINK)),517,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RED)),617,917);
         }
 
         for(int i = 0;i < 5;i++)

@@ -269,8 +269,12 @@ public class Player
         //remove cards from player's hand
         if(choice.getColor() == Colors.NONE)
         {
-            hand.put(noneColor[payIndex], hand.get(noneColor[payIndex]) - tempPay);
-            hand.put(Colors.RAINBOW, hand.get(Colors.RAINBOW) - tempRainbow);
+            if (payIndex > (choice.length - 1)) {
+                hand.put(Colors.RAINBOW, hand.get(Colors.RAINBOW) - tempRainbow);
+            } else {
+                hand.put(noneColor[payIndex], hand.get(noneColor[payIndex]) - tempPay);
+                hand.put(Colors.RAINBOW, hand.get(Colors.RAINBOW) - tempRainbow);
+            }
         }
         else
         {
