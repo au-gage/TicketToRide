@@ -11,8 +11,8 @@ import java.nio.file.*;
 /**
  * Class object to contain data for each transit card.
  *
- * @author Austin Gage
- * @version 4/23/2019
+ * @author Austin Gage, Mark Eliseo, Cheryl McClean, Rose Wilson, Derek McPhail
+ * @version 4/29/2019
  */
 public class Ticket
 {
@@ -22,8 +22,7 @@ public class Ticket
     /**
      * Constructor to create the transit card object.
      * 
-     * @author Austin Gage
-     * @version April 2019
+     * 
      * @param image The image of the card type.
      * @param color The color of the card.
      */
@@ -36,8 +35,7 @@ public class Ticket
     /**
      * Accessor to retrieve the image of the ticket.
      * 
-     * @author Austin Gage
-     * @version April 2019
+     *
      * @return The image of the card.
      */
     public Image getImage()
@@ -47,9 +45,7 @@ public class Ticket
     
     /**
      * Accessor to retrieve the color of the ticket.
-     * 
-     * @author Austin Gage
-     * @version April 2019
+    
      * @return The color of the card.
      */
     public Colors color()
@@ -60,8 +56,7 @@ public class Ticket
     /**
      * Mutator to replace the image of the card.
      * 
-     * @author Austin Gage
-     * @version April 2019
+     * @param image to set the image of the ticket to
      */
     public void setImage(Image image)
     {
