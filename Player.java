@@ -117,7 +117,7 @@ public class Player
                 else
                     choices[i] = dests.get(i).getStart() + " => " + dests.get(i).getEnd();
             }
-            String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1, or both cards", 
+            String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1 or both cards", 
                     "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
             if(cardTaken.equals(dests.get(0).getStart() + " => " + dests.get(0).getEnd()))
             {
@@ -159,9 +159,17 @@ public class Player
         //transforms choice into edge
         int j = 0;
         while (j < edges.size() && !edgeFound){
-            if(choiceString.equals(edges.get(j).getStart() + "-" + edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " + edges.get(j).getColor())){
-                choice = edges.get(j);
-                edgeFound = true;
+            if(choiceString.equals(edges.get(j).getStart() + "-" + edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " 
+                + edges.get(j).getColor())){
+                if(!edges.get(j).getIsCaptured())
+                {
+                    choice = edges.get(j);
+                    edgeFound = true;
+                }
+                else
+                {
+                    j++;
+                }
             }
             else
                 j++;

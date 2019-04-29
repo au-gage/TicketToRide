@@ -17,7 +17,7 @@ import java.nio.file.*;
  * what name
  * implements player, board, paths, and run the playing of the game
  *
- * @author Austin Gage
+ * @author Austin Gage and Mark Eliseo
  * @version (a version number or a date)
  */
 public class Game extends JPanel implements MouseListener
