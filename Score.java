@@ -1,4 +1,4 @@
- 
+import java.util.ArrayList;
 /**
  * Write a description of class Score here.
  *
@@ -56,14 +56,24 @@ public class Score
      * 
      * @return score value
      */
-    protected int updateScoreAttr(){ 
-        int x = 1;
-        if(x == 1){
-            
-            score = score + x;
+    protected int updateScoreAttr(ArrayList <Edges> edge, ArrayList <String> tourist){ 
+        
+        for(int i = 0; i < edge.size(); i++){
+            for(int j = 0; j < tourist.size(); j++){
+            String word = edge.get(i).getStart() + edge.get(i).getEnd();
+            if(word.contains(tourist.get(i))){
+                score++;
+            }
         }
-        return score; 
+            
+        }
+        
+        return score;
     }
+        
+       
+    
+    
     /**
      * at end of game
      * subtract points for unused destination cards
@@ -72,24 +82,13 @@ public class Score
      * @return amount needed to subtract
      */
     protected int updateScoreFailure(DestCard card){
-        int counter = 0;//have every destcard use a ocunter so i can subtracts amount used
+        int counter = 0;
         int destCardAmount = 10; //? 
         // if(card is not complete){
               // score = score - card.getValue();
               // counter ++
         // }
         
-        return score;
-    }
-    /**
-     * at end of game
-     * updates the total score
-     * 
-     * @return score value
-     */
-    protected int updateScoreDesTotal(){
-        int x = 1;
-        score = score + x;
         return score;
     }
     
