@@ -18,7 +18,7 @@ public class Tickets
     protected Ticket[] faceups = new Ticket[5];
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     /**
-     * Constructor to initialize the deck of trains and shuffle them.
+     * Initializes the deck of shuffled transit cards and the face-up pile.
      * 
      * @author Mark Eliseo and Austin Gage
      * @version April 2019
@@ -75,6 +75,23 @@ public class Tickets
             faceups[i] = trainDeck.get(i);
             trainDeck.remove(i);
         }
+        boolean rainbows = false;
+        while (!rainbows) {
+            int rainbowCount = 0;
+            for (int i = 0; i < faceups.length; i++) {
+                if (faceups[i].color() == Colors.RAINBOW) {
+                    rainbowCount++;
+                }
+            }
+            if (rainbowCount >= 3) {
+                for (int i = 0; i < faceups.length; i++) {
+                    faceups[i] = trainDeck.get(i);
+                    trainDeck.remove(i);
+                }
+            } else {
+                rainbows = true;
+            }
+        }
     }
 
     /**
@@ -105,12 +122,36 @@ public class Tickets
         try {
             Ticket output = faceups[choice];
             faceups[choice] = this.draw(players);
+            this.checkFaceUps(players);
             return output;
         } catch (IndexOutOfBoundsException e) {
             System.err.println(e);
             System.exit(1);
         }
         return null;
+    }
+
+    /**
+     * Check and handle the possibility of 3 rainbow cards in the faceups pile.
+     * 
+     * @author Mark Eliseo
+     * @version April 2019
+     * @param players The list of players currently playing the game.
+     */
+    public void checkFaceUps(ArrayList<Player> players) {
+        //check how many rainbow cards are in the faceup line.
+        int rainbowCount = 0;
+        for (int i = 0; i < faceups.length; i++) {
+            if (faceups[i].color() == Colors.RAINBOW) rainbowCount++;
+        }
+        
+        //If there are 3 or more rainbow cards present, reset all 5 cards and check for rainbows again.
+        if (rainbowCount >= 3) {
+            for (int i = 0; i < faceups.length; i++) {
+                faceups[i] = this.draw(players);
+            }
+            this.checkFaceUps(players);
+        }
     }
 
     /**
