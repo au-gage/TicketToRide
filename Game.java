@@ -17,8 +17,8 @@ import java.nio.file.*;
  * what name
  * implements player, board, paths, and run the playing of the game
  *
- * @author Austin Gage and Mark Eliseo
- * @version (a version number or a date)
+ * @author Austin Gage, Mark Eliseo, Cheryl McClean,Rose Wilson, and Derek McPhail 
+ * @version (4/29/19)
  */
 public class Game extends JPanel implements MouseListener
 {
@@ -38,7 +38,10 @@ public class Game extends JPanel implements MouseListener
     boolean turnOver = false;
     boolean lastTurnBegins = false;
     int maxTurn = -99;
-
+    /**
+     * constructor for the game class
+     * makes the board and players
+     */
     public Game()
     {
         setPreferredSize(new Dimension(910,1024)); //Dimension subject to change
@@ -385,12 +388,19 @@ public class Game extends JPanel implements MouseListener
         frame.setVisible(true);
 
     }
-
+    /**
+     * a main method to display the GUI
+     * 
+     * @param args not utilized
+     */
     public static void main(String[] args)
     {
         createAndShowGUI();
     }
-
+    /**
+     * initializes Player objects
+     * based on input that from user
+     */
     protected void MakePlayers()
     {
         Integer[] numSet = {2,3,4};
@@ -500,7 +510,10 @@ public class Game extends JPanel implements MouseListener
 
         DealDestCards();
     }
-
+    /**
+     * deals the destination cards to players
+     * to be utilized at start of game
+     */
     private void DealDestCards()
     {
         for(int i = 0;i < players.size();i++)
@@ -532,7 +545,9 @@ public class Game extends JPanel implements MouseListener
             }
         }
     }
-
+    /**
+     * initializes a turn
+     */
     private void game()
     {
         boolean gameOver = false;
