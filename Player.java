@@ -42,6 +42,10 @@ public class Player
         hand.put(Colors.ORANGE, 0);
         hand.put(Colors.RAINBOW, 0);
         hand.put(Colors.NONE, 0);
+<<<<<<< HEAD
+=======
+
+>>>>>>> e78743f601a911eb60cc369f6e8c32913f40cdc2
         score=new Score();
     }
 

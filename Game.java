@@ -135,7 +135,7 @@ public class Game extends JPanel implements MouseListener
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
                     amtOfMoves -= 2;
                 }
-                
+
             }
             else
             {
@@ -152,7 +152,7 @@ public class Game extends JPanel implements MouseListener
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
                     amtOfMoves -= 2;
                 }
-                
+
             }
             else
             {
@@ -169,7 +169,7 @@ public class Game extends JPanel implements MouseListener
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
                     amtOfMoves -= 2;
                 }
-                
+
             }
             else
             {
@@ -186,7 +186,7 @@ public class Game extends JPanel implements MouseListener
                     players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
                     amtOfMoves -= 2;
                 }
-                
+
             }
             else
             {
@@ -371,63 +371,45 @@ public class Game extends JPanel implements MouseListener
 
     protected void MakePlayers()
     {
-        int amt = 0;
-        while(amt == 0)
-        {
-            String num = JOptionPane.showInputDialog(null, "Enter the Amount of Players",
-                    "Input 2-4", JOptionPane.QUESTION_MESSAGE);
-
-            try
-            {
-                amt = Integer.parseInt(num);
-            }
-            catch(Exception e)
-            {
-            }
-            if(amt > 4 || amt < 2)
-            {
-                amt = 0;
-            }
-        }
+        Integer[] numSet = {2,3,4};
+        int amt = JOptionPane.showOptionDialog(null, "Select the Amount of Players",
+                "Players", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, numSet, numSet[0]);
+        amt += 2;
         for(int i = 1;i <= amt;i++)
         {
             String name = JOptionPane.showInputDialog(null, "Enter the name of Player " + i,
                     "Input a name", JOptionPane.QUESTION_MESSAGE);
             boolean getColor = false;
-
             while(!getColor)
             {
                 boolean colorUsed = false;
-                String currentColor = JOptionPane.showInputDialog(null, "Enter the color of Player " + i,
-                        "Input blue,white,purple, or yellow", JOptionPane.QUESTION_MESSAGE);
-                currentColor = currentColor.toUpperCase();
-                if(currentColor.equals("BLUE") || currentColor.equals("WHITE") || currentColor.equals("PURPLE")
-                || currentColor.equals("YELLOW"))
+                Colors[] colorSet = {Colors.BLUE, Colors.WHITE, Colors.PURPLE, Colors.YELLOW};
+                int colorIndex = JOptionPane.showOptionDialog(null, "Select the color of Player " + i,
+                        "Choose a Color: ", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, colorSet, colorSet[0]);
+                Colors currentColor = colorSet[colorIndex];
+                if(i == 1)
                 {
-                    if(i == 1)
+                    players.add(new Player(currentColor, name));
+                    getColor = true;
+                }
+                else
+                {
+                    for(int j = 0;j < players.size();j++)
                     {
-                        players.add(new Player(Colors.valueOf(currentColor),name));
-                        getColor = true;
+                        if (currentColor == players.get(j).getColor())
+                        {
+                            colorUsed = true;
+                        }
                     }
-                    else
+                    if(!colorUsed)
                     {
-                        for(int j = 0;j < players.size();j++)
-                        {
-                            if (Colors.valueOf(currentColor.toUpperCase()).equals(players.get(j).getColor()))
-                            {
-                                colorUsed = true;
-                            }
-                        }
-                        if(!colorUsed)
-                        {
-                            Colors color = Colors.valueOf(currentColor.toUpperCase());
-                            players.add(new Player(color,name));
-                            getColor = true;
-                        }
+                        players.add(new Player(currentColor, name));
+                        getColor = true;
                     }
                 }
             }
         }
+
         MakePaths();
     }
 
