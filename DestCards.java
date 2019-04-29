@@ -46,6 +46,7 @@ public class DestCards
         {
             System.exit(0);
         }
+        //add each dest card from images to deck
         destCards.add(new DestCard(images.get(0),"Central Park", "Chelsea"));
         destCards.add(new DestCard(images.get(1),"Central Park", "Chinatown"));
         destCards.add(new DestCard(images.get(2),"Central Park", "Gramercy Park"));
@@ -92,8 +93,10 @@ public class DestCards
      * 
      */
     public void shuffle() {
+        
         for (int i = 0; i < destCards.size(); i++) {
             Random r = new Random();
+            //recieves a sudorandom int to place next card
             int randomIndex = r.nextInt(destCards.size());
             DestCard temp = destCards.get(i);
             destCards.set(i, destCards.get(randomIndex));
@@ -103,12 +106,17 @@ public class DestCards
 
     /**
      * draws a card from the destination card deck
+     * 
+     * @return DestCard that was removed from deck
      */
     public DestCard draw(){
+        //if no cards are left, display it
         if (destCards.size() == 0) {
             JOptionPane.showMessageDialog(null,"There are no more Destination Cards left");
             return null;
+        
         } else {
+            //cards are available, remove from deck
             DestCard pickedUp = destCards.get(0);
             destCards.remove(0);
             return pickedUp;
