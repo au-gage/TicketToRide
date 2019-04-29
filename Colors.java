@@ -5,8 +5,8 @@
 /**
  * Enumeration class Colors - write a description of the enum class here
  *
- * @author Austin Gage
- * @version 4/12/2019
+ * @author Austin Gage, Rose Wilson, Cheryl McClean, Derek McPhail, and Mark Eliseo
+ * @version 4/29/2019
  */
 public enum Colors
 {

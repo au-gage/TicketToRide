@@ -9,8 +9,8 @@ import java.nio.file.*;
 /**
  * Class to contain transit card objects and handle drawing or picking up cards.
  *
- * @author Mark Eliseo and Austin Gage
- * @version April 2019
+ * @author Mark Eliseo, Austin Gage, Derek McPhail, Cheryl McClean, and Rose Wilson
+ * @version April 29 2019
  */
 public class Tickets
 {
@@ -112,8 +112,6 @@ public class Tickets
     /**
      * Draws card from the set of faceup cards.
      * 
-     * @author Mark Eliseo
-     * @version April 2019
      * @param choice The index of what card is picked up.
      * @param players The list of players currently playing the game.
      * @return The card that is selected from the face-up cards.
@@ -134,8 +132,6 @@ public class Tickets
     /**
      * Check and handle the possibility of 3 rainbow cards in the faceups pile.
      * 
-     * @author Mark Eliseo
-     * @version April 2019
      * @param players The list of players currently playing the game.
      */
     public void checkFaceUps(ArrayList<Player> players) {
@@ -157,8 +153,6 @@ public class Tickets
     /**
      * Shuffles the deck of transit tickets in a pseudorandom order.
      * 
-     * @author Mark Eliseo
-     * @version April 2019
      */
     public void shuffle() {
         for (int i = 0; i < trainDeck.size(); i++) {
@@ -173,8 +167,6 @@ public class Tickets
     /**
      * Resets the deck when it is empty by gathering all discarded cards and reshuffling.
      * 
-     * @author Mark Eliseo
-     * @version April 2019
      * @param players The list of players currently playing the game.
      */
     public void reset(ArrayList<Player> players) {
