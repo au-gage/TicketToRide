@@ -41,6 +41,7 @@ public class Player
         hand.put(Colors.RED, 0);
         hand.put(Colors.ORANGE, 0);
         hand.put(Colors.RAINBOW, 0);
+        hand.put(Colors.NONE, 0);
         
         score=new Score();
     }
