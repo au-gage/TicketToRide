@@ -315,29 +315,32 @@ public class Game extends JPanel implements MouseListener
         {
             if(edges.get(i).getIsCaptured())
             {
-                Player temp = edges.get(i).getWhoCaptured();
-                if(temp.color == Colors.BLUE)
+                if(edges.get(i).getWhoCaptured() != null)
                 {
-                    g.setColor(Color.BLUE);
+                    Player temp = edges.get(i).getWhoCaptured();
+                    if(temp.color == Colors.BLUE)
+                    {
+                        g.setColor(Color.BLUE);
+                    }
+                    else if(temp.color == Colors.WHITE)
+                    {
+                        g.setColor(Color.WHITE);
+                    }
+                    else if(temp.color == Colors.PURPLE)
+                    {
+                        g.setColor(Color.MAGENTA);
+                    }
+                    else if(temp.color == Colors.YELLOW)
+                    {
+                        g.setColor(Color.YELLOW);
+                    }
+                    int x1 = edges.get(i).x1;
+                    int y1 = edges.get(i).y1;
+                    int x2 = edges.get(i).x2;
+                    int y2 = edges.get(i).y2;
+                    g2.setStroke(new BasicStroke(5));
+                    g2.drawLine(x1,y1,x2,y2);
                 }
-                else if(temp.color == Colors.WHITE)
-                {
-                    g.setColor(Color.WHITE);
-                }
-                else if(temp.color == Colors.PURPLE)
-                {
-                    g.setColor(Color.MAGENTA);
-                }
-                else if(temp.color == Colors.YELLOW)
-                {
-                    g.setColor(Color.YELLOW);
-                }
-                int x1 = edges.get(i).x1;
-                int y1 = edges.get(i).y1;
-                int x2 = edges.get(i).x2;
-                int y2 = edges.get(i).y2;
-                g2.setStroke(new BasicStroke(5));
-                g2.drawLine(x1,y1,x2,y2);
             }
         }
     }

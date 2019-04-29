@@ -42,10 +42,6 @@ public class Player
         hand.put(Colors.ORANGE, 0);
         hand.put(Colors.RAINBOW, 0);
         hand.put(Colors.NONE, 0);
-<<<<<<< HEAD
-=======
-
->>>>>>> e78743f601a911eb60cc369f6e8c32913f40cdc2
         score=new Score();
     }
 
@@ -173,7 +169,14 @@ public class Player
         }
 
         //cannot take route that is already taken
-        if(choice.getIsCaptured()){
+        
+        if(choice.getIsCaptured() && choice.getWhoCaptured() == null)
+        {
+            JOptionPane.showMessageDialog(null, "Attempt to capture a double route that has already been captured with two players",
+                "alert",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if(choice.getIsCaptured()){
             JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
             return;
         }
@@ -197,23 +200,23 @@ public class Player
                 }
                 else if(choice.getColor() == Colors.GREEN)
                 {
-                    redPay++;
+                    greenPay++;
                 }
                 else if(choice.getColor() == Colors.BLACK)
                 {
-                    redPay++;
+                    blackPay++;
                 }
                 else if(choice.getColor() == Colors.BLUE)
                 {
-                    redPay++;
+                    bluePay++;
                 }
                 else if(choice.getColor() == Colors.ORANGE)
                 {
-                    redPay++;
+                    orangePay++;
                 }
                 else if(choice.getColor() == Colors.PINK)
                 {
-                    redPay++;
+                    pinkPay++;
                 }
                 else if(choice.getColor() == Colors.RAINBOW)
                 {
@@ -269,32 +272,32 @@ public class Player
         score.updateScoreRoute(choice);
         //add cars to route
         choice.Captured(true,this);
-
+        edges.remove(j);
         edges.add(j,choice);
-        System.out.println(j);
         String word = edges.get(j).getStart() + edges.get(j).getEnd();
         if(j != 0)
         {
             if(players.size() == 2)
             {
-                if(j != edges.size() -1)
+                if(j != edges.size() - 1)
                 {
                     if(word.equals(edges.get(j-1).getStart() + edges.get(j-1).getEnd()))
                     {
-                        edges.remove(j+1);
+                        edges.get(j-1).Captured(true,null);
                     }
                     else if(word.equals(edges.get(j+1).getStart() + edges.get(j+1).getEnd()))
                     {
-                        edges.remove(j-1);
+                        edges.get(j+1).Captured(true,null);
                     }
                 }
                 else if(j == edges.size() - 1)
                 {
                     if(word.equals(edges.get(j+1).getStart() + edges.get(j+1).getEnd()))
                     {
-                        edges.remove(j-1);
+                        edges.get(j-1).Captured(true,null);
                     }   
                 }
+                
             }
         }
         //amtOfTaxis gets subtracted by the length of the route
