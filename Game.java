@@ -230,8 +230,9 @@ public class Game extends JPanel implements MouseListener
         else if(x >= 540 && x <= 685 && y >=0 && y <= 50 && amtOfMoves == 2)
         {
             players.get(turn % players.size()).claimRoute(edges);
-
+            amtOfMoves -= 2;
         }
+        //End turn pressed, only shows up when player is out of moves
         else if(x >= 540 && x <= 685 && y >= 400 && y <= 450 && amtOfMoves == 0)
         {
             turnOver = false; 
