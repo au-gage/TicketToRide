@@ -184,15 +184,17 @@ public class Player
 
         //choose payment options
         //Think this should run off of the deck of the player, do like "RED-2" or something
-        Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RED, 
-                Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK};
+        Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RAINBOW, 
+                Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.RED};
         int tempPay = 0;
         int tempRainbow = 0;
         Colors[] noneColor = new Colors[choice.length];
         int payIndex = 0;
+        Colors previousColor = choice.getColor();
         for (int i = 0; i < choice.length; i ++){
             Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
-                    "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
+                    "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,previousColor);
+            previousColor = payment;
             if(choice.getColor() == Colors.NONE)
             {
                 noneColor[i] = payment;
