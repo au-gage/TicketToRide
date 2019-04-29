@@ -1,9 +1,3 @@
- 
-
- 
-
-
-
 import java.io.File;
 import java.util.Scanner;
 import java.awt.*;
@@ -12,7 +6,7 @@ import javax.swing.*;
 
 /**
  *will probably be combined with visual, weel see--tsk tsk Rose, its We'll.-Austin
- *
+ * **Not Used**
  * @author Austin Gage
  * @version 4/16/2019
  */

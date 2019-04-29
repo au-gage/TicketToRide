@@ -1,14 +1,10 @@
- 
-
- 
-
 
 /**
  * cars
  * max number of cars: 15
  * decrement cars everytime is used
  * instance that is image of car
- *
+ * **Not used**
  * @author (your name)
  * @version (a version number or a date)
  */

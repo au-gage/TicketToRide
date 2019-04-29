@@ -35,6 +35,7 @@ public class Game extends JPanel implements MouseListener
     private Image destCardBack;
     private Image transCardBack;
     private ArrayList<Image> tickets = new ArrayList<>();
+    private ArrayList<String> tourists = new ArrayList<>();
     boolean turnOver = false;
     boolean lastTurnBegins = false;
     int maxTurn = -99;
@@ -507,11 +508,22 @@ public class Game extends JPanel implements MouseListener
 
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,270,680,482,698));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,690,479,710));
+        
+        //Add Tourist locations to seperate arrayList
+        tourists.add("Central Park");
+        tourists.add("Times Square");
+        tourists.add("United Nations");
+        tourists.add("Empire State Building");
+        tourists.add("Chelsea");
+        tourists.add("Greenwich Village");
+        tourists.add("Chinatown");
+        tourists.add("Wall Street");
+        tourists.add("Brooklyn");
 
         DealDestCards();
     }
     /**
-     * deals the destination cards to players
+     * deals the destination and transport cards to players
      * to be utilized at start of game
      */
     private void DealDestCards()
@@ -543,6 +555,8 @@ public class Game extends JPanel implements MouseListener
                 players.get(i).destHand.add(dests[0]);
                 players.get(i).destHand.add(dests[1]);
             }
+            players.get(i).drawDeckTransTicket(ticketDeck,0,players);
+            players.get(i).drawDeckTransTicket(ticketDeck,0,players);
         }
     }
     /**

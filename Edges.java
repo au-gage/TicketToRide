@@ -18,6 +18,7 @@ public class Edges
     private Colors color;
     protected int length;
     private boolean isCaptured;
+    private boolean connectsTourist;
     /**
      * constructor for uncaptured Edges class
      * 
