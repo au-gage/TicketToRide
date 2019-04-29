@@ -7,7 +7,7 @@
  * if captured
  * Who Captured
  *
- * @author Austin Gage
+ * @author Austin Gage, Rose Wilson, Cheryl McClean, Derek McPhail, Mark Eliseo
  * @version 4/12/2019
  */
 public class Edges
@@ -18,7 +18,16 @@ public class Edges
     private Colors color;
     protected int length;
     private boolean isCaptured;
-
+    /**
+     * constructor for uncaptured Edges class
+     * 
+     * @param start of edge
+     * @param end of edge
+     * @param color of edge
+     * @parma length of edge
+     * @param x1,y1,x2,y2 pixel position
+     * 
+     */
     public Edges(String start, String end,Colors color, int length,int x1, int y1,int x2, int y2)
     {
         this.start = start;
@@ -33,6 +42,16 @@ public class Edges
         whoCaptured = null;
     }
 
+    /**
+     * constructor for captured Edges class
+     * 
+     * @param start of edge
+     * @param end of edge
+     * @param color of edge
+     * @parma length of edge
+     * @param x1,y1,x2,y2 pixel position
+     * @param isCaptured signifying edge is captured
+     */
     public Edges(String start, String end,Colors color, int length,int x1, int y1,int x2, int y2,boolean isCaptured)
     {
         this.start = start;
@@ -50,46 +69,67 @@ public class Edges
     /**
      * Called when a path is attempted to be captured when it is already captured
      * 
+     * @return boolean isCaptured
      */
     public boolean getIsCaptured()
     {
         return isCaptured;
     }
+    /**
+     * sets value of isCaptured to true
+     * 
+     */
     public void setIsCaptured()
     {
         isCaptured = true;
     }
+    /**
+     * returns whether edge is captured
+     * 
+     * @param start and end
+     * @return boolean
+     */
     public boolean getIsCaptured(String start, String end)
     {
         return false;
     }
-
+    /**
+     * accessor to whoCaptured
+     */
     public Player getWhoCaptured()
     {
         return whoCaptured;
     }
-
+    /**
+     * accessor to start
+     */
     public String getStart(){
-         return start;
+        return start;
     }
-    
-
+    /**
+     * accessor to color
+     */
     public Colors getColor()
     {
         return color;
     }
-
+    /**
+     * accessor to length
+     */
     public int getLength()
     {
         return length;
     }
-    
 
-
+    /**
+     * accessor to end
+     */
     public String getEnd(){
         return end;
     }
-
+    /**
+     * accessor to is Captured and whoCaptured
+     */
     public void Captured(boolean isCaptured,Player whoCaptured)
     {
         this.isCaptured = isCaptured;
