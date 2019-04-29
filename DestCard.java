@@ -9,46 +9,71 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
 /**
- *
- * @author (your name)
- * @version (a version number or a date)
+ *class object to contain data for each destination card.
+ * @author (Mark Eliseo,Cheryl McClean, Rose Wilson, Austin Gage, Derek McPhail )
+ * @version (4/29/19)
  */
 public class DestCard
 {
+    //instance variables
     private Image image;
     private String start;
     private String end;
+    /**
+     * constructor for DestCard
+     * 
+     * @param image to set the card to
+     * @param start point of the card
+     * @param end point of the card
+     */
     public DestCard(Image image,String start, String end)
     {
         this.image = image;
         this.start = start;
         this.end = end;
     }
-
+    /**
+     * accessor to get image
+     * 
+     * @return image of card
+     */
     public Image getImage()
     {
         return image;
     }
-
+    /**
+     * accessor to get start point
+     * 
+     * @return start of card
+     */
     public String getStart()
     {
         return start;
     }
-
+    /**
+     * accessor to get end
+     * 
+     * @return end of card
+     */
     public String getEnd()
     {
         return end;
     }
-
+    
     /**
      * Will do once we have the players delt cards
      */
-    public void returnCard(){
+    //public void returnCard(){
 
-    }
+    //}
 
     /**
      * Returns the value of a destination card 
+     * 
+     * @param route, edge of card
+     * @param card the destination card to calculate value
+     * 
+     * @return value of card
      */
     public static int destCardValues(Edges route, DestCard card){
         int value = 0; 
@@ -254,7 +279,15 @@ public class DestCard
 
         return value;
     }
-
+    /**
+     * determines if destcard is complete
+     * 
+     * @param edges current state of games egdes
+     * @param start of dest card
+     * @param end of dest card
+     * 
+     * @return boolean 
+     */
     public boolean destCardCompleted(ArrayList<Edges> edges, String start, String end) {
         if (start.equals(end)) return true;
         boolean boolStart = false;
@@ -274,7 +307,11 @@ public class DestCard
         }
         return false;
     }
-    
+    /**
+     * main method to run tests
+     * 
+     * @param args not utilized
+     */
     public static void main(String[] args) {
         Player player = new Player(Colors.BLUE, "Kevin");
         
