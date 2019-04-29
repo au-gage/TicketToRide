@@ -13,6 +13,7 @@ public class Player
     protected String name;
     protected Score score;
     protected ArrayList<DestCard> destHand = new ArrayList<>();
+    protected ArrayList<Edges> capturedEdges = new ArrayList<>();
     //protected Image 
     protected boolean isTurn;
     int amtOfTaxis = 15;
@@ -314,6 +315,7 @@ public class Player
         //add cars to route
         choice.Captured(true,this);
         edges.set(j,choice);
+        this.capturedEdges.add(choice);
         String word = edges.get(j).getStart() + edges.get(j).getEnd();
         if(j != 0)
         {
