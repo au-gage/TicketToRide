@@ -98,35 +98,35 @@ public class Game extends JPanel implements MouseListener
         //Draw face up Card, starting with first, second, etc
         if(x >= 700 && x <= 900 && y >=0 && y <= 119)
         {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves);
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
             if(ticketDeck.faceups[0].color() == Colors.RAINBOW)
                 amtOfMoves--;
             amtOfMoves--;
         }
         else if(x >= 700 && x <= 900 && y >=120 && y <= 239)
         {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves);
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
             if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
                 amtOfMoves--;
             amtOfMoves--;
         }
         else if(x >= 700 && x <= 900 && y >=240 && y <= 359)
         {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves);
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
             if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
                 amtOfMoves--;
             amtOfMoves--;
         } 
         else if(x >= 700 && x <= 900 && y >=360 && y <= 479)
         {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves);
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
             if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
                 amtOfMoves--;
             amtOfMoves--;
         }
         else if(x >= 700 && x <= 900 && y >=480 && y <= 599)
         {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves);
+            players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
             if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
                 amtOfMoves--;
             amtOfMoves--;
@@ -144,7 +144,7 @@ public class Game extends JPanel implements MouseListener
         //Draw from transport deck
         else if(x >= 800 && x <= 900 && y >= 598 && y <= 795)
         {
-            
+            players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves,players);
         }
         //540,0,145,50 Claim Route button pressed
         else if(x >= 540 && x <= 685 && y >=0 && y <= 50)

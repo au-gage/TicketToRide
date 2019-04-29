@@ -53,13 +53,13 @@ public class Player
      * @param choice, which face up card to choose
      * @param draw, the number of draws the player has drawn this turn
      */
-    protected int drawTransTicket( Tickets deck, int choice,int draw){
+    protected int drawTransTicket( Tickets deck, int choice,int draw, ArrayList<Player> players ){
         //if second draw end turn
         if (draw == 0){
             isTurn = false;
         }
         //pick up card
-        Colors temp =deck.pickup(choice).color();
+        Colors temp =deck.pickup(choice, players).color();
         //If player has already drawn a card and attempts to draw a rainbow card
         if(!(draw == 1 && temp == Colors.RAINBOW))
             hand.put(temp,hand.get(temp)+1);
@@ -74,13 +74,13 @@ public class Player
 
     }
 
-    protected int drawDeckTransTicket(Tickets deck, int draw){
+    protected int drawDeckTransTicket(Tickets deck, int draw, ArrayList<Player> players){
         //if second draw end turn
         if (draw == 0){
             isTurn = false;
         }
         //pick up card
-        Colors temp =deck.draw().color();
+        Colors temp =deck.draw(players).color();
         hand.put(temp,hand.get(temp)+1);
 
         draw --;
