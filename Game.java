@@ -219,7 +219,7 @@ public class Game extends JPanel implements MouseListener
             }
 
             //Draw from Dest deck
-            else if(x >= 681 && x <= 797 && y >= 597 && y <= 792 && amtOfMoves > 0)
+            else if(x >= 681 && x <= 797 && y >= 597 && y <= 792 && amtOfMoves > 1)
             {
                 if(destDeck.destCards.size() > 0)
                 {
