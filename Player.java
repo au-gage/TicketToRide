@@ -2,14 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 /**
- * color
- * name
- * points
- * make moves
- * have 
+ *Player class where the actions that players can take are implemented
  *
- * @author Rose Wilson
- * @version 4/14/19
+ * @author Rose Wilson, Austin Gage, Cheryl McClean, Derek McPhail, and Mark Eliseo
+ * @version 4/29/19
  */
 public class Player
 {
@@ -53,6 +49,7 @@ public class Player
      * @param deck of transportation cards in which to draw from
      * @param choice, which face up card to choose
      * @param draw, the number of draws the player has drawn this turn
+     * @param players, the players of the game
      */
     protected int drawTransTicket( Tickets deck, int choice,int draw, ArrayList<Player> players ){
         //if second draw end turn
@@ -77,7 +74,13 @@ public class Player
         return draw;
 
     }
-
+    /**
+     * draws a face down transporation ticket from deck
+     * 
+     * @param deck, the current status of the deck in the game
+     * @param draw, the number of draws currently used up
+     * @param players the status of the players of the game
+     */
     protected int drawDeckTransTicket(Tickets deck, int draw, ArrayList<Player> players){
         //if second draw end turn
         if (draw == 0){
@@ -91,7 +94,12 @@ public class Player
         return draw;
 
     }
-
+    /**
+     * draws two destination tickets
+     * gives player option to discard one
+     * 
+     * @param deck current status of the deck
+     */
     protected void drawDestTickets(DestCards deck){
         //add two dest cards to hand
         // destHand.add(deck.draw());
@@ -141,7 +149,12 @@ public class Player
             destHand.add(dests.get(0));
         }
     }
-
+    /**
+     * allows the player to claim a route from a to b
+     * 
+     * @param edges, current status of game's edges
+     * @param players, current statuc of game's players
+     */
     protected int claimRoute(ArrayList<Edges> edges,ArrayList<Player> players){
         //ask which path
         String[] choices = new String[edges.size()];
@@ -331,7 +344,9 @@ public class Player
         amtOfTaxis = amtOfTaxis - choice.length;
         return 2;
     }
-
+    /**
+     * accessor method to get the player's color
+     */
     protected Colors getColor()
     {
         return color;
