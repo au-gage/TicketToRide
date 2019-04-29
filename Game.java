@@ -35,6 +35,7 @@ public class Game extends JPanel implements MouseListener
     private Image destCardBack;
     private Image transCardBack;
     private ArrayList<Image> tickets = new ArrayList<>();
+    boolean turnOver = false;
 
     public Game()
     {
@@ -125,45 +126,93 @@ public class Game extends JPanel implements MouseListener
         int x = e.getX();
         int y = e.getY();
         //Draw face up Card, starting with first, second, etc
-        if(x >= 700 && x <= 900 && y >=0 && y <= 119)
+        if(x >= 700 && x <= 900 && y >=0 && y <= 119 && amtOfMoves > 0)
         {
             if(ticketDeck.faceups[0].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
-            amtOfMoves--;
+            {
+                if(amtOfMoves == 2)
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
+                    amtOfMoves -= 2;
+                }
+                
+            }
+            else
+            {
+                players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
+                amtOfMoves--;    
+            }
         }
-        else if(x >= 700 && x <= 900 && y >=120 && y <= 239)
+        else if(x >= 700 && x <= 900 && y >=120 && y <= 239 && amtOfMoves > 0)
         {
             if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
-            amtOfMoves--;
+            {
+                if(amtOfMoves == 2)
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
+                    amtOfMoves -= 2;
+                }
+                
+            }
+            else
+            {
+                players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
+                amtOfMoves--;    
+            }
         }
-        else if(x >= 700 && x <= 900 && y >=240 && y <= 359)
+        else if(x >= 700 && x <= 900 && y >=240 && y <= 359 && amtOfMoves > 0)
         {
             if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
-            amtOfMoves--;
+            {
+                if(amtOfMoves == 2)
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
+                    amtOfMoves -= 2;
+                }
+                
+            }
+            else
+            {
+                players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
+                amtOfMoves--;    
+            }
         } 
-        else if(x >= 700 && x <= 900 && y >=360 && y <= 479)
+        else if(x >= 700 && x <= 900 && y >=360 && y <= 479 && amtOfMoves > 0)
         {
             if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
-
-            amtOfMoves--;
+            {
+                if(amtOfMoves == 2)
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
+                    amtOfMoves -= 2;
+                }
+                
+            }
+            else
+            {
+                players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
+                amtOfMoves--;    
+            }
         }
-        else if(x >= 700 && x <= 900 && y >=480 && y <= 599)
+        else if(x >= 700 && x <= 900 && y >=480 && y <= 599 && amtOfMoves > 0)
         {
             if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
-            amtOfMoves--;
+            {
+                if(amtOfMoves == 2)
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                    amtOfMoves -= 2;
+                }
+            }
+            else
+            {
+                players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                amtOfMoves--;    
+            }
         }
 
         //Draw from Dest deck
-        else if(x >= 681 && x <= 797 && y >= 597 && y <= 792)
+        else if(x >= 681 && x <= 797 && y >= 597 && y <= 792 && amtOfMoves > 0)
         {
             if(destDeck.destCards.size() > 0)
             {
@@ -172,23 +221,22 @@ public class Game extends JPanel implements MouseListener
             }
         }
         //Draw from transport deck
-        else if(x >= 800 && x <= 900 && y >= 598 && y <= 795)
+        else if(x >= 800 && x <= 900 && y >= 598 && y <= 795 && amtOfMoves > 0)
         {
-<<<<<<< HEAD
-
             players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves,players);
             amtOfMoves--;
-
-=======
-            players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves,players);
-            amtOfMoves--;
->>>>>>> 0795652282ee2b53eb4b7ccc3f8773fcf7b86a75
         }
         //540,0,145,50 Claim Route button pressed
-        else if(x >= 540 && x <= 685 && y >=0 && y <= 50)
+        else if(x >= 540 && x <= 685 && y >=0 && y <= 50 && amtOfMoves == 2)
         {
             players.get(turn % players.size()).claimRoute(edges);
 
+        }
+        else if(x >= 540 && x <= 685 && y >= 400 && y <= 450 && amtOfMoves == 0)
+        {
+            turnOver = false; 
+            turn++;
+            amtOfMoves = 2;
         }
 
         //edges.get(turn).Captured(true,players.get(turn%players.size()));
@@ -196,9 +244,9 @@ public class Game extends JPanel implements MouseListener
         //e.consume();
         repaint();
         if(amtOfMoves <= 0)
-        {
-            turn++;
-            amtOfMoves = 2;
+        {            
+            turnOver = true;
+            repaint();
         }
 
     }
@@ -220,11 +268,20 @@ public class Game extends JPanel implements MouseListener
 
         g2.fillRect(540,0,145,50);
         g2.fillRect(540,200,145,50);
+
         g2.setColor(Color.BLACK);
         Font font = new Font("SERIF",Font.PLAIN,20);
         g2.setFont(font);
         g2.drawString("Claim Route", 545,25);
         g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,545,215);
+        if(turnOver)
+        {
+            g2.setColor(Color.WHITE);
+            g2.fillRect(540,400,145,50);
+            g2.setColor(Color.BLACK);
+            g2.drawString("End Turn", 550,425);
+        }
+
         if(players.size() > 1)
         {
             for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
