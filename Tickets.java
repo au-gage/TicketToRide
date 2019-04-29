@@ -18,7 +18,7 @@ public class Tickets
     protected Ticket[] faceups = new Ticket[5];
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     /**
-     * Initializes the deck of shuffled cards and the face-up pile.
+     * Initializes the deck of shuffled transit cards and the face-up pile.
      * 
      * @author Mark Eliseo and Austin Gage
      * @version April 2019
