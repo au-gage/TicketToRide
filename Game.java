@@ -229,7 +229,7 @@ public class Game extends JPanel implements MouseListener
         //540,0,145,50 Claim Route button pressed
         else if(x >= 540 && x <= 685 && y >=0 && y <= 50 && amtOfMoves == 2)
         {
-            players.get(turn % players.size()).claimRoute(edges);
+            players.get(turn % players.size()).claimRoute(edges,players);
             amtOfMoves -= 2;
         }
         //End turn pressed, only shows up when player is out of moves
@@ -493,9 +493,6 @@ public class Game extends JPanel implements MouseListener
 
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,270,680,482,698));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,690,479,710));
-
-        edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,272,682,479,695));
-        edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,682,479,695));
 
         DealDestCards();
     }

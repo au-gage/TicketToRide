@@ -41,12 +41,7 @@ public class Player
         hand.put(Colors.RED, 0);
         hand.put(Colors.ORANGE, 0);
         hand.put(Colors.RAINBOW, 0);
-<<<<<<< HEAD
-
-=======
         hand.put(Colors.NONE, 0);
-        
->>>>>>> 07d68ce76f0a2d759bc71812141e6a053d8cadd2
         score=new Score();
     }
 
@@ -148,7 +143,7 @@ public class Player
         }
     }
 
-    protected void claimRoute(ArrayList<Edges> edges){
+    protected void claimRoute(ArrayList<Edges> edges,ArrayList<Player> players){
         //ask which path
 
         String[] choices = new String[edges.size()];
@@ -161,12 +156,16 @@ public class Player
         String choiceString = (String) JOptionPane.showInputDialog(null, "Select a route", 
                 "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
         Edges choice = edges.get(0);
+        boolean edgeFound = false;
         //transforms choice into edge
         int j = 0;
-        for (j = 0; j<edges.size();j++){
+        while (j < edges.size() && !edgeFound){
             if(choiceString.equals(edges.get(j).getStart() + "-" + edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " + edges.get(j).getColor())){
                 choice = edges.get(j);
+                edgeFound = true;
             }
+            else
+                j++;
         }
 
         //cannot take route that is already taken
@@ -266,7 +265,34 @@ public class Player
         score.updateScoreRoute(choice);
         //add cars to route
         choice.Captured(true,this);
+
         edges.add(j,choice);
+        System.out.println(j);
+        String word = edges.get(j).getStart() + edges.get(j).getEnd();
+        if(j != 0)
+        {
+            if(players.size() == 2)
+            {
+                if(j != edges.size() -1)
+                {
+                    if(word.equals(edges.get(j-1).getStart() + edges.get(j-1).getEnd()))
+                    {
+                        edges.remove(j+1);
+                    }
+                    else if(word.equals(edges.get(j+1).getStart() + edges.get(j+1).getEnd()))
+                    {
+                        edges.remove(j-1);
+                    }
+                }
+                else if(j == edges.size() - 1)
+                {
+                    if(word.equals(edges.get(j+1).getStart() + edges.get(j+1).getEnd()))
+                    {
+                        edges.remove(j-1);
+                    }   
+                }
+            }
+        }
         //amtOfTaxis gets subtracted by the length of the route
         amtOfTaxis = amtOfTaxis - choice.length;
     }
