@@ -34,6 +34,10 @@ public class Game extends JPanel implements MouseListener
     private Image background;
     private Image destCardBack;
     private Image transCardBack;
+    private ArrayList<Image> tickets = new ArrayList<>();
+    boolean turnOver = false;
+    boolean lastTurnBegins = false;
+    int maxTurn = -99;
 
     public Game()
     {
@@ -63,6 +67,34 @@ public class Game extends JPanel implements MouseListener
                 {
                     transCardBack = toolkit.getImage(file.toString());
                     transCardBack = transCardBack.getScaledInstance(119, 200, Image.SCALE_DEFAULT);
+                }
+                else if (file.toString().equals("fwdboardandtransport\\blackcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+
+                }
+                else if (file.toString().equals("fwdboardandtransport\\bluecard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+
+                }
+                else if (file.toString().equals("fwdboardandtransport\\colorcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+
+                }
+                else if (file.toString().equals("fwdboardandtransport\\greencard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+
+                }
+                else if (file.toString().equals("fwdboardandtransport\\orangecard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+
+                }
+                else if (file.toString().equals("fwdboardandtransport\\pinkcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+
+                }
+                else if (file.toString().equals("fwdboardandtransport\\redcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+
                 }
             }
         }
@@ -95,72 +127,135 @@ public class Game extends JPanel implements MouseListener
     {
         int x = e.getX();
         int y = e.getY();
-        //Draw face up Card, starting with first, second, etc
-        if(x >= 700 && x <= 900 && y >=0 && y <= 119)
+        if(turn != maxTurn + 1 || lastTurnBegins != true)
         {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves);
-            if(ticketDeck.faceups[0].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            amtOfMoves--;
-        }
-        else if(x >= 700 && x <= 900 && y >=120 && y <= 239)
-        {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves);
-            if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            amtOfMoves--;
-        }
-        else if(x >= 700 && x <= 900 && y >=240 && y <= 359)
-        {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves);
-            if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            amtOfMoves--;
-        } 
-        else if(x >= 700 && x <= 900 && y >=360 && y <= 479)
-        {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves);
-            if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            amtOfMoves--;
-        }
-        else if(x >= 700 && x <= 900 && y >=480 && y <= 599)
-        {
-            players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves);
-            if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
-                amtOfMoves--;
-            amtOfMoves--;
-        }
-
-        //Draw from Dest deck
-        else if(x >= 681 && x <= 797 && y >= 597 && y <= 792)
-        {
-            if(destDeck.destCards.size() > 0)
+            //Draw face up Card, starting with first, second, etc
+            if(x >= 700 && x <= 900 && y >=0 && y <= 119 && amtOfMoves > 0)
             {
-                players.get(turn % players.size()).drawDestTickets(destDeck);
-                amtOfMoves -= 2;
+                if(ticketDeck.faceups[0].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
+
+                }
+                else
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
+                    amtOfMoves--;    
+                }
             }
-        }
-        //Draw from transport deck
-        else if(x >= 800 && x <= 900 && y >= 598 && y <= 795)
-        {
+            else if(x >= 700 && x <= 900 && y >=120 && y <= 239 && amtOfMoves > 0)
+            {
+                if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
 
-        }
-        //540,0,145,50 Claim Route button pressed
-        else if(x >= 540 && x <= 685 && y >=0 && y <= 50)
-        {
-            players.get(turn % players.size()).claimRoute(edges);
+                }
+                else
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
+                    amtOfMoves--;    
+                }
+            }
+            else if(x >= 700 && x <= 900 && y >=240 && y <= 359 && amtOfMoves > 0)
+            {
+                if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
 
-        }
+                }
+                else
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
+                    amtOfMoves--;    
+                }
+            } 
+            else if(x >= 700 && x <= 900 && y >=360 && y <= 479 && amtOfMoves > 0)
+            {
+                if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
 
-        //edges.get(turn).Captured(true,players.get(turn%players.size()));
+                }
+                else
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
+                    amtOfMoves--;    
+                }
+            }
+            else if(x >= 700 && x <= 900 && y >=480 && y <= 599 && amtOfMoves > 0)
+            {
+                if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
+                {
+                    if(amtOfMoves == 2)
+                    {
+                        players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                        amtOfMoves -= 2;
+                    }
+                }
+                else
+                {
+                    players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                    amtOfMoves--;    
+                }
+            }
 
-        //e.consume();
-        repaint();
-        if(amtOfMoves == 0)
-        {
-            turn++;
-            amtOfMoves = 2;
+            //Draw from Dest deck
+            else if(x >= 681 && x <= 797 && y >= 597 && y <= 792 && amtOfMoves > 0)
+            {
+                if(destDeck.destCards.size() > 0)
+                {
+                    players.get(turn % players.size()).drawDestTickets(destDeck);
+                    amtOfMoves -= 2;
+                }
+            }
+            //Draw from transport deck
+            else if(x >= 800 && x <= 900 && y >= 598 && y <= 795 && amtOfMoves > 0)
+            {
+                players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves,players);
+                amtOfMoves--;
+            }
+            //540,0,145,50 Claim Route button pressed
+            else if(x >= 540 && x <= 685 && y >=0 && y <= 55 && amtOfMoves == 2)
+            {
+                amtOfMoves -= players.get(turn % players.size()).claimRoute(edges,players);
+            }
+            //End turn pressed, only shows up when player is out of moves
+            else if(x >= 540 && x <= 685 && y >= 400 && y <= 450 && amtOfMoves == 0)
+            {
+                turnOver = false; 
+                turn++;
+                amtOfMoves = 2;
+            }
+
+            if(players.get(turn % players.size()).amtOfTaxis <= 2 && !lastTurnBegins)
+            {
+                lastTurnBegins = true;
+                maxTurn = turn + players.size();
+            }
+
+            //e.consume();
+            repaint();
+            if(amtOfMoves <= 0)
+            {            
+                turnOver = true;
+                repaint();
+            }
         }
 
     }
@@ -180,19 +275,52 @@ public class Game extends JPanel implements MouseListener
         g.drawImage(background,0,0,this);
         g.drawImage(board, 0, 0, this);
 
-        g2.fillRect(540,0,145,50);
+        g2.fillRoundRect(540,5,145,50, 10, 10);
+        g2.fillRoundRect(540,200,145,50, 10, 10);
+
         g2.setColor(Color.BLACK);
-        Font font = new Font("SERIF",Font.PLAIN,24);
+        Font font = new Font("SERIF",Font.PLAIN,20);
         g2.setFont(font);
-        g2.drawString("Claim Route", 545,25);
+        g2.drawString("Claim Route", 560,35);
+        g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
+        if(turnOver)
+        {
+            g2.setColor(Color.WHITE);
+            g2.fillRoundRect(540,400,145,50, 10, 10);
+            g2.setColor(Color.BLACK);
+            g2.drawString("End Turn", 575,430);
+        }
+
+        if(lastTurnBegins)
+        {
+            g2.setColor(Color.WHITE);
+            g2.fillRect(540,600,145,50);
+            g2.setColor(Color.BLACK);
+            g2.drawString("Warning: Last Turn", 550,625);
+        }
+
         if(players.size() > 1)
         {
             for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
             {
-                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,750,this);
+                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,720,this);
+                //g.drawImage(players.get(turn % players.size()).hand.get(Colors.RED).getImage(),100 * i, 900,this);
             }
+            g2.setColor(Color.WHITE);
+            for(int i = 0;i < tickets.size();i++)
+            {
+                g.drawImage(tickets.get(i),100*i,900,this);
+                g.fillOval((100*i) + 10, 900,25,25);
+            }
+            g2.setColor(Color.BLACK);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLACK)),17,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLUE)),117,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RAINBOW)),217,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.GREEN)),317,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.ORANGE)),417,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.PINK)),517,917);
+            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RED)),617,917);
         }
-
 
         for(int i = 0;i < 5;i++)
         {
@@ -206,29 +334,32 @@ public class Game extends JPanel implements MouseListener
         {
             if(edges.get(i).getIsCaptured())
             {
-                Player temp = edges.get(i).getWhoCaptured();
-                if(temp.color == Colors.BLUE)
+                if(edges.get(i).getWhoCaptured() != null)
                 {
-                    g.setColor(Color.BLUE);
+                    Player temp = edges.get(i).getWhoCaptured();
+                    if(temp.color == Colors.BLUE)
+                    {
+                        g.setColor(Color.BLUE);
+                    }
+                    else if(temp.color == Colors.WHITE)
+                    {
+                        g.setColor(Color.WHITE);
+                    }
+                    else if(temp.color == Colors.PURPLE)
+                    {
+                        g.setColor(Color.MAGENTA);
+                    }
+                    else if(temp.color == Colors.YELLOW)
+                    {
+                        g.setColor(Color.YELLOW);
+                    }
+                    int x1 = edges.get(i).x1;
+                    int y1 = edges.get(i).y1;
+                    int x2 = edges.get(i).x2;
+                    int y2 = edges.get(i).y2;
+                    g2.setStroke(new BasicStroke(5));
+                    g2.drawLine(x1,y1,x2,y2);
                 }
-                else if(temp.color == Colors.WHITE)
-                {
-                    g.setColor(Color.WHITE);
-                }
-                else if(temp.color == Colors.PURPLE)
-                {
-                    g.setColor(Color.MAGENTA);
-                }
-                else if(temp.color == Colors.YELLOW)
-                {
-                    g.setColor(Color.YELLOW);
-                }
-                int x1 = edges.get(i).x1;
-                int y1 = edges.get(i).y1;
-                int x2 = edges.get(i).x2;
-                int y2 = edges.get(i).y2;
-                g2.setStroke(new BasicStroke(5));
-                g2.drawLine(x1,y1,x2,y2);
             }
         }
     }
@@ -262,63 +393,45 @@ public class Game extends JPanel implements MouseListener
 
     protected void MakePlayers()
     {
-        int amt = 0;
-        while(amt == 0)
-        {
-            String num = JOptionPane.showInputDialog(null, "Enter the Amount of Players",
-                    "Input 2-4", JOptionPane.QUESTION_MESSAGE);
-
-            try
-            {
-                amt = Integer.parseInt(num);
-            }
-            catch(Exception e)
-            {
-            }
-            if(amt > 4 || amt < 2)
-            {
-                amt = 0;
-            }
-        }
+        Integer[] numSet = {2,3,4};
+        int amt = JOptionPane.showOptionDialog(null, "Select the Amount of Players",
+                "Players", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, numSet, numSet[0]);
+        amt += 2;
         for(int i = 1;i <= amt;i++)
         {
             String name = JOptionPane.showInputDialog(null, "Enter the name of Player " + i,
                     "Input a name", JOptionPane.QUESTION_MESSAGE);
             boolean getColor = false;
-
             while(!getColor)
             {
                 boolean colorUsed = false;
-                String currentColor = JOptionPane.showInputDialog(null, "Enter the color of Player " + i,
-                        "Input blue,white,purple, or yellow", JOptionPane.QUESTION_MESSAGE);
-                currentColor = currentColor.toUpperCase();
-                if(currentColor.equals("BLUE") || currentColor.equals("WHITE") || currentColor.equals("PURPLE")
-                || currentColor.equals("YELLOW"))
+                Colors[] colorSet = {Colors.BLUE, Colors.WHITE, Colors.PURPLE, Colors.YELLOW};
+                int colorIndex = JOptionPane.showOptionDialog(null, "Select the color of Player " + i,
+                        "Choose a Color: ", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, colorSet, colorSet[0]);
+                Colors currentColor = colorSet[colorIndex];
+                if(i == 1)
                 {
-                    if(i == 1)
+                    players.add(new Player(currentColor, name));
+                    getColor = true;
+                }
+                else
+                {
+                    for(int j = 0;j < players.size();j++)
                     {
-                        players.add(new Player(Colors.valueOf(currentColor),name));
-                        getColor = true;
+                        if (currentColor == players.get(j).getColor())
+                        {
+                            colorUsed = true;
+                        }
                     }
-                    else
+                    if(!colorUsed)
                     {
-                        for(int j = 0;j < players.size();j++)
-                        {
-                            if (Colors.valueOf(currentColor.toUpperCase()).equals(players.get(j).getColor()))
-                            {
-                                colorUsed = true;
-                            }
-                        }
-                        if(!colorUsed)
-                        {
-                            Colors color = Colors.valueOf(currentColor.toUpperCase());
-                            players.add(new Player(color,name));
-                            getColor = true;
-                        }
+                        players.add(new Player(currentColor, name));
+                        getColor = true;
                     }
                 }
             }
         }
+
         MakePaths();
     }
 
@@ -384,10 +497,6 @@ public class Game extends JPanel implements MouseListener
 
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,270,680,482,698));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,690,479,710));
-
-        edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,272,682,479,695));
-        edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,682,479,695));
-
 
         DealDestCards();
     }
