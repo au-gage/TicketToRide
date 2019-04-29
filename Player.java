@@ -115,16 +115,16 @@ public class Player
                 if(i == 2)
                     choices[i] = "Both Cards";
                 else
-                    choices[i] = dests.get(i).getStart() + " " + dests.get(i).getEnd();
+                    choices[i] = dests.get(i).getStart() + " => " + dests.get(i).getEnd();
             }
-            String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1, or both cards", 
+            String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1 or both cards", 
                     "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
-            if(cardTaken.equals(dests.get(0).getStart() + " " + dests.get(0).getEnd()))
+            if(cardTaken.equals(dests.get(0).getStart() + " => " + dests.get(0).getEnd()))
             {
                 destHand.add(dests.get(0));
                 deck.add(dests.get(1));
             }
-            else if(cardTaken.equals(dests.get(1).getStart() + " " + dests.get(0).getEnd()))
+            else if(cardTaken.equals(dests.get(1).getStart() + " => " + dests.get(1).getEnd()))
             {
                 destHand.add(dests.get(1));
                 deck.add(dests.get(0));
@@ -139,13 +139,11 @@ public class Player
         {
             JOptionPane.showMessageDialog(null,"Only one dest Card left, dealt to your deck");
             destHand.add(dests.get(0));
-
         }
     }
 
     protected int claimRoute(ArrayList<Edges> edges,ArrayList<Player> players){
         //ask which path
-
         String[] choices = new String[edges.size()];
 
         for (int i = 0; i <edges.size(); i++){
@@ -161,9 +159,17 @@ public class Player
         //transforms choice into edge
         int j = 0;
         while (j < edges.size() && !edgeFound){
-            if(choiceString.equals(edges.get(j).getStart() + "-" + edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " + edges.get(j).getColor())){
-                choice = edges.get(j);
-                edgeFound = true;
+            if(choiceString.equals(edges.get(j).getStart() + "-" + edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " 
+                + edges.get(j).getColor())){
+                if(!edges.get(j).getIsCaptured())
+                {
+                    choice = edges.get(j);
+                    edgeFound = true;
+                }
+                else
+                {
+                    j++;
+                }
             }
             else
                 j++;
