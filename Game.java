@@ -244,7 +244,7 @@ public class Game extends JPanel implements MouseListener
                 amtOfMoves = 2;
             }
 
-            if(players.get(turn % players.size()).amtOfTaxis <= 2)
+            if(players.get(turn % players.size()).amtOfTaxis <= 2 && !lastTurnBegins)
             {
                 lastTurnBegins = true;
                 maxTurn = turn + players.size();
