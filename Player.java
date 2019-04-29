@@ -17,6 +17,7 @@ public class Player
     protected String name;
     protected Score score;
     protected ArrayList<DestCard> destHand = new ArrayList<>();
+    //protected Image 
     protected boolean isTurn;
     int amtOfTaxis = 15;
     //hashmap, keys are colors
@@ -59,11 +60,7 @@ public class Player
             isTurn = false;
         }
         //pick up card
-<<<<<<< HEAD
-        Colors temp = deck.pickup(choice).color();
-=======
         Colors temp =deck.pickup(choice, players).color();
->>>>>>> 57615028d9e79a282db67558c9d52fab8e5d8931
         //If player has already drawn a card and attempts to draw a rainbow card
         if(!(draw == 1 && temp == Colors.RAINBOW))
             hand.put(temp,hand.get(temp)+1);
@@ -158,9 +155,10 @@ public class Player
                 "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
         Edges choice = edges.get(0);
         //transforms choice into edge
-        for (int i = 0; i<edges.size();i++){
-            if(choiceString.equals(edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor())){
-                choice = edges.get(i);
+        int j = 0;
+        for (j = 0; j<edges.size();j++){
+            if(choiceString.equals(edges.get(j).getStart() + "-" + edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " + edges.get(j).getColor())){
+                choice = edges.get(j);
             }
         }
 
@@ -215,7 +213,8 @@ public class Player
         //update score
         score.updateScoreRoute(choice);
         //add cars to route
-
+        choice.Captured(true,this);
+        edges.add(j,choice);
         //amtOfTaxis gets subtracted by the length of the route
         amtOfTaxis = amtOfTaxis - choice.length;
     }
