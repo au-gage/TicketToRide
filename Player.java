@@ -33,7 +33,7 @@ public class Player
     {
         this.color = color;
         this.name = name;
-        
+
         hand.put(Colors.BLUE, 0);
         hand.put(Colors.GREEN, 0);
         hand.put(Colors.BLACK, 0);
@@ -41,8 +41,12 @@ public class Player
         hand.put(Colors.RED, 0);
         hand.put(Colors.ORANGE, 0);
         hand.put(Colors.RAINBOW, 0);
+<<<<<<< HEAD
+
+=======
         hand.put(Colors.NONE, 0);
         
+>>>>>>> 07d68ce76f0a2d759bc71812141e6a053d8cadd2
         score=new Score();
     }
 
@@ -67,7 +71,7 @@ public class Player
             hand.put(temp,hand.get(temp)+1);
         else if(draw == 2 && temp == Colors.RAINBOW)
             hand.put(temp,hand.get(temp)+1);
-        
+
         //if taxi end player turn
         if (temp == Colors.RAINBOW){
             draw--;
@@ -140,10 +144,9 @@ public class Player
         {
             JOptionPane.showMessageDialog(null,"Only one dest Card left, dealt to your deck");
             destHand.add(dests.get(0));
-            
+
         }
     }
-
 
     protected void claimRoute(ArrayList<Edges> edges){
         //ask which path
@@ -178,11 +181,43 @@ public class Player
                 Colors.RAINBOW, Colors.GREEN, Colors.ORANGE, Colors.PINK};
         int tempPay = 0;
         int tempRainbow = 0;
+        int redPay = 0,greenPay = 0,blackPay = 0,bluePay = 0,orangePay = 0,pinkPay = 0;
         for (int i = 0; i < choice.length; i ++){
 
             Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
                     "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
-            if (choice.getColor() == payment){
+            if(choice.getColor() == Colors.NONE)
+            {
+                if(choice.getColor() == Colors.RED)
+                {
+                    redPay++;
+                }
+                else if(choice.getColor() == Colors.GREEN)
+                {
+                    redPay++;
+                }
+                else if(choice.getColor() == Colors.BLACK)
+                {
+                    redPay++;
+                }
+                else if(choice.getColor() == Colors.BLUE)
+                {
+                    redPay++;
+                }
+                else if(choice.getColor() == Colors.ORANGE)
+                {
+                    redPay++;
+                }
+                else if(choice.getColor() == Colors.PINK)
+                {
+                    redPay++;
+                }
+                else if(choice.getColor() == Colors.RAINBOW)
+                {
+                    tempRainbow++;
+                }
+            }
+            else if (choice.getColor() == payment){
                 if(hand.get(payment) - tempPay >= 1){
                     tempPay ++;
                 } 
@@ -193,7 +228,7 @@ public class Player
                     return;
                 }
             }
-            else if (payment == Colors.RAINBOW){
+            else if (payment == Colors.RAINBOW  || choice.getColor() == Colors.NONE){
                 if(hand.get(payment) - tempRainbow >= 1){
                     tempRainbow ++;
                 } 
@@ -212,8 +247,21 @@ public class Player
             }
         }
         //remove cards from player's hand
-        hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
-        hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
+        if(choice.getColor() == Colors.NONE)
+        {
+            hand.put(Colors.RED,hand.get(Colors.RED)-redPay);
+            hand.put(Colors.GREEN,hand.get(Colors.GREEN)-greenPay);
+            hand.put(Colors.BLUE,hand.get(Colors.BLUE)-bluePay);
+            hand.put(Colors.BLACK,hand.get(Colors.BLACK)-blackPay);
+            hand.put(Colors.ORANGE,hand.get(Colors.ORANGE)-orangePay);
+            hand.put(Colors.PINK,hand.get(Colors.PINK)-pinkPay);
+            hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
+        }
+        else
+        {
+            hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
+            hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
+        }
         //update score
         score.updateScoreRoute(choice);
         //add cars to route
