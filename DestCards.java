@@ -16,8 +16,8 @@ import java.util.Random;
  * instances of images of card
  * to and from
  * 
- * @author (your name)
- * @version (a version number or a date)
+ * @author Derek McPhail, Mark Eliseo, Cheryl McClean, Austin Gage, Rose Wilson
+ * @version (4/29/19)
  */
 public class DestCards
 {
@@ -78,7 +78,10 @@ public class DestCards
     public void mouseReleased(MouseEvent e) { }
 
     public void mousePressed(MouseEvent e) { }
-
+    /**
+     * when a mouse is clicked, 
+     * receive the value of destination cards
+     */
     public void mouseClicked(MouseEvent e){
         destCardValues();
     }
@@ -86,8 +89,7 @@ public class DestCards
     /**
      * Shuffles the deck of destination cards in a pseudorandom order.
      * 
-     * @author names
-     * @version date
+     * 
      */
     public void shuffle() {
         for (int i = 0; i < destCards.size(); i++) {
@@ -100,7 +102,7 @@ public class DestCards
     }
 
     /**
-     * 
+     * draws a card from the destination card deck
      */
     public DestCard draw(){
         if (destCards.size() == 0) {
@@ -112,14 +114,21 @@ public class DestCards
             return pickedUp;
         }
     }
-
+    
+    /**
+     * add a destination card to the deck
+     * 
+     * @param destcard to be added to deck
+     */
     public void add(DestCard destCard)
     {
         destCards.add(destCard);
     }
 
     /**
-     * Will do once we have the players delt cards
+     * returns a card from hand to deck
+     * 
+     * @param choice, which destcard to pull from hand
      */
     public void returnCard(int choice){
         try{
