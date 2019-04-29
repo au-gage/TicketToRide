@@ -506,37 +506,29 @@ public class Game extends JPanel implements MouseListener
         for(int i = 0;i < players.size();i++)
         {
             DestCard[] dests = new DestCard[2];
-            if (destDeck.destCards.size() == 1) {
-                dests[0] = destDeck.draw();
-            } else {
-                dests[0] = destDeck.draw();
-                dests[1] = destDeck.draw();
-            }
+            dests[0] = destDeck.draw();
+            dests[1] = destDeck.draw();
             String[] choices = new String[3];
-            if (dests[1] != null) {
-                choices[0] = dests[0].getStart() + " " + dests[0].getEnd();
-                choices[1] = dests[1].getStart() + " " + dests[1].getEnd();
-                choices[2] = "Both Cards";
-                String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1, or both cards", 
-                        "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
-                if(cardTaken.equals(dests[0].getStart() + " " + dests[0].getEnd()))
-                {
-                    players.get(i).destHand.add(dests[0]);
-                    destDeck.add(dests[1]);
-                }
-                else if(cardTaken.equals(dests[1].getStart() + " " + dests[1].getEnd()))
-                {
-                    players.get(i).destHand.add(dests[1]);
-                    destDeck.add(dests[0]);
-                }
-                else
-                {
-                    players.get(i).destHand.add(dests[0]);
-                    players.get(i).destHand.add(dests[1]);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null,"Only One Destination Card Left, It Has Been Added To Your Hand");
+            choices[0] = dests[0].getStart() + " => " + dests[0].getEnd();
+            choices[1] = dests[1].getStart() + " => " + dests[1].getEnd();
+            choices[2] = "Both Cards";
+            String cardTaken = (String) JOptionPane.showInputDialog(null, players.get(i).name + ", select 1 or both cards", 
+                    "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+            if (cardTaken == null) cardTaken = "";
+            if(cardTaken.equals(dests[0].getStart() + " => " + dests[0].getEnd()))
+            {
                 players.get(i).destHand.add(dests[0]);
+                destDeck.add(dests[1]);
+            }
+            else if(cardTaken.equals(dests[1].getStart() + " => " + dests[1].getEnd()))
+            {
+                players.get(i).destHand.add(dests[1]);
+                destDeck.add(dests[0]);
+            }
+            else
+            {
+                players.get(i).destHand.add(dests[0]);
+                players.get(i).destHand.add(dests[1]);
             }
         }
     }
