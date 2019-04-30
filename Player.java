@@ -4,7 +4,8 @@ import javax.swing.JOptionPane;
 /**
  *Player class where the actions that players can take are implemented
  *
- * @author Rose Wilson, Austin Gage, Cheryl McClean, Derek McPhail, and Mark Eliseo
+ * @author Rose Wilson, Austin Gage, Cheryl McClean,
+ * Derek McPhail, and Mark Eliseo
  * @version 4/29/19
  */
 public class Player
@@ -52,14 +53,16 @@ public class Player
      * @param draw, the number of draws the player has drawn this turn
      * @param players, the players of the game
      */
-    protected int drawTransTicket( Tickets deck, int choice,int draw, ArrayList<Player> players ){
+    protected int drawTransTicket( Tickets deck, 
+        int choice,int draw, ArrayList<Player> players ){
         //if second draw end turn
         if (draw == 0){
             isTurn = false;
         }
         //pick up card
         Colors temp =deck.pickup(choice, players).color();
-        //If player has already drawn a card and attempts to draw a rainbow card
+        //If player has already drawn
+        //a card and attempts to draw a rainbow card
         if(!(draw == 1 && temp == Colors.RAINBOW))
             hand.put(temp,hand.get(temp)+1);
         else if(draw == 2 && temp == Colors.RAINBOW)
@@ -75,6 +78,7 @@ public class Player
         return draw;
 
     }
+
     /**
      * draws a face down transporation ticket from deck
      * 
@@ -82,7 +86,8 @@ public class Player
      * @param draw, the number of draws currently used up
      * @param players the status of the players of the game
      */
-    protected int drawDeckTransTicket(Tickets deck, int draw, ArrayList<Player> players){
+    protected int drawDeckTransTicket(Tickets deck, 
+        int draw, ArrayList<Player> players){
         //if second draw end turn
         if (draw == 0){
             isTurn = false;
@@ -95,6 +100,7 @@ public class Player
         return draw;
 
     }
+
     /**
      * draws two destination tickets
      * gives player option to discard one
@@ -124,18 +130,23 @@ public class Player
                 if(i == 2)
                     choices[i] = "Both Cards";
                 else
-                    choices[i] = dests.get(i).getStart() + " => " + dests.get(i).getEnd();
+                    choices[i] = dests.get(i).getStart() + " => " 
+                    + dests.get(i).getEnd();
             }
-            String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1 or both cards", 
-                    "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+            String cardTaken = (String) JOptionPane.showInputDialog(null, 
+                    "Select 1 or both cards", 
+                    "Destination Card Selection", JOptionPane.QUESTION_MESSAGE,
+                    null,choices,choices[0]);
             if(cardTaken == null) return 0;
-            if(cardTaken.equals(dests.get(0).getStart() + " => " + dests.get(0).getEnd()))
+            if(cardTaken.equals(dests.get(0).getStart() + " => " 
+                + dests.get(0).getEnd()))
             {
                 destHand.add(dests.get(0));
                 deck.add(dests.get(1));
                 return 2;
             }
-            else if(cardTaken.equals(dests.get(1).getStart() + " => " + dests.get(1).getEnd()))
+            else if(cardTaken.equals(dests.get(1).getStart() + " => " 
+                + dests.get(1).getEnd()))
             {
                 destHand.add(dests.get(1));
                 deck.add(dests.get(0));
@@ -150,23 +161,28 @@ public class Player
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Only one dest Card left, dealt to your deck");
+            JOptionPane.showMessageDialog(null,
+                "Only one dest Card left, dealt to your deck");
             destHand.add(dests.get(0));
             return 2;
         }
     }
+
     /**
      * allows the player to claim a route from a to b
      * 
      * @param edges, current status of game's edges
      * @param players, current statuc of game's players
      */
-    protected int claimRoute(ArrayList<Edges> edges,ArrayList<Player> players){
+    protected int claimRoute(ArrayList<Edges> edges,
+    ArrayList<Player> players){
         //ask which path
         String[] choices = new String[edges.size()];
 
         for (int i = 0; i <edges.size(); i++){
-            choices[i] = edges.get(i).getStart() + "-" + edges.get(i).getEnd() + ": " + edges.get(i).getLength() + " " + edges.get(i).getColor();
+            choices[i] = edges.get(i).getStart() + "-" + 
+            edges.get(i).getEnd() + ": " + edges.get(i).getLength() 
+            + " " + edges.get(i).getColor();
         }
 
         //player chooses their cards based on path's needs
@@ -178,7 +194,8 @@ public class Player
         //transforms choice into edge
         int j = 0;
         while (j < edges.size() && !edgeFound){
-            if(choiceString.equals(edges.get(j).getStart() + "-" + edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " 
+            if(choiceString.equals(edges.get(j).getStart() + "-" + 
+                edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " 
                 + edges.get(j).getColor())){
                 if(!edges.get(j).getIsCaptured())
                 {
@@ -198,25 +215,29 @@ public class Player
 
         if(choice.getIsCaptured() && choice.getWhoCaptured() == null)
         {
-            JOptionPane.showMessageDialog(null, "Attempt to capture a double route that has already been captured with two players",
+            JOptionPane.showMessageDialog(null, 
+                "Attempt to capture a double route that has already been captured with two players",
                 "alert",JOptionPane.ERROR_MESSAGE);
             return 0;
         }
         else if(choice.getIsCaptured()) {
-            JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
+            JOptionPane.showMessageDialog(null, "Route Previously captured", 
+                "alert", JOptionPane.ERROR_MESSAGE); 
             return 0;
         } else if (amtOfTaxis < choice.length) {
-            JOptionPane.showMessageDialog(null, "Not enough taxis to claim route", "alert", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Not enough taxis to claim route",
+                "alert", JOptionPane.ERROR_MESSAGE);
             return 0;
         } else if (j >= edges.size()) {
-            JOptionPane.showMessageDialog(null, "Attempt to capture a double route that has already been captured with two players",
+            JOptionPane.showMessageDialog(null, 
+                "Attempt to capture a double route that has already been captured with two players",
                 "alert",JOptionPane.ERROR_MESSAGE);
             return 0;
         }
-        
 
         //choose payment options
-        //Think this should run off of the deck of the player, do like "RED-2" or something
+        //Think this should run off of the deck of the player, 
+        //do like "RED-2" or something
         Colors[] options = {Colors.BLACK, Colors.BLUE, Colors.RAINBOW, 
                 Colors.GREEN, Colors.ORANGE, Colors.PINK, Colors.RED};
         int tempPay = 0;
@@ -225,8 +246,10 @@ public class Player
         int payIndex = 0;
         Colors previousColor = choice.getColor();
         for (int i = 0; i < choice.length; i ++){
-            Colors payment = (Colors)JOptionPane.showInputDialog(null, "What color ticket will you be paying with?", 
-                    "Ticket Selection", JOptionPane.QUESTION_MESSAGE, null,options,previousColor);
+            Colors payment = (Colors)JOptionPane.showInputDialog(null, 
+                    "What color ticket will you be paying with?", 
+                    "Ticket Selection", JOptionPane.QUESTION_MESSAGE,
+                    null,options,previousColor);
             previousColor = payment;
             if(choice.getColor() == Colors.NONE)
             {
@@ -236,7 +259,9 @@ public class Player
                         tempRainbow++;
                     } else {
                         //display that payment is not possible
-                        JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, 
+                            "You do not have enough cards to pay for that", 
+                            "alert", JOptionPane.ERROR_MESSAGE);
                         //restart turn somehow
                         return 0;
                     }
@@ -250,7 +275,9 @@ public class Player
                         tempRainbow++;
                     } else {
                         //display that payment is not possible
-                        JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, 
+                            "You do not have enough cards to pay for that", 
+                            "alert", JOptionPane.ERROR_MESSAGE);
                         //restart turn somehow
                         return 0;
                     }
@@ -259,13 +286,17 @@ public class Player
                         tempPay++;
                     } else {
                         //display that payment is not possible
-                        JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, 
+                            "You do not have enough cards to pay for that", 
+                            "alert", JOptionPane.ERROR_MESSAGE);
                         //restart turn somehow
                         return 0;
                     }
                 } else {
                     //display that the wrong type of card was entered
-                    JOptionPane.showMessageDialog(null, "Gray routes must be claimed monochromatically", "alert", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                        "Gray routes must be claimed monochromatically", 
+                        "alert", JOptionPane.ERROR_MESSAGE);
                     //restart turn somehow
                     return 0;
                 }
@@ -276,7 +307,9 @@ public class Player
                 } 
                 else {
                     //display that payment is not possible
-                    JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                        "You do not have enough cards to pay for that",
+                        "alert", JOptionPane.ERROR_MESSAGE);
                     //restart turn somehow
                     return 0;
                 }
@@ -287,14 +320,18 @@ public class Player
                 } 
                 else {
                     //display that payment is not possible
-                    JOptionPane.showMessageDialog(null, "You do not have enough cards to pay for that", "alert", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                        "You do not have enough cards to pay for that", 
+                        "alert", JOptionPane.ERROR_MESSAGE);
                     //restart turn somehow
                     return 0;
                 }
             }
             else{
                 //display that payment is not possible
-                JOptionPane.showMessageDialog(null, "You chose the wrong color for the path", "alert", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, 
+                    "You chose the wrong color for the path",
+                    "alert", JOptionPane.ERROR_MESSAGE);
                 //restart turn somehow
                 return 0;
             }
@@ -307,10 +344,13 @@ public class Player
         if(choice.getColor() == Colors.NONE)
         {
             if (payIndex > (choice.length - 1)) {
-                hand.put(Colors.RAINBOW, hand.get(Colors.RAINBOW) - tempRainbow);
+                hand.put(Colors.RAINBOW, 
+                    hand.get(Colors.RAINBOW) - tempRainbow);
             } else {
-                hand.put(noneColor[payIndex], hand.get(noneColor[payIndex]) - tempPay);
-                hand.put(Colors.RAINBOW, hand.get(Colors.RAINBOW) - tempRainbow);
+                hand.put(noneColor[payIndex], 
+                    hand.get(noneColor[payIndex]) - tempPay);
+                hand.put(Colors.RAINBOW, 
+                    hand.get(Colors.RAINBOW) - tempRainbow);
             }
         }
         else
@@ -331,18 +371,25 @@ public class Player
             {
                 if(j != edges.size() - 1)
                 {
-                    if(word.equals(edges.get(j-1).getStart() + edges.get(j-1).getEnd()))
+                    if(word.equals(edges.get(j-1).getStart() + 
+                        edges.get(j-1).getEnd()))
                     {
                         edges.get(j-1).Captured(true,null);
                     }
-                    else if(word.equals(edges.get(j+1).getStart() + edges.get(j+1).getEnd()))
+                    else if(word.equals(edges.get(j+1).getStart() + 
+                        edges.get(j+1).getEnd()))
                     {
                         edges.get(j+1).Captured(true,null);
                     }
                 }
                 else if(j == edges.size() - 1)
                 {
+
+                    if(word.equals(edges.get(j+1).getStart() + 
+                        edges.get(j+1).getEnd()))
+
                     if(word.equals(edges.get(j-1).getStart() + edges.get(j-1).getEnd()))
+
                     {
                         edges.get(j-1).Captured(true,null);
                     }   
@@ -354,6 +401,7 @@ public class Player
         amtOfTaxis = amtOfTaxis - choice.length;
         return 2;
     }
+
     /**
      * accessor method to get the player's color
      */

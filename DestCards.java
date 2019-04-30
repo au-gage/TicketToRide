@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -37,7 +36,8 @@ public class DestCards
             {
                 if (file.toString().contains("to"))
                 {
-                    images.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                    images.add(toolkit.getImage(file.toString()).
+                        getScaledInstance(119,200,Image.SCALE_DEFAULT));
                 }
 
             }
@@ -47,6 +47,7 @@ public class DestCards
             System.exit(0);
         }
         //add each dest card from images to deck
+
         destCards.add(new DestCard(images.get(0),"Central Park", "Chelsea",5));
         destCards.add(new DestCard(images.get(1),"Central Park", "Chinatown",8));
         destCards.add(new DestCard(images.get(2),"Central Park", "Gramercy Park",4));
@@ -64,6 +65,7 @@ public class DestCards
         destCards.add(new DestCard(images.get(14),"Times Square", "Soho",6));
         destCards.add(new DestCard(images.get(15),"United Nations", "Midtown West",3));
         destCards.add(new DestCard(images.get(16),"United Nations", "Wall Street",8));
+
         this.shuffle();
 
     }
@@ -79,6 +81,7 @@ public class DestCards
     public void mouseReleased(MouseEvent e) { }
 
     public void mousePressed(MouseEvent e) { }
+
     /**
      * when a mouse is clicked, 
      * receive the value of destination cards
@@ -93,7 +96,7 @@ public class DestCards
      * 
      */
     public void shuffle() {
-        
+
         for (int i = 0; i < destCards.size(); i++) {
             Random r = new Random();
             //recieves a sudorandom int to place next card
@@ -112,9 +115,10 @@ public class DestCards
     public DestCard draw(){
         //if no cards are left, display it
         if (destCards.size() == 0) {
-            JOptionPane.showMessageDialog(null,"There are no more Destination Cards left");
+            JOptionPane.showMessageDialog(null,
+                "There are no more Destination Cards left");
             return null;
-        
+
         } else {
             //cards are available, remove from deck
             DestCard pickedUp = destCards.get(0);
@@ -122,7 +126,7 @@ public class DestCards
             return pickedUp;
         }
     }
-    
+
     /**
      * add a destination card to the deck
      * 

@@ -2,7 +2,8 @@ import java.util.ArrayList;
 /**
  * Write a description of class Score here.
  *
- * @author (Cheryl McClean, Austin Gage, Rose Wilson, Derek McPhail, Mark Eliseo )
+ * @author (Cheryl McClean, Austin Gage, Rose Wilson,
+ * Derek McPhail, Mark Eliseo )
  * @version (4/29/19)
  */
 public class Score
@@ -75,8 +76,11 @@ public class Score
      * 
      * @return score value
      */
-    protected int updateScoreAttr(ArrayList<Edges> edge, ArrayList <String> tourist){ 
 
+    protected int updateScoreAttr(ArrayList <Edges> edge, 
+    ArrayList <String> tourist){ 
+
+        
         for(int i = 0; i < edge.size(); i++){
             for(int j = 0; j < tourist.size(); j++){
                 String word = edge.get(i).getStart() + edge.get(i).getEnd();
