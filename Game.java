@@ -224,8 +224,7 @@ public class Game extends JPanel implements MouseListener
             {
                 if(destDeck.destCards.size() > 0)
                 {
-                    players.get(turn % players.size()).drawDestTickets(destDeck);
-                    amtOfMoves -= 2;
+                    amtOfMoves -= players.get(turn % players.size()).drawDestTickets(destDeck);
                 }
             }
             //Draw from transport deck
@@ -288,7 +287,7 @@ public class Game extends JPanel implements MouseListener
         g2.setFont(font);
         g2.drawString("Claim Route", 560,35);
         g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
-        g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),542,115);
+        g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),575,130);
         if(turnOver)
         {
             g2.setColor(Color.WHITE);

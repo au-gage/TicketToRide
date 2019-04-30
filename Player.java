@@ -101,7 +101,7 @@ public class Player
      * 
      * @param deck current status of the deck
      */
-    protected void drawDestTickets(DestCards deck){
+    protected int drawDestTickets(DestCards deck){
         //add two dest cards to hand
         // destHand.add(deck.draw());
         // destHand.add(deck.draw());
@@ -128,27 +128,31 @@ public class Player
             }
             String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1 or both cards", 
                     "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
-            if(cardTaken.equals(null)) return;
+            if(cardTaken == null) return 0;
             if(cardTaken.equals(dests.get(0).getStart() + " => " + dests.get(0).getEnd()))
             {
                 destHand.add(dests.get(0));
                 deck.add(dests.get(1));
+                return 2;
             }
             else if(cardTaken.equals(dests.get(1).getStart() + " => " + dests.get(1).getEnd()))
             {
                 destHand.add(dests.get(1));
                 deck.add(dests.get(0));
+                return 2;
             }
             else
             {
                 destHand.add(dests.get(0));
                 destHand.add(dests.get(1));
+                return 2;
             }
         }
         else
         {
             JOptionPane.showMessageDialog(null,"Only one dest Card left, dealt to your deck");
             destHand.add(dests.get(0));
+            return 2;
         }
     }
     /**
