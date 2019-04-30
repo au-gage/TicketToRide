@@ -208,6 +208,10 @@ public class Player
         } else if (amtOfTaxis < choice.length) {
             JOptionPane.showMessageDialog(null, "Not enough taxis to claim route", "alert", JOptionPane.ERROR_MESSAGE);
             return 0;
+        } else if (j >= edges.size()) {
+            JOptionPane.showMessageDialog(null, "Attempt to capture a double route that has already been captured with two players",
+                "alert",JOptionPane.ERROR_MESSAGE);
+            return 0;
         }
         
 
@@ -250,7 +254,7 @@ public class Player
                         //restart turn somehow
                         return 0;
                     }
-                } else if (noneColor[payIndex] == noneColor[i]){
+                } else if (noneColor[payIndex] == noneColor[i]) {
                     if (hand.get(noneColor[payIndex]) - tempPay >= 1) {
                         tempPay++;
                     } else {
