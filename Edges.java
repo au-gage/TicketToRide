@@ -7,7 +7,8 @@
  * if captured
  * Who Captured
  *
- * @author Austin Gage, Rose Wilson, Cheryl McClean, Derek McPhail, Mark Eliseo
+ * @author Austin Gage, Rose Wilson, Cheryl McClean, Derek McPhail,
+ * Mark Eliseo
  * @version 4/12/2019
  */
 public class Edges
@@ -29,7 +30,8 @@ public class Edges
      * @param x1,y1,x2,y2 pixel position
      * 
      */
-    public Edges(String start, String end,Colors color, int length,int x1, int y1,int x2, int y2)
+    public Edges(String start, String end,Colors color, int length,int x1, 
+        int y1,int x2, int y2)
     {
         this.start = start;
         this.end = end;
@@ -53,7 +55,8 @@ public class Edges
      * @param x1,y1,x2,y2 pixel position
      * @param isCaptured signifying edge is captured
      */
-    public Edges(String start, String end,Colors color, int length,int x1, int y1,int x2, int y2,boolean isCaptured)
+    public Edges(String start, String end,Colors color, int length,int x1,
+        int y1,int x2, int y2,boolean isCaptured)
     {
         this.start = start;
         this.end = end;
@@ -68,7 +71,8 @@ public class Edges
     }
 
     /**
-     * Called when a path is attempted to be captured when it is already captured
+     * Called when a path is attempted to be captured when it is 
+     * already captured
      * 
      * @return boolean isCaptured
      */

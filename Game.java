@@ -9,6 +9,7 @@ import javax.swing.event.ChangeListener;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.*;
+
 /**
  * determines who is playing and win conditions
  * Will also incorporate all the paths and prob captures
@@ -17,7 +18,8 @@ import java.nio.file.*;
  * what name
  * implements player, board, paths, and run the playing of the game
  *
- * @author Austin Gage, Mark Eliseo, Cheryl McClean,Rose Wilson, and Derek McPhail 
+ * @author Austin Gage, Mark Eliseo, Cheryl McClean,Rose Wilson, 
+ * and Derek McPhail 
  * @version (4/29/19)
  */
 public class Game extends JPanel implements MouseListener
@@ -46,59 +48,90 @@ public class Game extends JPanel implements MouseListener
      */
     public Game()
     {
-        setPreferredSize(new Dimension(910,1024)); //Dimension subject to change
+        setPreferredSize(new Dimension(910,1024)); 
+        //Dimension subject to change
         addMouseListener(this);
         Path path = Paths.get("fwdboardandtransport");
-        try(DirectoryStream<Path> stream = Files.newDirectoryStream(path))
+        try(DirectoryStream<Path> stream = 
+            Files.newDirectoryStream(path))
         {
             for(Path file: stream)
             {
-                if(file.toString().equals("fwdboardandtransport\\Board.jpg"))
+                if(file.toString().
+                equals("fwdboardandtransport\\Board.jpg"))
                 {
                     board = toolkit.getImage(file.toString());
-                    board = board.getScaledInstance(534,750,Image.SCALE_DEFAULT);
+                    board = board.getScaledInstance
+                    (534,750,Image.SCALE_DEFAULT);
                 }
-                else if(file.toString().equals("fwdboardandtransport\\background.jpg"))
+                else if(file.toString().
+                equals("fwdboardandtransport\\background.jpg"))
                 {
                     background = toolkit.getImage(file.toString());
-                    background = background.getScaledInstance(1280, 1024, Image.SCALE_DEFAULT);
+                    background = background.getScaledInstance
+                    (1280, 1024, Image.SCALE_DEFAULT);
                 }
-                else if(file.toString().equals("fwdboardandtransport\\DestTicket.jpg"))
+                else if(file.toString().equals
+                ("fwdboardandtransport\\DestTicket.jpg"))
                 {
                     destCardBack = toolkit.getImage(file.toString());
-                    destCardBack = destCardBack.getScaledInstance(119, 200, Image.SCALE_DEFAULT);
+                    destCardBack = destCardBack.getScaledInstance
+                    (119, 200, Image.SCALE_DEFAULT);
                 }
-                else if(file.toString().equals("fwdboardandtransport\\NYcard.jpg"))
+                else if(file.toString().equals
+                ("fwdboardandtransport\\NYcard.jpg"))
                 {
                     transCardBack = toolkit.getImage(file.toString());
-                    transCardBack = transCardBack.getScaledInstance(119, 200, Image.SCALE_DEFAULT);
+                    transCardBack = transCardBack.getScaledInstance
+                    (119, 200, Image.SCALE_DEFAULT);
                 }
-                else if (file.toString().equals("fwdboardandtransport\\blackcard2.jpg")) {
-                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                else if (file.toString().equals
+                ("fwdboardandtransport\\blackcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).
+                        getScaledInstance
+                        (119,200,Image.SCALE_DEFAULT));
 
                 }
-                else if (file.toString().equals("fwdboardandtransport\\bluecard2.jpg")) {
-                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                else if (file.toString().equals
+                ("fwdboardandtransport\\bluecard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).
+                        getScaledInstance(119,200,
+                            Image.SCALE_DEFAULT));
 
                 }
-                else if (file.toString().equals("fwdboardandtransport\\colorcard2.jpg")) {
-                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                else if (file.toString().equals
+                ("fwdboardandtransport\\colorcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).
+                        getScaledInstance(119,200,
+                            Image.SCALE_DEFAULT));
 
                 }
-                else if (file.toString().equals("fwdboardandtransport\\greencard2.jpg")) {
-                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                else if (file.toString().equals
+                ("fwdboardandtransport\\greencard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).
+                        getScaledInstance(119,200,
+                            Image.SCALE_DEFAULT));
 
                 }
-                else if (file.toString().equals("fwdboardandtransport\\orangecard2.jpg")) {
-                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                else if (file.toString().equals
+                ("fwdboardandtransport\\orangecard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).
+                        getScaledInstance(119,200,
+                            Image.SCALE_DEFAULT));
 
                 }
-                else if (file.toString().equals("fwdboardandtransport\\pinkcard2.jpg")) {
-                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                else if (file.toString().equals
+                ("fwdboardandtransport\\pinkcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).
+                        getScaledInstance(119,200,
+                            Image.SCALE_DEFAULT));
 
                 }
-                else if (file.toString().equals("fwdboardandtransport\\redcard2.jpg")) {
-                    tickets.add(toolkit.getImage(file.toString()).getScaledInstance(119,200,Image.SCALE_DEFAULT));
+                else if (file.toString().equals
+                ("fwdboardandtransport\\redcard2.jpg")) {
+                    tickets.add(toolkit.getImage(file.toString()).
+                        getScaledInstance(119,200,
+                            Image.SCALE_DEFAULT));
 
                 }
             }
@@ -124,8 +157,9 @@ public class Game extends JPanel implements MouseListener
     public void mousePressed(MouseEvent e) { }
 
     /**
-     * This method checks to see where the mouse was clicked, and calls
-     * the appropriate method, like if twist is pressed or if enter is pressed
+     * This method checks to see where the mouse was clicked, 
+     * the appropriate method, 
+     * 
      * @param the MouseEvent that started the method
      */
     public void mouseClicked(MouseEvent e)
@@ -135,114 +169,148 @@ public class Game extends JPanel implements MouseListener
         if(turn != maxTurn +1 || lastTurnBegins != true)
         {
             //Draw face up Card, starting with first, second, etc
-            if(x >= 700 && x <= 900 && y >=0 && y <= 119 && amtOfMoves > 0)
+            if(x >= 700 && x <= 900 && y >=0 && 
+            y <= 119 && amtOfMoves > 0)
             {
                 if(ticketDeck.faceups[0].color() == Colors.RAINBOW)
                 {
                     if(amtOfMoves == 2)
                     {
-                        players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
+                        players.get(turn % players.size()).
+                        drawTransTicket(ticketDeck,0,
+                            amtOfMoves, players);
                         amtOfMoves -= 2;
                     }
 
                 }
                 else
                 {
-                    players.get(turn % players.size()).drawTransTicket(ticketDeck,0,amtOfMoves, players);
+                    players.get(turn % players.size())
+                    .drawTransTicket(ticketDeck,0,
+                        amtOfMoves, players);
                     amtOfMoves--;    
                 }
             }
-            else if(x >= 700 && x <= 900 && y >=120 && y <= 239 && amtOfMoves > 0)
+            else if(x >= 700 && x <= 900 && y >=120 &&
+            y <= 239 && amtOfMoves > 0)
             {
                 if(ticketDeck.faceups[1].color() == Colors.RAINBOW)
                 {
                     if(amtOfMoves == 2)
                     {
-                        players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
+                        players.get(turn % players.size()).
+                        drawTransTicket(ticketDeck,1,
+                            amtOfMoves, players);
                         amtOfMoves -= 2;
                     }
 
                 }
                 else
                 {
-                    players.get(turn % players.size()).drawTransTicket(ticketDeck,1,amtOfMoves, players);
+                    players.get(turn % players.size()).
+                    drawTransTicket(ticketDeck,1,
+                        amtOfMoves, players);
                     amtOfMoves--;    
                 }
             }
-            else if(x >= 700 && x <= 900 && y >=240 && y <= 359 && amtOfMoves > 0)
+            else if(x >= 700 && x <= 900 && y >=240 && 
+            y <= 359 && amtOfMoves > 0)
             {
                 if(ticketDeck.faceups[2].color() == Colors.RAINBOW)
                 {
                     if(amtOfMoves == 2)
                     {
-                        players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
+                        players.get(turn % players.size()).
+                        drawTransTicket(ticketDeck,2,
+                            amtOfMoves, players);
                         amtOfMoves -= 2;
                     }
 
                 }
                 else
                 {
-                    players.get(turn % players.size()).drawTransTicket(ticketDeck,2,amtOfMoves, players);
+                    players.get(turn % players.size()).
+                    drawTransTicket(ticketDeck,2,
+                        amtOfMoves, players);
                     amtOfMoves--;    
                 }
             } 
-            else if(x >= 700 && x <= 900 && y >=360 && y <= 479 && amtOfMoves > 0)
+            else if(x >= 700 && x <= 900 && y >=360 
+            && y <= 479 && amtOfMoves > 0)
             {
                 if(ticketDeck.faceups[3].color() == Colors.RAINBOW)
                 {
                     if(amtOfMoves == 2)
                     {
-                        players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
+                        players.get(turn % players.size()).
+                        drawTransTicket(ticketDeck,3,
+                            amtOfMoves, players);
                         amtOfMoves -= 2;
                     }
 
                 }
                 else
                 {
-                    players.get(turn % players.size()).drawTransTicket(ticketDeck,3,amtOfMoves, players);
+                    players.get(turn % players.size()).
+                    drawTransTicket(ticketDeck,3,
+                        amtOfMoves, players);
                     amtOfMoves--;    
                 }
             }
-            else if(x >= 700 && x <= 900 && y >=480 && y <= 599 && amtOfMoves > 0)
+            else if(x >= 700 && x <= 900 && y >=480 &&
+            y <= 599 && amtOfMoves > 0)
             {
                 if(ticketDeck.faceups[4].color() == Colors.RAINBOW)
                 {
                     if(amtOfMoves == 2)
                     {
-                        players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                        players.get(turn % players.size()).
+                        drawTransTicket(ticketDeck,4,
+                        amtOfMoves, players);
                         amtOfMoves -= 2;
                     }
                 }
                 else
                 {
-                    players.get(turn % players.size()).drawTransTicket(ticketDeck,4,amtOfMoves, players);
+                    players.get(turn % players.size())
+                    .drawTransTicket(ticketDeck,4,
+                        amtOfMoves, players);
                     amtOfMoves--;    
                 }
             }
 
             //Draw from Dest deck
-            else if(x >= 681 && x <= 797 && y >= 597 && y <= 792 && amtOfMoves > 1)
+            else if(x >= 681 && x <= 797 && y >= 597 && 
+            y <= 792 && amtOfMoves > 1)
             {
                 if(destDeck.destCards.size() > 0)
                 {
-                    amtOfMoves -= players.get(turn % players.size()).drawDestTickets(destDeck);
+                    amtOfMoves -= players.get(turn % players.size()).
+                    drawDestTickets(destDeck);
                 }
             }
             //Draw from transport deck
-            else if(x >= 800 && x <= 900 && y >= 598 && y <= 795 && amtOfMoves > 0)
+            else if(x >= 800 && x <= 900 && y >= 598 && 
+            y <= 795 && amtOfMoves > 0)
             {
-                players.get(turn % players.size()).drawDeckTransTicket(ticketDeck,amtOfMoves,players);
+                players.get(turn % players.size()).
+                drawDeckTransTicket(ticketDeck,amtOfMoves,players);
                 amtOfMoves--;
             }
             //540,0,145,50 Claim Route button pressed
-            else if(x >= 540 && x <= 685 && y >=0 && y <= 55 && amtOfMoves == 2)
+            else if(x >= 540 && x <= 685 && y >=0 
+            && y <= 55 && amtOfMoves == 2)
             {
-                amtOfMoves -= players.get(turn % players.size()).claimRoute(edges,players);
+                amtOfMoves -= players.get(turn % players.size()).
+                claimRoute(edges,players);
             }
-            //End turn pressed, only shows up when player is out of moves
-            else if(x >= 540 && x <= 685 && y >= 400 && y <= 450 && amtOfMoves == 0)
+            //End turn pressed, 
+            //only shows up when player is out of moves
+            else if(x >= 540 && x <= 685 && y >= 400
+            && y <= 450 && amtOfMoves == 0)
             {
-                if(players.get(turn % players.size()).amtOfTaxis <= 2 && !lastTurnBegins)
+                if(players.get(turn % players.size()).
+                amtOfTaxis <= 2 && !lastTurnBegins)
                 {
                     lastTurnBegins = true;
                     maxTurn = turn + players.size();
@@ -262,7 +330,7 @@ public class Game extends JPanel implements MouseListener
         }
         else
         {
-            
+
             gameOver = true;
             repaint();
         }
@@ -291,24 +359,16 @@ public class Game extends JPanel implements MouseListener
             g2.fillRoundRect(540,200,145,50, 10, 10);
             g2.fillRoundRect(540,100,145,50, 10, 10);
 
-            // g2.setColor(Color.BLACK);
-            // Font font = new Font("SERIF",Font.PLAIN,20);
-            // g2.setFont(font);
-            // g2.drawString("Claim Route", 560,35);
-            // g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
-            // g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),575,130);
-            // g.drawImage(board, 0, 0, this);
-
-            // g2.fillRoundRect(540,5,145,50, 10, 10);
-            // g2.fillRoundRect(540,200,145,50, 10, 10);
-            // g2.fillRoundRect(540,100,145,50, 10, 10);
 
             g2.setColor(Color.BLACK);
             Font font = new Font("SERIF",Font.PLAIN,20);
             g2.setFont(font);
             g2.drawString("Claim Route", 560,35);
-            g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
-            g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),542,115);
+            g2.drawString("Current Taxis: " + 
+                players.get(turn % players.size()).
+                amtOfTaxis,542,230);
+            g2.drawString("Score: " + players.get(turn % 
+                    players.size()).score.getValue(),542,115);
             if(turnOver)
             {
                 g2.setColor(Color.WHITE);
@@ -327,10 +387,12 @@ public class Game extends JPanel implements MouseListener
 
             if(players.size() > 1)
             {
-                for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
+                for(int i = 0;i < players.get(turn %
+                    players.size()).destHand.size();i++)
                 {
-                    g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,720,this);
-                    //g.drawImage(players.get(turn % players.size()).hand.get(Colors.RED).getImage(),100 * i, 900,this);
+                    g.drawImage(players.get(turn % players.size()).
+                        destHand.get(i).getImage(),100 * i,720,this);
+
                 }
                 g2.setColor(Color.WHITE);
                 for(int i = 0;i < tickets.size();i++)
@@ -339,18 +401,33 @@ public class Game extends JPanel implements MouseListener
                     g.fillOval((100*i) + 10, 900,25,25);
                 }
                 g2.setColor(Color.BLACK);
-                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLACK)),17,917);
-                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLUE)),117,917);
-                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RAINBOW)),217,917);
-                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.GREEN)),317,917);
-                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.ORANGE)),417,917);
-                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.PINK)),517,917);
-                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RED)),617,917);
+                g.drawString(Integer.toString(players.get
+                        (turn % players.size()).hand.get
+                        (Colors.BLACK)),17,917);
+                g.drawString(Integer.toString(players.get
+                        (turn % players.size()).hand.get
+                        (Colors.BLUE)),117,917);
+                g.drawString(Integer.toString(players.get
+                        (turn % players.size()).hand.get
+                        (Colors.RAINBOW)),217,917);
+                g.drawString(Integer.toString(players.get
+                        (turn % players.size()).hand.get
+                        (Colors.GREEN)),317,917);
+                g.drawString(Integer.toString(players.get
+                        (turn % players.size()).hand.get
+                        (Colors.ORANGE)),417,917);
+                g.drawString(Integer.toString(players.get
+                        (turn % players.size()).hand.get
+                        (Colors.PINK)),517,917);
+                g.drawString(Integer.toString
+                    (players.get(turn % players.size()).hand.get
+                        (Colors.RED)),617,917);
             }
 
             for(int i = 0;i < 5;i++)
             {
-                g.drawImage(ticketDeck.faceups[i].getImage(),700,119*i,this);
+                g.drawImage(ticketDeck.faceups[i].
+                    getImage(),700,119*i,this);
             }
             if(destDeck.destCards.size() > 0)
                 g.drawImage(destCardBack,681,595,this);
@@ -394,8 +471,10 @@ public class Game extends JPanel implements MouseListener
         {
             for(int i = 0;i < players.size();i++)
             {
-                players.get(i).score.updateScoreAttr(players.get(i).capturedEdges,tourists);
-                players.get(i).score.updateScoreDes(players.get(i).capturedEdges,players.get(i)
+                players.get(i).score.updateScoreAttr
+                (players.get(i).capturedEdges,tourists);
+                players.get(i).score.updateScoreDes
+                (players.get(i).capturedEdges,players.get(i)
                     .destHand);
             }
             gameOver = true;
@@ -408,7 +487,9 @@ public class Game extends JPanel implements MouseListener
                     Font font = new Font("SERIF",Font.PLAIN,20);
                     g2.setFont(font);
                     g2.setColor(Color.BLACK);
-                    g2.drawString(players.get(i+1).name + "Final Score: " + players.get(i+1).score.score,15,100*i+115);
+                    g2.drawString(players.get(i+1).name + 
+                        "Final Score: " + players.get(i+1).score.
+                        score,15,100*i+115);
                     g2.setColor(Color.WHITE);
                 }
 
@@ -416,20 +497,23 @@ public class Game extends JPanel implements MouseListener
                 Font font = new Font("SERIF",Font.PLAIN,20);
                 g2.setFont(font);
                 g2.setColor(Color.BLACK);
-                g2.drawString(players.get(i).name + " Final Score: " + players.get(i).score.score,15,100*i+15);
+                g2.drawString(players.get(i).name + " Final Score: " 
+                    + players.get(i).score.score,15,100*i+15);
 
-                if(players.get(i).score.score < players.get(i+1).score.score)
+                if(players.get(i).score.score < 
+                players.get(i+1).score.score)
                 {
                     winner = i+1;
                 }
             }
-           
+
             g2.setColor(Color.WHITE);
             g2.fillRoundRect(250,500,350,150,20,20);
             g2.setColor(Color.BLACK);
             Font font = new Font("SERIF",Font.PLAIN,30);
             g2.setFont(font);
-            g2.drawString("WINNER: " + players.get(winner).name,300,540);
+            g2.drawString("WINNER: " + 
+                players.get(winner).name,300,540);
         }
     }
 
@@ -472,20 +556,28 @@ public class Game extends JPanel implements MouseListener
     protected void MakePlayers()
     {
         Integer[] numSet = {2,3,4};
-        int amt = JOptionPane.showOptionDialog(null, "Select the Amount of Players",
-                "Players", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, numSet, numSet[0]);
+        int amt = JOptionPane.showOptionDialog(null, 
+                "Select the Amount of Players",
+                "Players", JOptionPane.DEFAULT_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, null, numSet,
+                numSet[0]);
         amt += 2;
         for(int i = 1;i <= amt;i++)
         {
-            String name = JOptionPane.showInputDialog(null, "Enter the name of Player " + i,
+            String name = JOptionPane.showInputDialog(null, 
+                    "Enter the name of Player " + i,
                     "Input a name", JOptionPane.QUESTION_MESSAGE);
             boolean getColor = false;
             while(!getColor)
             {
                 boolean colorUsed = false;
-                Colors[] colorSet = {Colors.BLUE, Colors.WHITE, Colors.PURPLE, Colors.YELLOW};
-                int colorIndex = JOptionPane.showOptionDialog(null, "Select the color of Player " + i,
-                        "Choose a Color: ", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, colorSet, colorSet[0]);
+                Colors[] colorSet = {Colors.BLUE, Colors.WHITE, 
+                        Colors.PURPLE, Colors.YELLOW};
+                int colorIndex = JOptionPane.showOptionDialog(null, 
+                        "Select the color of Player " + i,
+                        "Choose a Color: ", JOptionPane.DEFAULT_OPTION, 
+                        JOptionPane.QUESTION_MESSAGE, null, 
+                        colorSet, colorSet[0]);
                 Colors currentColor = colorSet[colorIndex];
                 if(i == 1)
                 {
@@ -496,7 +588,8 @@ public class Game extends JPanel implements MouseListener
                 {
                     for(int j = 0;j < players.size();j++)
                     {
-                        if (currentColor == players.get(j).getColor())
+                        if (currentColor == 
+                            players.get(j).getColor())
                         {
                             colorUsed = true;
                         }
@@ -520,61 +613,102 @@ public class Game extends JPanel implements MouseListener
     protected void MakePaths()
     {
 
-        edges.add(new Edges("Lincoln Center","Central Park",Colors.ORANGE,2,102,38,250,28,true));
-        edges.add(new Edges("Lincoln Center","Midtown West",Colors.RED,2,102,38,82,178));
+        edges.add(new Edges("Lincoln Center","Central Park",
+            Colors.ORANGE,2,102,38,250,28,true));
+        edges.add(new Edges("Lincoln Center","Midtown West",
+            Colors.RED,2,102,38,82,178));
 
-        edges.add(new Edges("Lincoln Center","Times Square",Colors.GREEN,2,90,41,177,160));
-        edges.add(new Edges("Lincoln Center","Times Square",Colors.BLUE,2,115,38,187,156));
+        edges.add(new Edges("Lincoln Center","Times Square",
+            Colors.GREEN,2,90,41,177,160));
+        edges.add(new Edges("Lincoln Center","Times Square",
+            Colors.BLUE,2,115,38,187,156));
 
-        edges.add(new Edges("Central Park","Times Square",Colors.RED,2,254,30,190,160));
-        edges.add(new Edges("Central Park","Times Square",Colors.BLACK,2,240,28,180,156));
-        edges.add(new Edges("Central Park","United Nations",Colors.PINK,3,250,28,381,148));
+        edges.add(new Edges("Central Park","Times Square",
+            Colors.RED,2,254,30,190,160));
+        edges.add(new Edges("Central Park","Times Square",
+            Colors.BLACK,2,240,28,180,156));
+        edges.add(new Edges("Central Park","United Nations",
+            Colors.PINK,3,250,28,381,148));
 
-        edges.add(new Edges("Midtown West","Chelsea",Colors.BLUE,2,82,178,120,320));
-        edges.add(new Edges("Midtown West","Times Square",Colors.NONE,1,82,178,187,156));
-        edges.add(new Edges("Midtown West","Empire State Building",Colors.GREEN,2,82,178,245,240));
+        edges.add(new Edges("Midtown West","Chelsea",
+            Colors.BLUE,2,82,178,120,320));
+        edges.add(new Edges("Midtown West","Times Square",
+            Colors.NONE,1,82,178,187,156));
+        edges.add(new Edges("Midtown West","Empire State Building",
+            Colors.GREEN,2,82,178,245,240));
 
-        edges.add(new Edges("Times Square","Empire State Building",Colors.PINK,1,190,160,255,242));
-        edges.add(new Edges("Times Square","Empire State Building",Colors.ORANGE,1,175,156,245,240));
-        edges.add(new Edges("Times Square","United Nations",Colors.NONE,2,187,156,381,148));
+        edges.add(new Edges("Times Square","Empire State Building",
+            Colors.PINK,1,190,160,255,242));
+        edges.add(new Edges("Times Square","Empire State Building",
+            Colors.ORANGE,1,175,156,245,240));
+        edges.add(new Edges("Times Square","United Nations",
+            Colors.NONE,2,187,156,381,148));
 
-        edges.add(new Edges("United Nations","Empire State Building",Colors.BLACK,2,381,148,245,240));
-        edges.add(new Edges("United Nations","Gramercy Park",Colors.GREEN,3,381,148,307,312));
+        edges.add(new Edges("United Nations","Empire State Building",
+            Colors.BLACK,2,381,148,245,240));
+        edges.add(new Edges("United Nations","Gramercy Park",
+            Colors.GREEN,3,381,148,307,312));
 
-        edges.add(new Edges("Empire State Building", "Gramercy Park",Colors.RED,1,250,242,310,315));
-        edges.add(new Edges("Empire State Building", "Gramercy Park",Colors.BLUE,1,260,240,320,312));
+        edges.add(new Edges("Empire State Building", "Gramercy Park",
+            Colors.RED,1,250,242,310,315));
+        edges.add(new Edges("Empire State Building", "Gramercy Park",
+            Colors.BLUE,1,260,240,320,312));
 
-        edges.add(new Edges("Chelsea","Soho",Colors.PINK,4,120,320,190,563));
-        edges.add(new Edges("Chelsea","Empire State Building",Colors.NONE,2,130,330,260,247));
-        edges.add(new Edges("Chelsea","Empire State Building",Colors.NONE,2,120,320,245,240));
-        edges.add(new Edges("Chelsea","Gramercy Park",Colors.ORANGE,2,120,320,307,312));
-        edges.add(new Edges("Chelsea","Greenwich Village",Colors.GREEN,3,110,323,265,445));
-        edges.add(new Edges("Chelsea","Greenwich Village",Colors.RED,3,125,320,278,443));
+        edges.add(new Edges("Chelsea","Soho",
+            Colors.PINK,4,120,320,190,563));
+        edges.add(new Edges("Chelsea","Empire State Building",
+            Colors.NONE,2,130,330,260,247));
+        edges.add(new Edges("Chelsea","Empire State Building",
+            Colors.NONE,2,120,320,245,240));
+        edges.add(new Edges("Chelsea","Gramercy Park",
+            Colors.ORANGE,2,120,320,307,312));
+        edges.add(new Edges("Chelsea","Greenwich Village",
+            Colors.GREEN,3,110,323,265,445));
+        edges.add(new Edges("Chelsea","Greenwich Village",
+            Colors.RED,3,125,320,278,443));
 
-        edges.add(new Edges("Gramercy Park","Greenwich Village",Colors.PINK,2,315,315,285,445));
-        edges.add(new Edges("Gramercy Park","Greenwich Village",Colors.BLACK,2,300,312,270,443));
-        edges.add(new Edges("Gramercy Park","East Village",Colors.NONE,2,307,312,428,433));
+        edges.add(new Edges("Gramercy Park","Greenwich Village",
+            Colors.PINK,2,315,315,285,445));
+        edges.add(new Edges("Gramercy Park","Greenwich Village",
+            Colors.BLACK,2,300,312,270,443));
+        edges.add(new Edges("Gramercy Park","East Village",
+            Colors.NONE,2,307,312,428,433));
 
-        edges.add(new Edges("Greenwich Village","Soho",Colors.ORANGE,2,278,443,190,563));
-        edges.add(new Edges("Greenwich Village","Chinatown",Colors.NONE,2,290,445,330,582));
-        edges.add(new Edges("Greenwich Village","Chinatown",Colors.NONE,2,275,443,310,580));
-        edges.add(new Edges("Greenwich Village","Lower East Side",Colors.NONE,2,278,443,412,526));
-        edges.add(new Edges("Greenwich Village","East Village",Colors.BLUE,2,278,443,428,433));
+        edges.add(new Edges("Greenwich Village","Soho",
+            Colors.ORANGE,2,278,443,190,563));
+        edges.add(new Edges("Greenwich Village","Chinatown",
+            Colors.NONE,2,290,445,330,582));
+        edges.add(new Edges("Greenwich Village","Chinatown",
+            Colors.NONE,2,275,443,310,580));
+        edges.add(new Edges("Greenwich Village","Lower East Side",
+            Colors.NONE,2,278,443,412,526));
+        edges.add(new Edges("Greenwich Village","East Village",
+            Colors.BLUE,2,278,443,428,433));
 
-        edges.add(new Edges("East Village","Lower East Side",Colors.BLACK,1,428,433,412,526));
+        edges.add(new Edges("East Village","Lower East Side",
+            Colors.BLACK,1,428,433,412,526));
 
-        edges.add(new Edges("Lower East Side","Chinatown",Colors.BLUE,1,412,526,318,580));
-        edges.add(new Edges("Lower East Side","Brooklyn",Colors.NONE,3,412,526,479,695));
+        edges.add(new Edges("Lower East Side","Chinatown",
+            Colors.BLUE,1,412,526,318,580));
+        edges.add(new Edges("Lower East Side","Brooklyn",
+            Colors.NONE,3,412,526,479,695));
 
-        edges.add(new Edges("Soho","Wall Street",Colors.NONE,2,190,563,272,682));
+        edges.add(new Edges("Soho","Wall Street",
+            Colors.NONE,2,190,563,272,682));
 
-        edges.add(new Edges("Chinatown","Wall Street",Colors.GREEN,1,312,582,275,680));
-        edges.add(new Edges("Chinatown","Wall Street",Colors.PINK,1,335,580,290,682));
-        edges.add(new Edges("Chinatown","Brooklyn",Colors.RED,3,320,583,480,697));
-        edges.add(new Edges("Chinatown","Brooklyn",Colors.ORANGE,3,335,575,495,690));
+        edges.add(new Edges("Chinatown","Wall Street",
+            Colors.GREEN,1,312,582,275,680));
+        edges.add(new Edges("Chinatown","Wall Street",
+            Colors.PINK,1,335,580,290,682));
+        edges.add(new Edges("Chinatown","Brooklyn",
+            Colors.RED,3,320,583,480,697));
+        edges.add(new Edges("Chinatown","Brooklyn",
+            Colors.ORANGE,3,335,575,495,690));
 
-        edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,270,680,482,698));
-        edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,690,479,710));
+        edges.add(new Edges("Wall Street","Brooklyn",
+            Colors.BLUE,3,270,680,482,698));
+        edges.add(new Edges("Wall Street","Brooklyn",
+            Colors.BLACK,3,272,690,479,710));
 
         //Add Tourist locations to seperate arrayList
         tourists.add("Central Park");
@@ -602,24 +736,32 @@ public class Game extends JPanel implements MouseListener
             dests[0] = destDeck.draw();
             dests[1] = destDeck.draw();
             String[] choices = new String[3];
-            choices[0] = dests[0].getStart() + " => " + dests[0].getEnd();
-            choices[1] = dests[1].getStart() + " => " + dests[1].getEnd();
+            choices[0] = dests[0].getStart() + " => " + 
+                dests[0].getEnd();
+            choices[1] = dests[1].getStart() + " => " +
+                dests[1].getEnd();
             choices[2] = "Both Cards";
             String cardTaken = "";
             while(cardTaken.length() == 0)
             {
-                cardTaken = (String) JOptionPane.showInputDialog(null, players.get(i).name + ", select 1 or both cards", 
-                    "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+                cardTaken = (String) JOptionPane.
+                    showInputDialog(null, players.get(i).name + 
+                    ", select 1 or both cards", 
+                    "Destination Card Selection", 
+                    JOptionPane.QUESTION_MESSAGE, null,
+                    choices,choices[0]);
 
                 if (cardTaken == null) cardTaken = "";
                 if(!cardTaken.equals(""))
                 {
-                    if(cardTaken.equals(dests[0].getStart() + " => " + dests[0].getEnd()))
+                    if(cardTaken.equals(dests[0].getStart() +
+                        " => " + dests[0].getEnd()))
                     {
                         players.get(i).destHand.add(dests[0]);
                         destDeck.add(dests[1]);
                     }
-                    else if(cardTaken.equals(dests[1].getStart() + " => " + dests[1].getEnd()))
+                    else if(cardTaken.equals(dests[1].getStart() + 
+                        " => " + dests[1].getEnd()))
                     {
                         players.get(i).destHand.add(dests[1]);
                         destDeck.add(dests[0]);
@@ -631,8 +773,10 @@ public class Game extends JPanel implements MouseListener
                     }
                 }
             }
-            players.get(i).drawDeckTransTicket(ticketDeck,0,players);
-            players.get(i).drawDeckTransTicket(ticketDeck,0,players);
+            players.get(i).
+                drawDeckTransTicket(ticketDeck,0,players);
+            players.get(i).
+                drawDeckTransTicket(ticketDeck,0,players);
 
         }
     }

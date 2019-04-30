@@ -73,7 +73,8 @@ public class Player
             draw--;
             isTurn = false;
         }
-        //If player has drawn a face up and attempts to draw a rainbow card
+        //If player has drawn a face up and attempts 
+        //to draw a rainbow card
         draw--;
         return draw;
 
@@ -135,7 +136,8 @@ public class Player
             }
             String cardTaken = (String) JOptionPane.showInputDialog(null, 
                     "Select 1 or both cards", 
-                    "Destination Card Selection", JOptionPane.QUESTION_MESSAGE,
+                    "Destination Card Selection", 
+                    JOptionPane.QUESTION_MESSAGE,
                     null,choices,choices[0]);
             if(cardTaken == null) return 0;
             if(cardTaken.equals(dests.get(0).getStart() + " => " 
@@ -186,8 +188,10 @@ public class Player
         }
 
         //player chooses their cards based on path's needs
-        String choiceString = (String) JOptionPane.showInputDialog(null, "Select a route", 
-                "Route Slection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+        String choiceString = (String) JOptionPane.
+        showInputDialog(null, "Select a route", 
+                "Route Slection", JOptionPane.QUESTION_MESSAGE, 
+                null,choices,choices[0]);
         if (choiceString == null) return 0;
         Edges choice = edges.get(0);
         boolean edgeFound = false;
@@ -195,7 +199,8 @@ public class Player
         int j = 0;
         while (j < edges.size() && !edgeFound){
             if(choiceString.equals(edges.get(j).getStart() + "-" + 
-                edges.get(j).getEnd() + ": " + edges.get(j).getLength() + " " 
+                edges.get(j).getEnd() + ": " + 
+                edges.get(j).getLength() + " " 
                 + edges.get(j).getColor())){
                 if(!edges.get(j).getIsCaptured())
                 {
@@ -221,11 +226,13 @@ public class Player
             return 0;
         }
         else if(choice.getIsCaptured()) {
-            JOptionPane.showMessageDialog(null, "Route Previously captured", 
+            JOptionPane.showMessageDialog(null, 
+            "Route Previously captured", 
                 "alert", JOptionPane.ERROR_MESSAGE); 
             return 0;
         } else if (amtOfTaxis < choice.length) {
-            JOptionPane.showMessageDialog(null, "Not enough taxis to claim route",
+            JOptionPane.showMessageDialog(null, 
+            "Not enough taxis to claim route",
                 "alert", JOptionPane.ERROR_MESSAGE);
             return 0;
         } else if (j >= edges.size()) {
@@ -355,8 +362,10 @@ public class Player
         }
         else
         {
-            hand.put(choice.getColor(),hand.get(choice.getColor())-tempPay);
-            hand.put(Colors.RAINBOW,hand.get(Colors.RAINBOW)-tempRainbow);
+            hand.put(choice.getColor(),hand.get
+            (choice.getColor())-tempPay);
+            hand.put(Colors.RAINBOW,hand.get
+            (Colors.RAINBOW)-tempRainbow);
         }
         //update score
         score.updateScoreRoute(choice);
@@ -388,7 +397,8 @@ public class Player
                     if(word.equals(edges.get(j+1).getStart() + 
                         edges.get(j+1).getEnd()))
 
-                    if(word.equals(edges.get(j-1).getStart() + edges.get(j-1).getEnd()))
+                    if(word.equals(edges.get(j-1).getStart() + 
+                    edges.get(j-1).getEnd()))
 
                     {
                         edges.get(j-1).Captured(true,null);

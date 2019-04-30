@@ -8,7 +8,8 @@ import java.util.ArrayList;
  */
 public class Score
 {
-    // instance variables - replace the example below with your own
+    // instance variables - 
+    //replace the example below with your own
     protected int score;
 
     /**
@@ -55,10 +56,12 @@ public class Score
      * @param card destination card to win
      * @return score value
      */
-    protected int updateScoreDes(ArrayList<Edges> route,ArrayList<DestCard> cards){
+    protected int updateScoreDes(ArrayList<Edges> route,
+    ArrayList<DestCard> cards){
         for(int i = 0;i < cards.size();i++)
         {
-            if(cards.get(i).destCardCompleted(route,cards.get(i).start,cards.get(i).end))
+            if(cards.get(i).destCardCompleted(
+                route,cards.get(i).start,cards.get(i).end))
             {
                 this.setScore(score+cards.get(i).value);
             }
@@ -83,7 +86,8 @@ public class Score
         
         for(int i = 0; i < edge.size(); i++){
             for(int j = 0; j < tourist.size(); j++){
-                String word = edge.get(i).getStart() + edge.get(i).getEnd();
+                String word = edge.get(i).getStart() + 
+                    edge.get(i).getEnd();
                 if(word.contains(tourist.get(j))){
                     this.setScore(score++);
                 }

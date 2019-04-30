@@ -15,22 +15,27 @@ import java.util.Random;
  * instances of images of card
  * to and from
  * 
- * @author Derek McPhail, Mark Eliseo, Cheryl McClean, Austin Gage, Rose Wilson
+ * @author Derek McPhail, Mark Eliseo, Cheryl McClean,
+ * Austin Gage, Rose Wilson
  * @version (4/29/19)
  */
 public class DestCards
 {
-    protected ArrayList<DestCard> destCards = new ArrayList<>();
+    protected ArrayList<DestCard> destCards = 
+        new ArrayList<>();
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
-    protected ArrayList<DestCard> fromHand = new ArrayList<DestCard>();
-    protected ArrayList<Image> images = new ArrayList<>();
+    protected ArrayList<DestCard> fromHand = 
+        new ArrayList<DestCard>();
+    protected ArrayList<Image> images =
+        new ArrayList<>();
     /**
      * Constructor for objects of class DestCard
      */
     public DestCards()
     {
         Path path = Paths.get("fwdboardandtransport");        
-        try(DirectoryStream<Path> stream = Files.newDirectoryStream(path))
+        try(DirectoryStream<Path> stream = 
+            Files.newDirectoryStream(path))
         {
             for(Path file: stream)
             {
@@ -48,30 +53,48 @@ public class DestCards
         }
         //add each dest card from images to deck
 
-        destCards.add(new DestCard(images.get(0),"Central Park", "Chelsea",5));
-        destCards.add(new DestCard(images.get(1),"Central Park", "Chinatown",8));
-        destCards.add(new DestCard(images.get(2),"Central Park", "Gramercy Park",4));
-        destCards.add(new DestCard(images.get(3),"Central Park", "Midtown West",3));
-        destCards.add(new DestCard(images.get(4),"Chelsea", "Brooklyn",8));
-        destCards.add(new DestCard(images.get(5),"Chelsea", "Wall Street",6));
-        destCards.add(new DestCard(images.get(6),"Empire State Building", "Brooklyn",7));
-        destCards.add(new DestCard(images.get(7),"Empire State Building", "Greenwich Village",3));
-        destCards.add(new DestCard(images.get(8),"East Village", "Soho",4));
-        destCards.add(new DestCard(images.get(9),"Gramercy Park", "Chinatown",4));
-        destCards.add(new DestCard(images.get(10),"Lincoln Center", "Empire State Building",3));
-        destCards.add(new DestCard(images.get(11),"Lower East Side", "Wall Street",2));
-        destCards.add(new DestCard(images.get(12),"Times Square", "Brooklyn",8));
-        destCards.add(new DestCard(images.get(13),"Times Square", "East Village",4));
-        destCards.add(new DestCard(images.get(14),"Times Square", "Soho",6));
-        destCards.add(new DestCard(images.get(15),"United Nations", "Midtown West",3));
-        destCards.add(new DestCard(images.get(16),"United Nations", "Wall Street",8));
+        destCards.add(new DestCard(images.get(0),
+            "Central Park", "Chelsea",5));
+        destCards.add(new DestCard(images.get(1),
+            "Central Park", "Chinatown",8));
+        destCards.add(new DestCard(images.get(2),
+            "Central Park", "Gramercy Park",4));
+        destCards.add(new DestCard(images.get(3),
+            "Central Park", "Midtown West",3));
+        destCards.add(new DestCard(images.get(4),
+            "Chelsea", "Brooklyn",8));
+        destCards.add(new DestCard(images.get(5),
+            "Chelsea", "Wall Street",6));
+        destCards.add(new DestCard(images.get(6),
+            "Empire State Building", "Brooklyn",7));
+        destCards.add(new DestCard(images.get(7),
+            "Empire State Building", "Greenwich Village",3));
+        destCards.add(new DestCard(images.get(8),
+            "East Village", "Soho",4));
+        destCards.add(new DestCard(images.get(9),
+            "Gramercy Park", "Chinatown",4));
+        destCards.add(new DestCard(images.get(10),
+            "Lincoln Center", "Empire State Building",3));
+        destCards.add(new DestCard(images.get(11),
+            "Lower East Side", "Wall Street",2));
+        destCards.add(new DestCard(images.get(12),
+            "Times Square", "Brooklyn",8));
+        destCards.add(new DestCard(images.get(13),
+            "Times Square", "East Village",4));
+        destCards.add(new DestCard(images.get(14),
+            "Times Square", "Soho",6));
+        destCards.add(new DestCard(images.get(15),
+            "United Nations", "Midtown West",3));
+        destCards.add(new DestCard(images.get(16),
+            "United Nations", "Wall Street",8));
 
         this.shuffle();
 
     }
 
     /**
-     * Empty methods that had to be overriden to use MouseListener
+     * Empty methods that had to be overriden 
+     * to use MouseListener
      * 
      */
     public void mouseExited(MouseEvent e) { }
@@ -91,7 +114,8 @@ public class DestCards
     }
 
     /**
-     * Shuffles the deck of destination cards in a pseudorandom order.
+     * Shuffles the deck of destination cards 
+     * in a pseudorandom order.
      * 
      * 
      */

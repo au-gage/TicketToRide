@@ -11,7 +11,8 @@ import java.nio.file.*;
 /**
  * Class object to contain data for each transit card.
  *
- * @author Austin Gage, Mark Eliseo, Cheryl McClean, Rose Wilson, Derek McPhail
+ * @author Austin Gage, Mark Eliseo, Cheryl McClean, Rose Wilson,
+ * Derek McPhail
  * @version 4/29/2019
  */
 public class Ticket
