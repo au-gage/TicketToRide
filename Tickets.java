@@ -21,71 +21,62 @@ public class Tickets
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
     int size = 0;
     /**
-     * Initializes the deck of shuffled transit cards
-     * and the face-up pile.
+     * Initializes the deck of shuffled transit cards and the face-up pile.
      * 
      * @author Mark Eliseo and Austin Gage
      * @version April 2019
      */
     public Tickets() {
         Path path = Paths.get("fwdboardandtransport");        
-        try(DirectoryStream<Path> stream =
-            Files.newDirectoryStream(path)) {
+        try(DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
             for(Path file: stream) {
                 if (file.toString().
                 equals("fwdboardandtransport\\blackcard.jpg")) {
                     for(int i = 0;i < 6;i++) {
                         trainDeck.add(new Ticket
-                            (toolkit.getImage(file.toString()),
-                                Colors.BLACK));
+                            (toolkit.getImage(file.toString()),Colors.BLACK));
                     }
                 }
                 else if (file.toString().
                 equals("fwdboardandtransport\\bluecard.jpg")) {
                     for(int i = 0;i < 6;i++) {
                         trainDeck.add(new Ticket
-                            (toolkit.getImage(file.toString())
-                            ,Colors.BLUE));
+                            (toolkit.getImage(file.toString()),Colors.BLUE));
                     }
                 }
                 else if (file.toString().
                 equals("fwdboardandtransport\\colorcard.jpg")) {
                     for(int i = 0;i < 8;i++) {
                         trainDeck.add(new Ticket
-                            (toolkit.getImage(file.toString()),
-                                Colors.RAINBOW));
+                            (toolkit.getImage(file.toString()),Colors.RAINBOW));
                     }
                 }
                 else if (file.toString().
                 equals("fwdboardandtransport\\greencard.jpg")) {
                     for(int i = 0;i < 6;i++) {
                         trainDeck.add(new Ticket
-                            (toolkit.getImage(file.toString()),
-                                Colors.GREEN));
+                            (toolkit.getImage(file.toString()),Colors.GREEN));
                     }
                 }
                 else if (file.toString().
                 equals("fwdboardandtransport\\orangecard.jpg")) {
                     for(int i = 0;i < 6;i++) {
                         trainDeck.add(new Ticket
-                            (toolkit.getImage(file.toString()),
-                                Colors.ORANGE));
+                            (toolkit.getImage(file.toString()),Colors.ORANGE));
                     }
                 }
                 else if (file.toString().
                 equals("fwdboardandtransport\\pinkcard.jpg")) {
                     for(int i = 0;i < 6;i++) {
                         trainDeck.add(new Ticket
-                            (toolkit.getImage(file.toString()),
-                                Colors.PINK));
+                            (toolkit.getImage(file.toString()),Colors.PINK));
                     }
                 }
                 else if (file.toString().
                 equals("fwdboardandtransport\\redcard.jpg")) {
                     for(int i = 0;i < 6;i++) {
                         trainDeck.add(new Ticket
-                            (toolkit.getImage(file.toString()),
-                                Colors.RED));
+                            (toolkit.getImage(file.toString()),Colors.RED));
                     }
                 }
 
@@ -97,8 +88,7 @@ public class Tickets
         size = trainDeck.size();
         for(int i = 0;i < trainDeck.size();i++) {
             trainDeck.get(i).setImage(trainDeck.get(i).
-                getImage().getScaledInstance(200, 119, 
-                    Image.SCALE_DEFAULT));
+                getImage().getScaledInstance(200, 119, Image.SCALE_DEFAULT));
         }
         this.shuffle();
         for(int i = 0;i < 5;i++) {
@@ -160,8 +150,7 @@ public class Tickets
     }
 
     /**
-     * Check and handle the possibility of 3 
-     * rainbow cards in the faceups pile.
+     * Check and handle the possibility of 3 rainbow cards in the faceups pile.
      * 
      * @param players The list of players currently playing the game.
      */
@@ -174,10 +163,6 @@ public class Tickets
 
         //If there are 3 or more rainbow cards present, 
         //reset all 5 cards and check for rainbows again.
-
-        //If there are 3 or more rainbow cards present, 
-        //reset all 5 cards and check for rainbows again.
-
         if (rainbowCount >= 3) {
             for (int i = 0; i < faceups.length; i++) {
                 faceups[i] = this.draw(players);
@@ -230,93 +215,79 @@ public class Tickets
             orange += player.hand.get(Colors.ORANGE);
             wild += player.hand.get(Colors.RAINBOW);
         }
-
-        if(!(blue + green + black + pink + red + orange + wild == size))
+        if(blue+green+black+pink+red+orange+wild < size)
         {
-
             //populate the deck with remaining cards
             Path path = Paths.get("fwdboardandtransport");        
-            try(DirectoryStream<Path> stream = 
-                Files.newDirectoryStream(path)) {
+            try(DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
                 for(Path file: stream) {
                     if (file.toString().
                     equals("fwdboardandtransport\\blackcard.jpg")) {
-                        for(int i = 0;i < 6;i++) {
-                            Image icon = toolkit.getImage(
-                                    file.toString()).
-                                getScaledInstance(200,119,
-                                    Image.SCALE_DEFAULT);
+                        for(int i = 0;i < 6 - black;i++) {
+                            Image icon = toolkit.getImage(file.toString()).
+                                getScaledInstance(200,119,Image.SCALE_DEFAULT);
                             trainDeck.add(new Ticket(icon,Colors.BLACK));
                         }
                     }
                     else if (file.toString().
                     equals("fwdboardandtransport\\bluecard.jpg")) {
-                        for(int i = 0;i < 6;i++) {
+                        for(int i = 0;i < 6 - blue;i++) {
                             Image icon = toolkit.getImage(file.toString()).
-                                getScaledInstance(200,119,Image.
-                                SCALE_DEFAULT);
+                                getScaledInstance(200,119,Image.SCALE_DEFAULT);
                             trainDeck.add(new Ticket(icon,Colors.BLUE));
                         }
                     }
                     else if (file.toString().
                     equals("fwdboardandtransport\\colorcard.jpg")) {
-                        for(int i = 0;i < 8;i++) {
+                        for(int i = 0;i < 8 - wild;i++) {
                             Image icon = toolkit.getImage(file.toString()).
-                                getScaledInstance(200,119,
-                                Image.SCALE_DEFAULT);
+                                getScaledInstance(200,119,Image.SCALE_DEFAULT);
                             trainDeck.add(new Ticket(icon,Colors.RAINBOW));
                         }
                     }
                     else if (file.toString().
                     equals("fwdboardandtransport\\greencard.jpg")) {
-                        for(int i = 0;i < 6;i++) {
+                        for(int i = 0;i < 6 - green;i++) {
                             Image icon = toolkit.getImage(file.toString()).
-                                getScaledInstance(200,119,
-                                Image.SCALE_DEFAULT);
+                                getScaledInstance(200,119,Image.SCALE_DEFAULT);
                             trainDeck.add(new Ticket(icon,Colors.GREEN));
                         }
                     }
                     else if (file.toString().
                     equals("fwdboardandtransport\\orangecard.jpg")) {
-                        for(int i = 0;i < 6;i++) {
+                        for(int i = 0;i < 6 - orange;i++) {
                             Image icon = toolkit.getImage(file.toString()).
-                                getScaledInstance(200,119,
-                                Image.SCALE_DEFAULT);
+                                getScaledInstance(200,119,Image.SCALE_DEFAULT);
                             trainDeck.add(new Ticket(icon,Colors.ORANGE));
                         }
                     }
                     else if (file.toString().
                     equals("fwdboardandtransport\\pinkcard.jpg")) {
-                        for(int i = 0;i < 6;i++) {
+                        for(int i = 0;i < 6 - pink;i++) {
                             Image icon = toolkit.getImage(file.toString()).
-                                getScaledInstance(200,119,
-                                Image.SCALE_DEFAULT);
+                                getScaledInstance(200,119,Image.SCALE_DEFAULT);
                             trainDeck.add(new Ticket(icon,Colors.PINK));
                         }
-
                     }
                     else if (file.toString().
                     equals("fwdboardandtransport\\redcard.jpg")) {
-                        for(int i = 0;i < 6;i++) {
+                        for(int i = 0;i < 6 - red;i++) {
                             Image icon = toolkit.getImage(file.toString()).
-                                getScaledInstance(200,119,
-                                Image.SCALE_DEFAULT);
+                                getScaledInstance(200,119,Image.SCALE_DEFAULT);
                             trainDeck.add(new Ticket(icon,Colors.RED));
-
                         }
                     }
                 }
             }
             catch(Exception e) {
                 System.exit(0);
+
             }
             this.shuffle();
         }
-        else
+        else 
         {
-            JOptionPane.showMessageDialog(null,
-                "No ticket cards left, discard some");
-            return;
+            JOptionPane.showMessageDialog(null,"Ticket machine is out of order, please insert another quarter");
         }
     }
 }
