@@ -205,7 +205,11 @@ public class Player
         else if(choice.getIsCaptured()) {
             JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
             return 0;
+        } else if (amtOfTaxis < choice.length) {
+            JOptionPane.showMessageDialog(null, "Not enough taxis to claim route", "alert", JOptionPane.ERROR_MESSAGE);
+            return 0;
         }
+        
 
         //choose payment options
         //Think this should run off of the deck of the player, do like "RED-2" or something
