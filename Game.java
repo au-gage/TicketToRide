@@ -262,12 +262,7 @@ public class Game extends JPanel implements MouseListener
         }
         else
         {
-            for(int i = 0;i < players.size();i++)
-            {
-                players.get(i).score.updateScoreAttr(players.get(i).capturedEdges,tourists);
-                players.get(i).score.updateScoreDes(players.get(i).capturedEdges,players.get(i)
-                    .destHand);
-            }
+            
             gameOver = true;
             repaint();
         }
@@ -397,6 +392,12 @@ public class Game extends JPanel implements MouseListener
         }
         else
         {
+            for(int i = 0;i < players.size();i++)
+            {
+                players.get(i).score.updateScoreAttr(players.get(i).capturedEdges,tourists);
+                players.get(i).score.updateScoreDes(players.get(i).capturedEdges,players.get(i)
+                    .destHand);
+            }
             gameOver = true;
             int winner = 0;
             for(int i = 0;i < players.size() - 1;i++)
@@ -422,7 +423,7 @@ public class Game extends JPanel implements MouseListener
                     winner = i+1;
                 }
             }
-
+           
             g2.setColor(Color.WHITE);
             g2.fillRoundRect(250,500,350,150,20,20);
             g2.setColor(Color.BLACK);

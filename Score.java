@@ -81,7 +81,7 @@ public class Score
             for(int j = 0; j < tourist.size(); j++){
                 String word = edge.get(i).getStart() + edge.get(i).getEnd();
                 if(word.contains(tourist.get(j))){
-                    score++;
+                    this.setScore(score++);
                 }
             }
 
