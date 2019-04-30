@@ -16,7 +16,7 @@ public class Player
     protected ArrayList<Edges> capturedEdges = new ArrayList<>();
     //protected Image 
     protected boolean isTurn;
-    int amtOfTaxis = 2;
+    int amtOfTaxis = 15;
     //hashmap, keys are colors
     HashMap<Colors,Integer> hand = new HashMap<>();
     /**
@@ -338,7 +338,7 @@ public class Player
                 }
                 else if(j == edges.size() - 1)
                 {
-                    if(word.equals(edges.get(j+1).getStart() + edges.get(j+1).getEnd()))
+                    if(word.equals(edges.get(j-1).getStart() + edges.get(j-1).getEnd()))
                     {
                         edges.get(j-1).Captured(true,null);
                     }   
