@@ -384,12 +384,12 @@ public class Player
                 }
                 else if(j == edges.size() - 1)
                 {
-<<<<<<< HEAD
+
                     if(word.equals(edges.get(j+1).getStart() + 
                         edges.get(j+1).getEnd()))
-=======
+
                     if(word.equals(edges.get(j-1).getStart() + edges.get(j-1).getEnd()))
->>>>>>> ab31afbda99b8899699493f242eef8ba7e935568
+
                     {
                         edges.get(j-1).Captured(true,null);
                     }   

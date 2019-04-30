@@ -76,14 +76,11 @@ public class Score
      * 
      * @return score value
      */
-<<<<<<< HEAD
-    protected int updateScoreAttr(ArrayList <Edges> edge, 
-        ArrayList <String> tourist){ 
-        
-=======
-    protected int updateScoreAttr(ArrayList<Edges> edge, ArrayList <String> tourist){ 
 
->>>>>>> ab31afbda99b8899699493f242eef8ba7e935568
+    protected int updateScoreAttr(ArrayList <Edges> edge, 
+    ArrayList <String> tourist){ 
+
+        
         for(int i = 0; i < edge.size(); i++){
             for(int j = 0; j < tourist.size(); j++){
                 String word = edge.get(i).getStart() + edge.get(i).getEnd();

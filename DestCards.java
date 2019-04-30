@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -48,42 +47,7 @@ public class DestCards
             System.exit(0);
         }
         //add each dest card from images to deck
-<<<<<<< HEAD
-        destCards.add(new DestCard(images.get(0),
-            "Central Park", "Chelsea"));
-        destCards.add(new DestCard(images.get(1),
-            "Central Park", "Chinatown"));
-        destCards.add(new DestCard(images.get(2),
-            "Central Park", "Gramercy Park"));
-        destCards.add(new DestCard(images.get(3),
-            "Central Park", "Midtown West"));
-        destCards.add(new DestCard(images.get(4),
-            "Chelsea", "Brooklyn"));
-        destCards.add(new DestCard(images.get(5),
-            "Chelsea", "Wall Street"));
-        destCards.add(new DestCard(images.get(6),
-            "Empire State Building", "Brooklyn"));
-        destCards.add(new DestCard(images.get(7),
-            "Empire State Building", "Greenwich Village"));
-        destCards.add(new DestCard(images.get(8),
-            "East Village", "Soho"));
-        destCards.add(new DestCard(images.get(9),
-            "Gramercy Park", "Chinatown"));
-        destCards.add(new DestCard(images.get(10),
-            "Lincoln Center", "Empire State Building"));
-        destCards.add(new DestCard(images.get(11),
-            "Lower East Side", "Wall Street"));
-        destCards.add(new DestCard(images.get(12),
-            "Times Square", "Brooklyn"));
-        destCards.add(new DestCard(images.get(13),
-            "Times Square", "East Village"));
-        destCards.add(new DestCard(images.get(14),
-            "Times Square", "Soho"));
-        destCards.add(new DestCard(images.get(15),
-            "United Nations", "Midtown West"));
-        destCards.add(new DestCard(images.get(16),
-            "United Nations", "Wall Street"));
-=======
+
         destCards.add(new DestCard(images.get(0),"Central Park", "Chelsea",5));
         destCards.add(new DestCard(images.get(1),"Central Park", "Chinatown",8));
         destCards.add(new DestCard(images.get(2),"Central Park", "Gramercy Park",4));
@@ -101,7 +65,7 @@ public class DestCards
         destCards.add(new DestCard(images.get(14),"Times Square", "Soho",6));
         destCards.add(new DestCard(images.get(15),"United Nations", "Midtown West",3));
         destCards.add(new DestCard(images.get(16),"United Nations", "Wall Street",8));
->>>>>>> ab31afbda99b8899699493f242eef8ba7e935568
+
         this.shuffle();
 
     }
@@ -117,6 +81,7 @@ public class DestCards
     public void mouseReleased(MouseEvent e) { }
 
     public void mousePressed(MouseEvent e) { }
+
     /**
      * when a mouse is clicked, 
      * receive the value of destination cards
@@ -131,7 +96,7 @@ public class DestCards
      * 
      */
     public void shuffle() {
-        
+
         for (int i = 0; i < destCards.size(); i++) {
             Random r = new Random();
             //recieves a sudorandom int to place next card
@@ -153,7 +118,7 @@ public class DestCards
             JOptionPane.showMessageDialog(null,
                 "There are no more Destination Cards left");
             return null;
-        
+
         } else {
             //cards are available, remove from deck
             DestCard pickedUp = destCards.get(0);
@@ -161,7 +126,7 @@ public class DestCards
             return pickedUp;
         }
     }
-    
+
     /**
      * add a destination card to the deck
      * 
