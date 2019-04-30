@@ -16,7 +16,7 @@ public class Player
     protected ArrayList<Edges> capturedEdges = new ArrayList<>();
     //protected Image 
     protected boolean isTurn;
-    int amtOfTaxis = 15;
+    int amtOfTaxis = 2;
     //hashmap, keys are colors
     HashMap<Colors,Integer> hand = new HashMap<>();
     /**

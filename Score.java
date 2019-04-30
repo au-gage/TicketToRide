@@ -18,6 +18,7 @@ public class Score
         // initialise instance variables
         score = 0;
     }
+
     /**
      * accessore for the current score
      * 
@@ -26,10 +27,12 @@ public class Score
     protected int getValue(){
         return score;
     }
+
     public void setScore(int score)
     {
         this.score = score;
     }
+
     /**
      * calculates score when a route is captured
      * 
@@ -37,10 +40,11 @@ public class Score
      */
     protected int updateScoreRoute(Edges pathName){
         if(pathName.getIsCaptured() == true){
-            score = score + pathName.length;
+            this.setScore(pathName.getLength() + this.score);
         }
         return score; 
     }
+
     /**
      * at end of game, 
      * calculates score
@@ -50,34 +54,42 @@ public class Score
      * @param card destination card to win
      * @return score value
      */
-    protected int updateScoreDes(Edges route,DestCard card){ 
-        score = score + DestCard.destCardValues(route,card);
+    protected int updateScoreDes(ArrayList<Edges> route,ArrayList<DestCard> cards){
+        for(int i = 0;i < cards.size();i++)
+        {
+            if(cards.get(i).destCardCompleted(route,cards.get(i).start,cards.get(i).end))
+            {
+                this.setScore(score+cards.get(i).value);
+            }
+            else
+            {
+                this.setScore(score-cards.get(i).value);
+            }
+        }
         return score; 
     }
+
     /**
      * at end of game
      * add 1 when next to attraction
      * 
      * @return score value
      */
-    protected int updateScoreAttr(ArrayList <Edges> edge, ArrayList <String> tourist){ 
-        
+    protected int updateScoreAttr(ArrayList<Edges> edge, ArrayList <String> tourist){ 
+
         for(int i = 0; i < edge.size(); i++){
             for(int j = 0; j < tourist.size(); j++){
-            String word = edge.get(i).getStart() + edge.get(i).getEnd();
-            if(word.contains(tourist.get(i))){
-                score++;
+                String word = edge.get(i).getStart() + edge.get(i).getEnd();
+                if(word.contains(tourist.get(j))){
+                    score++;
+                }
             }
+
         }
-            
-        }
-        
+
         return score;
     }
-        
-       
-    
-    
+
     /**
      * at end of game
      * subtract points for unused destination cards
@@ -89,10 +101,10 @@ public class Score
         int counter = 0;
         int destCardAmount = 10; //? 
         // if(card is not complete){
-              // score = score - card.getValue();
-              // counter ++
+        // score = score - card.getValue();
+        // counter ++
         // }
         return score;
     }
-    
+
 }
