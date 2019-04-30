@@ -101,7 +101,7 @@ public class Player
      * 
      * @param deck current status of the deck
      */
-    protected void drawDestTickets(DestCards deck){
+    protected int drawDestTickets(DestCards deck){
         //add two dest cards to hand
         // destHand.add(deck.draw());
         // destHand.add(deck.draw());
@@ -128,27 +128,31 @@ public class Player
             }
             String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1 or both cards", 
                     "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
-            if(cardTaken.equals(null)) return;
+            if(cardTaken == null) return 0;
             if(cardTaken.equals(dests.get(0).getStart() + " => " + dests.get(0).getEnd()))
             {
                 destHand.add(dests.get(0));
                 deck.add(dests.get(1));
+                return 2;
             }
             else if(cardTaken.equals(dests.get(1).getStart() + " => " + dests.get(1).getEnd()))
             {
                 destHand.add(dests.get(1));
                 deck.add(dests.get(0));
+                return 2;
             }
             else
             {
                 destHand.add(dests.get(0));
                 destHand.add(dests.get(1));
+                return 2;
             }
         }
         else
         {
             JOptionPane.showMessageDialog(null,"Only one dest Card left, dealt to your deck");
             destHand.add(dests.get(0));
+            return 2;
         }
     }
     /**
@@ -201,7 +205,11 @@ public class Player
         else if(choice.getIsCaptured()) {
             JOptionPane.showMessageDialog(null, "Route Previously captured", "alert", JOptionPane.ERROR_MESSAGE); 
             return 0;
+        } else if (amtOfTaxis < choice.length) {
+            JOptionPane.showMessageDialog(null, "Not enough taxis to claim route", "alert", JOptionPane.ERROR_MESSAGE);
+            return 0;
         }
+        
 
         //choose payment options
         //Think this should run off of the deck of the player, do like "RED-2" or something

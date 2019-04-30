@@ -225,8 +225,7 @@ public class Game extends JPanel implements MouseListener
             {
                 if(destDeck.destCards.size() > 0)
                 {
-                    players.get(turn % players.size()).drawDestTickets(destDeck);
-                    amtOfMoves -= 2;
+                    amtOfMoves -= players.get(turn % players.size()).drawDestTickets(destDeck);
                 }
             }
             //Draw from transport deck
@@ -288,7 +287,23 @@ public class Game extends JPanel implements MouseListener
         g2.setStroke(new BasicStroke(3));
         g2.setColor(Color.WHITE);
         g.drawImage(background,0,0,this);
+<<<<<<< HEAD
         if(!gameOver && turn != maxTurn + 1)
+=======
+        g.drawImage(board, 0, 0, this);
+
+        g2.fillRoundRect(540,5,145,50, 10, 10);
+        g2.fillRoundRect(540,200,145,50, 10, 10);
+        g2.fillRoundRect(540,100,145,50, 10, 10);
+
+        g2.setColor(Color.BLACK);
+        Font font = new Font("SERIF",Font.PLAIN,20);
+        g2.setFont(font);
+        g2.drawString("Claim Route", 560,35);
+        g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
+        g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),575,130);
+        if(turnOver)
+>>>>>>> cd80f8c98bda9c0f725bafae191f41b29d4d319d
         {
             g.drawImage(board, 0, 0, this);
 
