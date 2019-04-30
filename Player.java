@@ -128,6 +128,7 @@ public class Player
             }
             String cardTaken = (String) JOptionPane.showInputDialog(null, "Select 1 or both cards", 
                     "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
+            if(cardTaken.equals(null)) return;
             if(cardTaken.equals(dests.get(0).getStart() + " => " + dests.get(0).getEnd()))
             {
                 destHand.add(dests.get(0));
@@ -288,7 +289,7 @@ public class Player
         }
 
         //update score
-        score.updateScoreRoute(choice);
+        score.setScore(score.getValue() + choice.getLength());
         //add cars to route
 
         if(choice.getColor() == Colors.NONE)

@@ -26,6 +26,10 @@ public class Score
     protected int getValue(){
         return score;
     }
+    public void setScore(int score)
+    {
+        this.score = score;
+    }
     /**
      * calculates score when a route is captured
      * 
@@ -78,7 +82,6 @@ public class Score
               // score = score - card.getValue();
               // counter ++
         // }
-        
         return score;
     }
     /**

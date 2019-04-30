@@ -281,12 +281,14 @@ public class Game extends JPanel implements MouseListener
 
         g2.fillRoundRect(540,5,145,50, 10, 10);
         g2.fillRoundRect(540,200,145,50, 10, 10);
+        g2.fillRoundRect(540,100,145,50, 10, 10);
 
         g2.setColor(Color.BLACK);
         Font font = new Font("SERIF",Font.PLAIN,20);
         g2.setFont(font);
         g2.drawString("Claim Route", 560,35);
         g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
+        g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),542,115);
         if(turnOver)
         {
             g2.setColor(Color.WHITE);
@@ -389,6 +391,7 @@ public class Game extends JPanel implements MouseListener
         frame.setVisible(true);
 
     }
+
     /**
      * a main method to display the GUI
      * 
@@ -398,6 +401,7 @@ public class Game extends JPanel implements MouseListener
     {
         createAndShowGUI();
     }
+
     /**
      * initializes Player objects
      * based on input that from user
@@ -508,7 +512,7 @@ public class Game extends JPanel implements MouseListener
 
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLUE,3,270,680,482,698));
         edges.add(new Edges("Wall Street","Brooklyn",Colors.BLACK,3,272,690,479,710));
-        
+
         //Add Tourist locations to seperate arrayList
         tourists.add("Central Park");
         tourists.add("Times Square");
@@ -522,6 +526,7 @@ public class Game extends JPanel implements MouseListener
 
         DealDestCards();
     }
+
     /**
      * deals the destination and transport cards to players
      * to be utilized at start of game
@@ -537,28 +542,38 @@ public class Game extends JPanel implements MouseListener
             choices[0] = dests[0].getStart() + " => " + dests[0].getEnd();
             choices[1] = dests[1].getStart() + " => " + dests[1].getEnd();
             choices[2] = "Both Cards";
-            String cardTaken = (String) JOptionPane.showInputDialog(null, players.get(i).name + ", select 1 or both cards", 
+            String cardTaken = "";
+            while(cardTaken.length() == 0)
+            {
+                cardTaken = (String) JOptionPane.showInputDialog(null, players.get(i).name + ", select 1 or both cards", 
                     "Destination Card Selection", JOptionPane.QUESTION_MESSAGE, null,choices,choices[0]);
-            if (cardTaken == null) cardTaken = "";
-            if(cardTaken.equals(dests[0].getStart() + " => " + dests[0].getEnd()))
-            {
-                players.get(i).destHand.add(dests[0]);
-                destDeck.add(dests[1]);
-            }
-            else if(cardTaken.equals(dests[1].getStart() + " => " + dests[1].getEnd()))
-            {
-                players.get(i).destHand.add(dests[1]);
-                destDeck.add(dests[0]);
-            }
-            else
-            {
-                players.get(i).destHand.add(dests[0]);
-                players.get(i).destHand.add(dests[1]);
+
+                if (cardTaken == null) cardTaken = "";
+                if(!cardTaken.equals(""))
+                {
+                    if(cardTaken.equals(dests[0].getStart() + " => " + dests[0].getEnd()))
+                    {
+                        players.get(i).destHand.add(dests[0]);
+                        destDeck.add(dests[1]);
+                    }
+                    else if(cardTaken.equals(dests[1].getStart() + " => " + dests[1].getEnd()))
+                    {
+                        players.get(i).destHand.add(dests[1]);
+                        destDeck.add(dests[0]);
+                    }
+                    else
+                    {
+                        players.get(i).destHand.add(dests[0]);
+                        players.get(i).destHand.add(dests[1]);
+                    }
+                }
             }
             players.get(i).drawDeckTransTicket(ticketDeck,0,players);
             players.get(i).drawDeckTransTicket(ticketDeck,0,players);
+
         }
     }
+
     /**
      * initializes a turn
      */
