@@ -48,6 +48,7 @@ public class DestCards
             System.exit(0);
         }
         //add each dest card from images to deck
+<<<<<<< HEAD
         destCards.add(new DestCard(images.get(0),
             "Central Park", "Chelsea"));
         destCards.add(new DestCard(images.get(1),
@@ -82,6 +83,25 @@ public class DestCards
             "United Nations", "Midtown West"));
         destCards.add(new DestCard(images.get(16),
             "United Nations", "Wall Street"));
+=======
+        destCards.add(new DestCard(images.get(0),"Central Park", "Chelsea",5));
+        destCards.add(new DestCard(images.get(1),"Central Park", "Chinatown",8));
+        destCards.add(new DestCard(images.get(2),"Central Park", "Gramercy Park",4));
+        destCards.add(new DestCard(images.get(3),"Central Park", "Midtown West",3));
+        destCards.add(new DestCard(images.get(4),"Chelsea", "Brooklyn",8));
+        destCards.add(new DestCard(images.get(5),"Chelsea", "Wall Street",6));
+        destCards.add(new DestCard(images.get(6),"Empire State Building", "Brooklyn",7));
+        destCards.add(new DestCard(images.get(7),"Empire State Building", "Greenwich Village",3));
+        destCards.add(new DestCard(images.get(8),"East Village", "Soho",4));
+        destCards.add(new DestCard(images.get(9),"Gramercy Park", "Chinatown",4));
+        destCards.add(new DestCard(images.get(10),"Lincoln Center", "Empire State Building",3));
+        destCards.add(new DestCard(images.get(11),"Lower East Side", "Wall Street",2));
+        destCards.add(new DestCard(images.get(12),"Times Square", "Brooklyn",8));
+        destCards.add(new DestCard(images.get(13),"Times Square", "East Village",4));
+        destCards.add(new DestCard(images.get(14),"Times Square", "Soho",6));
+        destCards.add(new DestCard(images.get(15),"United Nations", "Midtown West",3));
+        destCards.add(new DestCard(images.get(16),"United Nations", "Wall Street",8));
+>>>>>>> ab31afbda99b8899699493f242eef8ba7e935568
         this.shuffle();
 
     }

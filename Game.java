@@ -38,6 +38,7 @@ public class Game extends JPanel implements MouseListener
     private ArrayList<String> tourists = new ArrayList<>();
     boolean turnOver = false;
     boolean lastTurnBegins = false;
+    boolean gameOver = false;
     int maxTurn = -99;
     /**
      * constructor for the game class
@@ -131,7 +132,7 @@ public class Game extends JPanel implements MouseListener
     {
         int x = e.getX();
         int y = e.getY();
-        if(turn != maxTurn + 1 || lastTurnBegins != true)
+        if(turn != maxTurn +1 || lastTurnBegins != true)
         {
             //Draw face up Card, starting with first, second, etc
             if(x >= 700 && x <= 900 && y >=0 && y <= 119 && amtOfMoves > 0)
@@ -241,15 +242,14 @@ public class Game extends JPanel implements MouseListener
             //End turn pressed, only shows up when player is out of moves
             else if(x >= 540 && x <= 685 && y >= 400 && y <= 450 && amtOfMoves == 0)
             {
+                if(players.get(turn % players.size()).amtOfTaxis <= 2 && !lastTurnBegins)
+                {
+                    lastTurnBegins = true;
+                    maxTurn = turn + players.size();
+                }
                 turnOver = false; 
                 turn++;
                 amtOfMoves = 2;
-            }
-
-            if(players.get(turn % players.size()).amtOfTaxis <= 2 && !lastTurnBegins)
-            {
-                lastTurnBegins = true;
-                maxTurn = turn + players.size();
             }
 
             //e.consume();
@@ -259,6 +259,17 @@ public class Game extends JPanel implements MouseListener
                 turnOver = true;
                 repaint();
             }
+        }
+        else
+        {
+            for(int i = 0;i < players.size();i++)
+            {
+                players.get(i).score.updateScoreAttr(players.get(i).capturedEdges,tourists);
+                players.get(i).score.updateScoreDes(players.get(i).capturedEdges,players.get(i)
+                    .destHand);
+            }
+            gameOver = true;
+            repaint();
         }
 
     }
@@ -276,96 +287,148 @@ public class Game extends JPanel implements MouseListener
         g2.setStroke(new BasicStroke(3));
         g2.setColor(Color.WHITE);
         g.drawImage(background,0,0,this);
-        g.drawImage(board, 0, 0, this);
 
-        g2.fillRoundRect(540,5,145,50, 10, 10);
-        g2.fillRoundRect(540,200,145,50, 10, 10);
-        g2.fillRoundRect(540,100,145,50, 10, 10);
-
-        g2.setColor(Color.BLACK);
-        Font font = new Font("SERIF",Font.PLAIN,20);
-        g2.setFont(font);
-        g2.drawString("Claim Route", 560,35);
-        g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
-        g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),575,130);
-        if(turnOver)
+        if(!gameOver && turn != maxTurn + 1)
         {
-            g2.setColor(Color.WHITE);
-            g2.fillRoundRect(540,400,145,50, 10, 10);
+            g.drawImage(board, 0, 0, this);
+
+            g2.fillRoundRect(540,5,145,50, 10, 10);
+            g2.fillRoundRect(540,200,145,50, 10, 10);
+            g2.fillRoundRect(540,100,145,50, 10, 10);
+
+            // g2.setColor(Color.BLACK);
+            // Font font = new Font("SERIF",Font.PLAIN,20);
+            // g2.setFont(font);
+            // g2.drawString("Claim Route", 560,35);
+            // g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
+            // g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),575,130);
+            // g.drawImage(board, 0, 0, this);
+
+            // g2.fillRoundRect(540,5,145,50, 10, 10);
+            // g2.fillRoundRect(540,200,145,50, 10, 10);
+            // g2.fillRoundRect(540,100,145,50, 10, 10);
+
             g2.setColor(Color.BLACK);
-            g2.drawString("End Turn", 575,430);
-        }
-
-        if(lastTurnBegins)
-        {
-            g2.setColor(Color.WHITE);
-            g2.fillRect(540,600,145,50);
-            g2.setColor(Color.BLACK);
-            g2.drawString("Warning: Last Turn", 550,625);
-        }
-
-        if(players.size() > 1)
-        {
-            for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
+            Font font = new Font("SERIF",Font.PLAIN,20);
+            g2.setFont(font);
+            g2.drawString("Claim Route", 560,35);
+            g2.drawString("Current Taxis: " + players.get(turn % players.size()).amtOfTaxis,542,230);
+            g2.drawString("Score: " + players.get(turn % players.size()).score.getValue(),542,115);
+            if(turnOver)
             {
-                g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,720,this);
-                //g.drawImage(players.get(turn % players.size()).hand.get(Colors.RED).getImage(),100 * i, 900,this);
+                g2.setColor(Color.WHITE);
+                g2.fillRoundRect(540,400,145,50, 10, 10);
+                g2.setColor(Color.BLACK);
+                g2.drawString("End Turn", 575,430);
             }
-            g2.setColor(Color.WHITE);
-            for(int i = 0;i < tickets.size();i++)
-            {
-                g.drawImage(tickets.get(i),100*i,900,this);
-                g.fillOval((100*i) + 10, 900,25,25);
-            }
-            g2.setColor(Color.BLACK);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLACK)),17,917);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLUE)),117,917);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RAINBOW)),217,917);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.GREEN)),317,917);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.ORANGE)),417,917);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.PINK)),517,917);
-            g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RED)),617,917);
-        }
 
-        for(int i = 0;i < 5;i++)
-        {
-            g.drawImage(ticketDeck.faceups[i].getImage(),700,119*i,this);
-        }
-        if(destDeck.destCards.size() > 0)
-            g.drawImage(destCardBack,681,595,this);
-        if(ticketDeck.trainDeck.size() > 0)
-            g.drawImage(transCardBack,800,595,this);
-        for(int i = 0; i < edges.size();i++)
-        {
-            if(edges.get(i).getIsCaptured())
+            if(lastTurnBegins)
             {
-                if(edges.get(i).getWhoCaptured() != null)
+                g2.setColor(Color.WHITE);
+                g2.fillRoundRect(540,600,145,50,10,10);
+                g2.setColor(Color.BLACK);
+                g2.drawString("Warning: Last Turn", 550,625);
+            }
+
+            if(players.size() > 1)
+            {
+                for(int i = 0;i < players.get(turn % players.size()).destHand.size();i++)
                 {
-                    Player temp = edges.get(i).getWhoCaptured();
-                    if(temp.color == Colors.BLUE)
+                    g.drawImage(players.get(turn % players.size()).destHand.get(i).getImage(),100 * i,720,this);
+                    //g.drawImage(players.get(turn % players.size()).hand.get(Colors.RED).getImage(),100 * i, 900,this);
+                }
+                g2.setColor(Color.WHITE);
+                for(int i = 0;i < tickets.size();i++)
+                {
+                    g.drawImage(tickets.get(i),100*i,900,this);
+                    g.fillOval((100*i) + 10, 900,25,25);
+                }
+                g2.setColor(Color.BLACK);
+                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLACK)),17,917);
+                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.BLUE)),117,917);
+                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RAINBOW)),217,917);
+                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.GREEN)),317,917);
+                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.ORANGE)),417,917);
+                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.PINK)),517,917);
+                g.drawString(Integer.toString(players.get(turn % players.size()).hand.get(Colors.RED)),617,917);
+            }
+
+            for(int i = 0;i < 5;i++)
+            {
+                g.drawImage(ticketDeck.faceups[i].getImage(),700,119*i,this);
+            }
+            if(destDeck.destCards.size() > 0)
+                g.drawImage(destCardBack,681,595,this);
+            if(ticketDeck.trainDeck.size() > 0)
+                g.drawImage(transCardBack,800,595,this);
+            for(int i = 0; i < edges.size();i++)
+            {
+                if(edges.get(i).getIsCaptured())
+                {
+                    if(edges.get(i).getWhoCaptured() != null)
                     {
-                        g.setColor(Color.BLUE);
+                        Player temp = edges.get(i).getWhoCaptured();
+                        if(temp.color == Colors.BLUE)
+                        {
+                            g.setColor(Color.BLUE);
+                        }
+                        else if(temp.color == Colors.WHITE)
+                        {
+                            g.setColor(Color.WHITE);
+                        }
+                        else if(temp.color == Colors.PURPLE)
+                        {
+                            g.setColor(Color.MAGENTA);
+                        }
+                        else if(temp.color == Colors.YELLOW)
+                        {
+                            g.setColor(Color.YELLOW);
+                        }
+                        int x1 = edges.get(i).x1;
+                        int y1 = edges.get(i).y1;
+                        int x2 = edges.get(i).x2;
+                        int y2 = edges.get(i).y2;
+                        g2.setStroke(new BasicStroke(5));
+                        g2.drawLine(x1,y1,x2,y2);
                     }
-                    else if(temp.color == Colors.WHITE)
-                    {
-                        g.setColor(Color.WHITE);
-                    }
-                    else if(temp.color == Colors.PURPLE)
-                    {
-                        g.setColor(Color.MAGENTA);
-                    }
-                    else if(temp.color == Colors.YELLOW)
-                    {
-                        g.setColor(Color.YELLOW);
-                    }
-                    int x1 = edges.get(i).x1;
-                    int y1 = edges.get(i).y1;
-                    int x2 = edges.get(i).x2;
-                    int y2 = edges.get(i).y2;
-                    g2.setStroke(new BasicStroke(5));
-                    g2.drawLine(x1,y1,x2,y2);
+                }
+
+            }
+        }
+        else
+        {
+            gameOver = true;
+            int winner = 0;
+            for(int i = 0;i < players.size() - 1;i++)
+            {
+                if(i == players.size() - 2)
+                {
+                    g.fillRoundRect(0,100*i+100,175,50,10,10);
+                    Font font = new Font("SERIF",Font.PLAIN,20);
+                    g2.setFont(font);
+                    g2.setColor(Color.BLACK);
+                    g2.drawString(players.get(i+1).name + "Final Score: " + players.get(i+1).score.score,15,100*i+115);
+                    g2.setColor(Color.WHITE);
+                }
+
+                g.fillRoundRect(0,100*i,145,50,10,10);
+                Font font = new Font("SERIF",Font.PLAIN,20);
+                g2.setFont(font);
+                g2.setColor(Color.BLACK);
+                g2.drawString(players.get(i).name + " Final Score: " + players.get(i).score.score,15,100*i+15);
+
+                if(players.get(i).score.score < players.get(i+1).score.score)
+                {
+                    winner = i+1;
                 }
             }
+
+            g2.setColor(Color.WHITE);
+            g2.fillRoundRect(250,500,350,150,20,20);
+            g2.setColor(Color.BLACK);
+            Font font = new Font("SERIF",Font.PLAIN,30);
+            g2.setFont(font);
+            g2.drawString("WINNER: " + players.get(winner).name,300,540);
         }
     }
 

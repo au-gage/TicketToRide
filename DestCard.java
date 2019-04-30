@@ -17,8 +17,9 @@ public class DestCard
 {
     //instance variables
     private Image image;
-    private String start;
-    private String end;
+    protected String start;
+    protected String end;
+    protected int value;
     /**
      * constructor for DestCard
      * 
@@ -26,11 +27,12 @@ public class DestCard
      * @param start point of the card
      * @param end point of the card
      */
-    public DestCard(Image image,String start, String end)
+    public DestCard(Image image,String start, String end,int value)
     {
         this.image = image;
         this.start = start;
         this.end = end;
+        this.value = value;
     }
     /**
      * accessor to get image
@@ -330,7 +332,7 @@ public class DestCard
         }
         
         
-        DestCard card = new DestCard(null, "apple", "cactus");
+        DestCard card = new DestCard(null, "apple", "cactus",4);
         
         System.out.println(card.destCardCompleted(edgy, card.getStart(), card.getEnd()));
     }
