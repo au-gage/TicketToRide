@@ -13,6 +13,8 @@ import java.nio.file.*;
  * @author Mark Eliseo, Austin Gage, Derek McPhail, 
  * Cheryl McClean, and Rose Wilson
  * @version April 29 2019
+ * 
+ * Austin did alot of reworking of this class to make it work
  */
 public class Tickets
 {

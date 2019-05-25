@@ -9,6 +9,7 @@
  *
  * @author Austin Gage, Rose Wilson, Cheryl McClean, Derek McPhail,
  * Mark Eliseo
+ * Austin Coded this whole class
  * @version 4/12/2019
  */
 public class Edges

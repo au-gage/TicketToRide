@@ -52,6 +52,8 @@ public class Player
      * @param choice, which face up card to choose
      * @param draw, the number of draws the player has drawn this turn
      * @param players, the players of the game
+     * 
+     * Austin edited this method so it would work
      */
     protected int drawTransTicket( Tickets deck, 
         int choice,int draw, ArrayList<Player> players ){
@@ -107,6 +109,8 @@ public class Player
      * gives player option to discard one
      * 
      * @param deck current status of the deck
+     * 
+     * Austin coded this method
      */
     protected int drawDestTickets(DestCards deck){
         //add two dest cards to hand
@@ -175,6 +179,8 @@ public class Player
      * 
      * @param edges, current status of game's edges
      * @param players, current statuc of game's players
+     * 
+     * Austin Coded the first half of this method
      */
     protected int claimRoute(ArrayList<Edges> edges,
     ArrayList<Player> players){
