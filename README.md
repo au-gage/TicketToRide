@@ -1,6 +1,7 @@
 # TicketToRide
-
+This program will run in any program that supports Java, I have tested it in BlueJ, IntelliJ, and Microsoft Visual Studio code
 HOW TO RUN:
+
 
     run the main method of the Game.java class
     You, the player, will be prompted to select the amount of players.
