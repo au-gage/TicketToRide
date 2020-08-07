@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
  * @author Rose Wilson, Austin Gage, Cheryl McClean,
  * Derek McPhail, and Mark Eliseo
  * @version 4/29/19
+ * Austin coded parts of this class
  */
 public class Player
 {
