@@ -2,7 +2,7 @@
 
 HOW TO RUN:
 
-    run the main method
+    run the main method of the Game.java class
     You, the player, will be prompted to select the amount of players.
     Press the button for the number of players playing
     Enter name of player 1 at prompt
